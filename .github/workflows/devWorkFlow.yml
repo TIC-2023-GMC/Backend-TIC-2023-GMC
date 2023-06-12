@@ -1,0 +1,46 @@
+name: Development Workflow
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          python -m poetry config virtualenvs.create true
+
+      - name: Install dependencies
+        run: python -m poetry install
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: <tu-región-de-AWS>
+
+      - name: Deploy to EC2
+        run: |
+          # Aquí debes agregar los comandos específicos para el despliegue en EC2
+          # Por ejemplo, puedes usar el cliente de línea de comandos de AWS (AWS CLI)
+          # para copiar los archivos a la instancia de EC2 y ejecutar cualquier comando
+          # necesario para iniciar o reiniciar tu aplicación.
+
+          # Ejemplo de comando para copiar archivos usando AWS CLI:
+          aws s3 cp <ruta-de-tu-archivo-o-carpeta-local> s3://<nombre-de-tu-bucket-S3>/
+
+          # Ejemplo de comando para conectarse a la instancia de EC2 por SSH y ejecutar comandos:
+          ssh -i <ruta-de-tu-clave-privada-EC2> ec2-user@<ip-o-dominio-de-tu-instancia> "<comandos-de-inicio-o-reinicio>"
