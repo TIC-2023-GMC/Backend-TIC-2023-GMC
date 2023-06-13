@@ -1,27 +1,26 @@
-name: Development Workflow
+name: Deployment to development Server
 
 on:
   push:
     branches:
-      - "*"
+      - development
 
 jobs:
-  format_code:
+  deployment:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
-
       - name: Install Poetry
         run: pip install poetry
-
       - name: Install dependencies
         run: poetry install
-
-      - name: check Format code with Black
-        run: poetry run black --check .
+      - name: Configure development server
+        uses: bankfliptech/deploy-to-render@v1
+        with:
+          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
+          apiKey: ${{ secrets.RENDER_API_KEY }}
+          deployHookURL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
