@@ -1,0 +1,27 @@
+name: Development Workflow
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  format_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: check Format code with Black
+        run: poetry run black --check .
