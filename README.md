@@ -80,7 +80,13 @@ $ poetry run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 We use Black for format our Python code. To format the code, run the following command:
 
 ```
-$ poetry run black
+$ poetry run black <filename>
+```
+
+If you want to check all your files you can run:
+
+```
+$ poetry run black .
 ```
 
 ## Contribution guidelines
@@ -127,3 +133,7 @@ $ git push
 ```
 
 Remember you need to create a Pull Request (PR) once you have pushed your changes and these comply to the GitHub Actions config.
+
+## Development Server
+There is a development server running that contains all the changes merged in the develop branch of this repository. You can see your changes with this link:
+https://backend-tic-2023-gmc.onrender.com/docs#/
