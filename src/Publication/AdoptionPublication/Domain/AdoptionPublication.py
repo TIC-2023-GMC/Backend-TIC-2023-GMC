@@ -1,5 +1,6 @@
 from Publication.Publication import Publication
 
+
 class AdoptionPublication(Publication):
     def __init__(self):
         self.pet_size = None
@@ -9,4 +10,3 @@ class AdoptionPublication(Publication):
         self.pet_location = None
         self.sterilized = None
         self.vaccination_card = None
-

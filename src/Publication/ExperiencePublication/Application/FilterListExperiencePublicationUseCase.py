@@ -4,4 +4,3 @@ class FilterListExperiencePublicationUseCase:
 
     def execute(self, species, date, pageNumber, pageSize):
         pass
-

@@ -4,4 +4,3 @@ class CreateExperiencePublicationUseCase:
 
     def execute(self, publication):
         pass
-

@@ -4,4 +4,3 @@ class ListFavoritePublicationsUseCase:
 
     def execute(self, user):
         pass
-

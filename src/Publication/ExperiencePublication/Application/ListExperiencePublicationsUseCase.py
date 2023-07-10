@@ -4,4 +4,3 @@ class ListExperiencePublicationsUseCase:
 
     def execute(self, pageNumber, pageSize):
         pass
-

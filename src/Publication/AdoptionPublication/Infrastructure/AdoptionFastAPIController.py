@@ -12,4 +12,3 @@ class AdoptionFastAPIController:
 
     def list_filtered_adoptions_endpoint(self, filterParams, pageNumber, pageSize):
         pass
-

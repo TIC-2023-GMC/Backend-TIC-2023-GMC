@@ -4,4 +4,3 @@ class UpdateProfileUseCase:
 
     def execute(self, user):
         pass
-

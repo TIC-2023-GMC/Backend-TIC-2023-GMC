@@ -7,4 +7,3 @@ class PhotoFastAPIController:
 
     def save_pub_photo_endpoint(self, img, pub_id):
         pass
-

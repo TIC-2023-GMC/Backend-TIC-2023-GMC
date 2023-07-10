@@ -17,4 +17,3 @@ class User:
         self.motivation = None
         self.favorite_adoption_publications = None
         self.photo = None
-

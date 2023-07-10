@@ -4,4 +4,3 @@ class ListCommentsUseCase:
 
     def execute(self, publication):
         pass
-

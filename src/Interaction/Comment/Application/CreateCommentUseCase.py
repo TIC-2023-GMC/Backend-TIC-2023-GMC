@@ -4,4 +4,3 @@ class CreateCommentUseCase:
 
     def execute(self, comment):
         pass
-

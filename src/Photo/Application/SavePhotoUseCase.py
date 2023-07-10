@@ -7,4 +7,3 @@ class SavePhotoUseCase:
 
     def execute_pub(self, img, pub_id):
         pass
-

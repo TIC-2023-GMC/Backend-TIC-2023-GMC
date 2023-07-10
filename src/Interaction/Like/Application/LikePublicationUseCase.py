@@ -7,4 +7,3 @@ class LikePublicationUseCase:
 
     def execute_experience(self, like):
         pass
-

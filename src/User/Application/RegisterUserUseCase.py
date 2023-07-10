@@ -4,4 +4,3 @@ class RegisterUserUseCase:
 
     def execute(self, user):
         pass
-

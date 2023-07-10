@@ -2,6 +2,7 @@ class UserFactory:
     def __init__(self):
         pass
 
-    def create(self, ):
+    def create(
+        self,
+    ):
         pass
-

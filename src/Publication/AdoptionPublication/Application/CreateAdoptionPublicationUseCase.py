@@ -4,4 +4,3 @@ class CreateAdoptionPublicationUseCase:
 
     def execute(self, publication):
         pass
-

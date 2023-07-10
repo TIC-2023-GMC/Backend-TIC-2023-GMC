@@ -4,4 +4,3 @@ class ListAdoptionPublicationsUseCase:
 
     def execute(self, pageNumber, pageSize):
         pass
-

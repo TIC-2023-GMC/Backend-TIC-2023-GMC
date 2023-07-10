@@ -13,4 +13,3 @@ class PhotoRepository:
 
     def save_photo_pub(self, photo, pub_id):
         pass
-

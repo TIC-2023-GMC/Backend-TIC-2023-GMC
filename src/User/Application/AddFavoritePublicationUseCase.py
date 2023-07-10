@@ -4,4 +4,3 @@ class AddFavoritePublicationUseCase:
 
     def execute(self, publication):
         pass
-

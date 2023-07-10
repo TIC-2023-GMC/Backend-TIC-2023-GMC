@@ -8,4 +8,3 @@ class Publication:
         self.likes = None
         self.comments = None
         self.species = None
-

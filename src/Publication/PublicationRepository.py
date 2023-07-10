@@ -28,4 +28,3 @@ class PublicationRepository:
 
     def add_comment(self, comment):
         pass
-

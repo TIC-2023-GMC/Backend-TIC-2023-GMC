@@ -4,4 +4,3 @@ class LoginUseCase:
 
     def execute(self, email, password):
         pass
-

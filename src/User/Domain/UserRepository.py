@@ -22,4 +22,3 @@ class UserRepository:
 
     def list_favorite_publications(self, user):
         pass
-
