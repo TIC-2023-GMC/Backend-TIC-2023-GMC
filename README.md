@@ -122,7 +122,7 @@ $ git commit -m "<commit-message>"
 
 >>
 **NOTE**: The <commit-message> should have the following structure: <br>
->*TICBACK-[#]: "[message]"*
+>*PAWQ-[#]: "[message]"*
 
 Where [#] is the number of the task you are currently working for, and [message] is the actual commit message.
 
