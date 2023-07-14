@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class PublicationRepository(ABC):
     @abstractmethod
     def add_publication(self, publication):
