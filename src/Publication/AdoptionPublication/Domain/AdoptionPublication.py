@@ -1,12 +1,11 @@
-from Publication.Publication import Publication
+from Publication.Domain.Publication import Publication
 
 
 class AdoptionPublication(Publication):
-    def __init__(self):
-        self.pet_size = None
-        self.pet_breed = None
-        self.pet_age = None
-        self.pet_sex = None
-        self.pet_location = None
-        self.sterilized = None
-        self.vaccination_card = None
+    pet_size: str
+    pet_breed: str
+    pet_age: float
+    pet_sex: bool
+    pet_location: str
+    sterilized: bool
+    vaccination_card: bool
