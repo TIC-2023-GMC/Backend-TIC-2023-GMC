@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  mongo:
+    build:
+      context: ./mongo-custom
+    container_name: pawq-mongo
+    volumes:
+      - ./initial_data_script.py:/docker-entrypoint-initdb.d/initial_data_script.py:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    ports:
+      - "27017:27017"
