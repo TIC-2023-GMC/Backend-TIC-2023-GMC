@@ -1,0 +1,21 @@
+version: 2
+services:
+  - name: mongo
+    env:
+      - key: MONGO_INITDB_ROOT_USERNAME
+        value: ${MONGO_INITDB_ROOT_USERNAME}
+      - key: MONGO_INITDB_ROOT_PASSWORD
+        value: ${MONGO_INITDB_ROOT_PASSWORD}
+      - key: MONGO_INITDB_DATABASE
+        value: ${MONGO_INITDB_DATABASE}
+    ports:
+      - port: 27017
+        protocol: tcp
+    volumes:
+      - name: initial-data
+        path: /docker-entrypoint-initdb.d/initial_data_script.py
+        readOnly: true
+    buildCommand: docker build -t mongo ./mongo-custom
+    startCommand: docker run --name pawq-mongo -p 27017:27017 --env-file .env mongo
+volumes:
+  - name: initial-data
