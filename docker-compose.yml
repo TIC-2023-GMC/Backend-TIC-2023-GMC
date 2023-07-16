@@ -3,9 +3,10 @@ version: "3.7"
 services:
   mongo:
     build:
-      context: ./mongo-custom
+      context: .
     container_name: pawq-mongo
     volumes:
+      - ./init.sh:/docker-entrypoint-initdb.d/init.sh:ro
       - ./initial_data_script.py:/docker-entrypoint-initdb.d/initial_data_script.py:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
