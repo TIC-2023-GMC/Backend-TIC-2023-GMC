@@ -1,7 +1,7 @@
 version: 2
 services:
   - name: mongo
-    env:
+    type: docker
       - key: MONGO_INITDB_ROOT_USERNAME
         value: ${MONGO_INITDB_ROOT_USERNAME}
       - key: MONGO_INITDB_ROOT_PASSWORD
