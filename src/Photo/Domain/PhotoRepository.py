@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
 
+from Photo.Domain.Photo import Photo
+
 
 class PhotoRepository(ABC):
     @abstractmethod
-    def get_by_id(self, id):
+    def get_by_id(self, id: int):
         pass
 
     @abstractmethod
@@ -11,9 +13,9 @@ class PhotoRepository(ABC):
         pass
 
     @abstractmethod
-    def save_photo_user(self, photo, user_id):
+    def save_photo_user(self, photo: Photo, user_id: int):
         pass
 
     @abstractmethod
-    def save_photo_pub(self, photo, pub_id):
+    def save_photo_pub(self, photo: Photo, pub_id: int):
         pass
