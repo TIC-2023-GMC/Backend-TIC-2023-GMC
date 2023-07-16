@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+*.pyi
+*.egg-info/
+dist/
+build/
+*.egg
+*.egg-info
+pip-wheel-metadata/
+*.swp
+
+# ignore .env
+.env
+!.env.example
+
+# MongoDB
+*.log
+*.saslprep
+*.service
+*.sock
+*.tmp
+*.pid
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# Dependency directories
+venv/
+env/
+
+# Logs
+logs/
+log/
+log.txt
+
+# Generated files
+generated/
