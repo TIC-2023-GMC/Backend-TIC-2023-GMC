@@ -3,10 +3,6 @@ services:
   - type: pserv
     name: mongodb
     runtime: docker
-    envVars:
-      - key: MONGO_INITDB_ROOT_USERNAME
-      - key: MONGO_INITDB_ROOT_PASSWORD
-      - key: MONGO_INITDB_DATABASE
     disk:
       name: data
       mountPath: /data/db
