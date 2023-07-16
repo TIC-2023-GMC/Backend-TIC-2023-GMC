@@ -3,8 +3,6 @@ services:
   - type: pserv
     name: mongodb
     runtime: docker
-    buildCommand: docker build -t mongo ./mongo-custom
-    startCommand: docker run --name pawq-mongo -p 27017:27017 --env-file .env mongo
     envVars:
       - key: MONGO_INITDB_ROOT_USERNAME
         fromEnv: MONGO_INITDB_ROOT_USERNAME
