@@ -1,7 +1,7 @@
 version: 2
 services:
   - name: mongo
-    type: docker
+    type: web
     buildCommand: docker build -t mongo ./mongo-custom
     startCommand: docker run --name pawq-mongo -p 27017:27017 --env-file .env mongo
     volumes:
