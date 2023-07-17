@@ -1,5 +1,5 @@
-from Interaction.Domain.Interaction import Interaction
+from src.Interaction.Domain.Interaction import Interaction
 
 
 class Like(Interaction):
-    like_id: int
+    _id: str

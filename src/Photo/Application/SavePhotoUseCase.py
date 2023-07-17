@@ -1,4 +1,4 @@
-from Photo.Domain.PhotoRepository import PhotoRepository
+from src.Photo.Domain.PhotoRepository import PhotoRepository
 
 
 class SavePhotoUseCase:

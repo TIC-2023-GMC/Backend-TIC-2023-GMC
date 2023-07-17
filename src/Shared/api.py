@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from Publication.AdoptionPublication.Infrastructure.AdoptionFastAPIController import (
+
+from src.Publication.AdoptionPublication.Infrastructure.AdoptionFastAPIController import (
     router,
 )
 

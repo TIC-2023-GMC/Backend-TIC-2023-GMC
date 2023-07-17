@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from Interaction.Domain.Interaction import Interaction
+from src.Interaction.Domain.Interaction import Interaction
 
 
 class InteractionFactory(ABC):

@@ -3,14 +3,14 @@ version: "3.7"
 services:
   mongo:
     build:
-      context: .
+      context: ./docker-mongo
     container_name: pawq-mongo
     volumes:
       - ./init.sh:/docker-entrypoint-initdb.d/init.sh:ro
       - ./initial_data_script.py:/docker-entrypoint-initdb.d/initial_data_script.py:ro
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGOUSER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGOPASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     ports:
       - "27017:27017"

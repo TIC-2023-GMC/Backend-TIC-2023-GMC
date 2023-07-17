@@ -7,7 +7,7 @@ from Photo.Domain.Photo import Photo
 class ExperiencePublication(Publication):
     def __init__(
         self,
-        publication_id: int,
+        publication_id: str,
         user: User,
         description: str,
         publication_date: date,

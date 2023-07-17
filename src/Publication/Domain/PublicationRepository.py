@@ -1,10 +1,8 @@
 from abc import ABC, abstractmethod
-from datetime import date
 from typing import List, Tuple
-from Interaction.Comment.Domain.Comment import Comment
-from Interaction.Like.Domain.Like import Like
-
-from Publication.Domain.Publication import Publication
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Like.Domain.Like import Like
+from src.Publication.Domain.Publication import Publication
 
 
 class PublicationRepository(ABC):
@@ -13,16 +11,18 @@ class PublicationRepository(ABC):
         pass
 
     @abstractmethod
-    def get_all(self, pageNumber: int, pageSize: int) -> Tuple[List[Publication], int]:
+    def get_all(
+        self, page_number: int, page_size: int
+    ) -> Tuple[List[Publication], int]:
         pass
 
     @abstractmethod
-    def get_by_id(self, id: int) -> Publication:
+    def get_by_id(self, id: str) -> Publication:
         pass
 
     @abstractmethod
     def get_by_filters(
-        self, species: str, date: date, location: str, pageNumber: int, pageSize: int
+        self, species: str, date: str, location: str, page_number: int, page_size: int
     ) -> Tuple[List[Publication], int]:
         pass
 
@@ -31,15 +31,15 @@ class PublicationRepository(ABC):
         pass
 
     @abstractmethod
-    def remove_like_by_id(self, like_id: int):
+    def remove_like_by_id(self, like_id: str):
         pass
 
     @abstractmethod
-    def get_likes_by_pub_id(self, id: int) -> List[Like]:
+    def get_likes_by_pub_id(self, id: str) -> List[Like]:
         pass
 
     @abstractmethod
-    def get_comments_by_pub_id(self, id: int) -> List[Comment]:
+    def get_comments_by_pub_id(self, id: str) -> List[Comment]:
         pass
 
     @abstractmethod

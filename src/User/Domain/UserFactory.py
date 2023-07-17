@@ -1,11 +1,11 @@
-from Photo.Domain.Photo import Photo
-from User.Domain.User import User
+from src.Photo.Domain.Photo import Photo
+from src.User.Domain.User import User
 
 
 class UserFactory:
     @staticmethod
     def create(
-        _id: int,
+        _id: str,
         first_name: str,
         last_name: str,
         mobile_phone: str,
