@@ -1,8 +1,8 @@
 from fastapi import FastAPI
+from src.Shared.api import api_router
 
-app = FastAPI()
+app = FastAPI(
+    title="PAWQ", description="PAWQ API", openapi_url="/openapi.json", docs_url="/"
+)
 
-
-@app.get("/test")
-async def root():
-    return {"message": "Caranqui, Gandhy García, Muñoz"}
+app.include_router(api_router)

@@ -188,6 +188,17 @@ files = [
 ]
 
 [[package]]
+name = "inject"
+version = "5.0.0"
+description = "Python dependency injection framework."
+optional = false
+python-versions = "*"
+files = [
+    {file = "inject-5.0.0-py2.py3-none-any.whl", hash = "sha256:f92188c9ca2f5b161426ad8060f6eb1861054acd507dfac965d8d94a3f026e1f"},
+    {file = "inject-5.0.0.tar.gz", hash = "sha256:017e2e21707c35d0f486db942dcc5500f4fe0e64e80d2af3c689d9d63838a99b"},
+]
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 description = "Type system extensions for programs checked with the mypy type checker."
@@ -441,4 +452,4 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9a3d31285b2e3043b427f04ec4afbbca8ad705bca175fd5f4929576e15a4e8f8"
+content-hash = "88308d7b86ac373b0357b2fb507f507f77f81617ca5d339c68566a6e8198d12e"
