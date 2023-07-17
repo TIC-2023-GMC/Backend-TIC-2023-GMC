@@ -1,4 +1,7 @@
-from fastapi import APIRouter, Query
+from bson import ObjectId
+from fastapi import APIRouter, Query, UploadFile
+from src.Photo.Domain.PhotoFactory import PhotoFactory
+from src.Photo.Application.SavePhotoUseCase import SavePhotoUseCase
 
 from src.Publication.AdoptionPublication.Application.CreateAdoptionPublicationUseCase import (
     CreateAdoptionPublicationUseCase,
@@ -20,10 +23,14 @@ router = APIRouter()
 class AdoptionFastAPIController:
     def __init__(self):
         self.create_adoption = CreateAdoptionPublicationUseCase()
+        self.save_photo = SavePhotoUseCase()
         self.list_adoptions = ListAdoptionPublicationsUseCase()
         self.filtered_list_adoptions = FilterListAdoptionPublicationUseCase()
 
-    def create_adoption_endpoint(self, publication: AdoptionPublication):
+    def create_adoption_endpoint(
+        self, publication: AdoptionPublication, photo: UploadFile
+    ):
+        new_publication = self.save_photo.execute_pub(photo.file, publication)
         self.create_adoption.execute(publication)
 
     def list_adoptions_endpoint(self, page_number: int, page_size: int):

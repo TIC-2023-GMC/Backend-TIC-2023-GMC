@@ -9,13 +9,9 @@ class PhotoRepository(ABC):
         pass
 
     @abstractmethod
-    def upload_img(self, img):
+    def upload_img(self, img) -> str:
         pass
 
     @abstractmethod
     def save_photo_user(self, photo: Photo, user_id: str):
-        pass
-
-    @abstractmethod
-    def save_photo_pub(self, photo: Photo, pub_id: str):
         pass
