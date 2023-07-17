@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import date
-from typing import List
+from typing import List, Tuple
 from Interaction.Comment.Domain.Comment import Comment
 from Interaction.Like.Domain.Like import Like
 
@@ -15,7 +15,9 @@ class PublicationRepository(ABC):
         pass
 
     @abstractmethod
-    def get_all(self, pageNumber: int, pageSize: int) -> List[AdoptionPublication]:
+    def get_all(
+        self, pageNumber: int, pageSize: int
+    ) -> Tuple[List[AdoptionPublication], int]:
         pass
 
     @abstractmethod
@@ -25,7 +27,7 @@ class PublicationRepository(ABC):
     @abstractmethod
     def get_by_filters(
         self, species: str, date: date, location: str, pageNumber: int, pageSize: int
-    ) -> List[AdoptionPublication]:
+    ) -> Tuple[List[AdoptionPublication], int]:
         pass
 
     @abstractmethod
