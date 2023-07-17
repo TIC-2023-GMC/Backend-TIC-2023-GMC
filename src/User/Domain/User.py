@@ -1,9 +1,10 @@
+from typing import Optional
 from Photo.Domain.Photo import Photo
 from Shared.Model import Model
 
 
 class User(Model):
-    user_id: int
+    _id: Optional[int]
     first_name: str
     last_name: str
     mobile_phone: str
