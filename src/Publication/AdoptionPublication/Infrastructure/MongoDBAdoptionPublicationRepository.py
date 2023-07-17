@@ -9,7 +9,6 @@ from bson import ObjectId
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
-from pathlib import Path
 
 load_dotenv()
 mongo_url = os.getenv("MONGO_URL")
