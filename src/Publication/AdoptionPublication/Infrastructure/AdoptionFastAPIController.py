@@ -24,11 +24,13 @@ class AdoptionFastAPIController:
         self.save_photo = SavePhotoUseCase()
         self.list_adoptions = ListAdoptionPublicationsUseCase()
 
-    def create_adoption_endpoint(
-        self, publication: AdoptionPublication, photo: UploadFile
-    ):
-        new_publication = self.save_photo.execute_pub(photo, publication)
-        self.create_adoption.execute(new_publication)
+    def create_adoption_endpoint(self, publication: AdoptionPublication):
+        self.create_adoption.execute(publication)
+
+    def upload_photo(self, photo_file: UploadFile) -> Photo:
+        photo = self.save_photo.execute_pub(photo_file)
+        photo._id = str(photo._id)  # Convert ObjectId to string
+        return photo
 
     def list_adoptions_endpoint(
         self, species: str, date: str, location: str, page_number: int, page_size: int
@@ -44,10 +46,8 @@ def get_adoption_controller():
 
 
 @router.post("/adoption", status_code=201)
-def create_adoption_endpoint(
-    new_publication: AdoptionPublication, photo: UploadFile = File(...)
-):
-    get_adoption_controller().create_adoption_endpoint(new_publication, photo)
+def create_adoption_endpoint(new_publication: AdoptionPublication):
+    get_adoption_controller().create_adoption_endpoint(new_publication)
 
 
 @router.get("/adoptions", status_code=200)
@@ -61,3 +61,8 @@ def list_adoptions_endpoint(
     return get_adoption_controller().list_adoptions_endpoint(
         species, date, location, page_number, page_size
     )
+
+
+@router.post("/photo", status_code=201)
+def upload_photo(photo: UploadFile = File(...)):
+    return get_adoption_controller().upload_photo(photo)
