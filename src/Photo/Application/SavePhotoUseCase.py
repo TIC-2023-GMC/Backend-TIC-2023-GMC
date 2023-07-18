@@ -1,6 +1,8 @@
 from bson import ObjectId
 import inject
-from src.Publication.AdoptionPublication.Domain.AdoptionPublication import AdoptionPublication
+from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
+    AdoptionPublication,
+)
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Photo.Domain.PhotoRepository import PhotoRepository
 

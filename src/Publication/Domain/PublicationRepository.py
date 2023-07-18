@@ -12,18 +12,12 @@ class PublicationRepository(ABC):
 
     @abstractmethod
     def get_all(
-        self, page_number: int, page_size: int
+        self, species: str, date: str, location: str, page_number: int, page_size: int
     ) -> Tuple[List[Publication], int]:
         pass
 
     @abstractmethod
     def get_by_id(self, id: str) -> Publication:
-        pass
-
-    @abstractmethod
-    def get_by_filters(
-        self, species: str, date: str, location: str, page_number: int, page_size: int
-    ) -> Tuple[List[Publication], int]:
         pass
 
     @abstractmethod

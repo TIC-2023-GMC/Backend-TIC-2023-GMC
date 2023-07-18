@@ -34,23 +34,11 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
         publication_dict["_id"] = ObjectId()
         adoption_publications.insert_one(publication_dict)
 
-    def get_all(self, page_number, page_size):
-        skip_count = (page_number - 1) * page_size
-        documents = adoption_publications.find().skip(skip_count).limit(page_size)
-
-        publication_list = []
-        for doc in documents:
-            doc["_id"] = str(doc["_id"])
-            publication = AdoptionPublicationFactory.create_publication(**doc)
-            publication_list.append(publication)
-
-        return publication_list, page_number + 1
-
     def get_by_id(self, id):
         document = adoption_publications.find_one({"_id": id})
         return document
 
-    def get_by_filters(self, species, date, location, page_number, page_size):
+    def get_all(self, species, date, location, page_number, page_size):
         filters = {}
         if species:
             filters["species"] = species
