@@ -13,6 +13,9 @@ uvicorn = "^0.22.0"
 pymongo = "^4.4.1"
 inject = "^5.0.0"
 python-dotenv = "^1.0.0"
+firebase-admin = "^6.2.0"
+google-cloud-storage = "^2.10.0"
+python-multipart = "^0.0.6"
 
 [build-system]
 requires = ["poetry-core"]

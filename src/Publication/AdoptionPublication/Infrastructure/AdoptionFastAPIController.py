@@ -1,7 +1,9 @@
 from bson import ObjectId
-from fastapi import APIRouter, Query, UploadFile
+from fastapi import APIRouter, Query, UploadFile, File
+from src.Photo.Domain.Photo import Photo
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Photo.Application.SavePhotoUseCase import SavePhotoUseCase
+from typing import Annotated
 
 from src.Publication.AdoptionPublication.Application.CreateAdoptionPublicationUseCase import (
     CreateAdoptionPublicationUseCase,
@@ -30,8 +32,8 @@ class AdoptionFastAPIController:
     def create_adoption_endpoint(
         self, publication: AdoptionPublication, photo: UploadFile
     ):
-        new_publication = self.save_photo.execute_pub(photo.file, publication)
-        self.create_adoption.execute(publication)
+        new_publication = self.save_photo.execute_pub(photo, publication)
+        self.create_adoption.execute(new_publication)
 
     def list_adoptions_endpoint(self, page_number: int, page_size: int):
         return self.list_adoptions.execute(page_number, page_size)
@@ -50,8 +52,8 @@ def get_adoption_controller():
 
 
 @router.post("/adoption", status_code=201)
-def create_adoption_endpoint(new_publication: AdoptionPublication):
-    get_adoption_controller().create_adoption_endpoint(new_publication)
+def create_adoption_endpoint(new_publication: AdoptionPublication, photo: UploadFile = File(...) ):
+    get_adoption_controller().create_adoption_endpoint(new_publication, photo)
 
 
 @router.get("/adoptions", status_code=200)
