@@ -1,8 +1,4 @@
-from bson import ObjectId
-from fastapi import APIRouter, Query, UploadFile, File
-from src.Photo.Domain.Photo import Photo
-from src.Photo.Domain.PhotoFactory import PhotoFactory
-from src.Photo.Application.SavePhotoUseCase import SavePhotoUseCase
+from fastapi import APIRouter, Query
 
 from src.Publication.AdoptionPublication.Application.CreateAdoptionPublicationUseCase import (
     CreateAdoptionPublicationUseCase,
@@ -21,16 +17,10 @@ router = APIRouter()
 class AdoptionFastAPIController:
     def __init__(self):
         self.create_adoption = CreateAdoptionPublicationUseCase()
-        self.save_photo = SavePhotoUseCase()
         self.list_adoptions = ListAdoptionPublicationsUseCase()
 
     def create_adoption_endpoint(self, publication: AdoptionPublication):
         self.create_adoption.execute(publication)
-
-    def upload_photo(self, photo_file: UploadFile) -> Photo:
-        photo = self.save_photo.execute_pub(photo_file)
-        photo._id = str(photo._id)  # Convert ObjectId to string
-        return photo
 
     def list_adoptions_endpoint(
         self, species: str, date: str, location: str, page_number: int, page_size: int
@@ -61,8 +51,3 @@ def list_adoptions_endpoint(
     return get_adoption_controller().list_adoptions_endpoint(
         species, date, location, page_number, page_size
     )
-
-
-@router.post("/photo", status_code=201)
-def upload_photo(photo: UploadFile = File(...)):
-    return get_adoption_controller().upload_photo(photo)
