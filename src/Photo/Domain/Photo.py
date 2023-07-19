@@ -1,6 +1,7 @@
-from Shared.Model import Model
+from typing import Optional
+from src.Shared.Model import Model
 
 
 class Photo(Model):
-    photo_id: int
+    _id: Optional[str]
     img_path: str

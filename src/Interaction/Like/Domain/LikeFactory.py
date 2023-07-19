@@ -1,12 +1,12 @@
-from Interaction.Domain.InteractionFactory import InteractionFactory
-from Interaction.Like.Domain.Like import Like
-from User.Domain.User import User
+from src.Interaction.Domain.InteractionFactory import InteractionFactory
+from src.Interaction.Like.Domain.Like import Like
+from src.User.Domain.User import User
 
 
 class LikeFactory(InteractionFactory):
     @staticmethod
-    def create(like_id: int, user: User) -> Like:
+    def create(_id: int, user: User) -> Like:
         return Like(
-            like_id=like_id,
+            _id=_id,
             user=user,
         )

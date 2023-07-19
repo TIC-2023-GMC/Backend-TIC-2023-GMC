@@ -1,21 +1,20 @@
 from datetime import date
-from Photo.Domain import Photo
-from Publication.AdoptionPublication.Domain.AdoptionPublication import (
+from src.Photo.Domain.Photo import Photo
+from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
-from Publication.Domain.PublicationFactory import PublicationFactory
-from User.Domain import User
-from Interaction.Comment.Domain.Comment import Comment
-from Interaction.Like.Domain.Like import Like
+from src.Publication.Domain.PublicationFactory import PublicationFactory
+from src.User.Domain import User
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Like.Domain.Like import Like
 
 
 class AdoptionPublicationFactory(PublicationFactory):
-    def createPublication(
-        self,
-        publication_id: int,
+    def create_publication(
+        _id: str,
         user: User,
         description: str,
-        publication_date: date,
+        publication_date: str,
         photo: Photo,
         likes: list[Like],
         comments: list[Comment],
@@ -29,7 +28,7 @@ class AdoptionPublicationFactory(PublicationFactory):
         vaccination_card: bool,
     ) -> AdoptionPublication:
         return AdoptionPublication(
-            publication_id=publication_id,
+            _id=_id,
             user=user,
             description=description,
             publication_date=publication_date,

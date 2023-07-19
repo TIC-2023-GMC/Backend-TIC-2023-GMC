@@ -1,6 +1,6 @@
-from Photo.Domain.Photo import Photo
+from src.Photo.Domain.Photo import Photo
 
 
 class PhotoFactory:
-    def create(photo_id: int, img_path: str) -> Photo:
-        return Photo(photo_id=photo_id, img_path=img_path)
+    def create(_id: str, img_path: str) -> Photo:
+        return Photo(_id=_id, img_path=img_path)

@@ -1,10 +1,12 @@
-from Publication.AdoptionPublication.Domain.AdoptionPublication import (
+import inject
+from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
-from Publication.Domain.PublicationRepository import PublicationRepository
+from src.Publication.Domain.PublicationRepository import PublicationRepository
 
 
 class CreateAdoptionPublicationUseCase:
+    @inject.autoparams()
     def __init__(self, publication_repository: PublicationRepository):
         self.publication_repository = publication_repository
 

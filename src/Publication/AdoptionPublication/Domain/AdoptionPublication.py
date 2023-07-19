@@ -1,4 +1,4 @@
-from Publication.Domain.Publication import Publication
+from src.Publication.Domain.Publication import Publication
 
 
 class AdoptionPublication(Publication):

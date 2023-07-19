@@ -6,10 +6,15 @@ authors = ["Gandhy <gandhy.garcia@epn.edu.ec>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 fastapi = "^0.97.0"
 black = "^23.3.0"
 uvicorn = "^0.22.0"
+pymongo = "^4.4.1"
+inject = "^5.0.0"
+python-dotenv = "^1.0.0"
+python-multipart = "^0.0.6"
+pyrebase4 = "^4.7.1"
 
 [build-system]
 requires = ["poetry-core"]
