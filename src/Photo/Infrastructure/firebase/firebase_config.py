@@ -1,16 +1,19 @@
-import firebase_admin
-from firebase_admin import credentials
-
+import pyrebase
 import os
+
+firebaseConfig = {
+    "apiKey": os.getenv("API_KEY"),
+    "authDomain": os.getenv("AUTH_DOMAIN"),
+    "projectId": os.getenv("PROJECT_ID"),
+    "storageBucket": os.getenv("STORAGE_BUCKET"),
+    "messagingSenderId": os.getenv("MESSAGING_SENDER_ID"),
+    "appId": os.getenv("APP_ID"),
+    "measurementId": os.getenv("MEASUREMENT_ID"),
+    "databaseURL": os.getenv("DATABASE_URL"),
+}
 
 
 def initialize_firebase():
-    account_key_path = os.getenv("FIREBASE_ACCOUNT_KEY_PATH")
-    # Load Firebase credentials from the JSON file
-    cred = credentials.Certificate(account_key_path)
-
-    # Initialize the Firebase Admin SDK
-    app = firebase_admin.initialize_app(
-        cred, options={"storageBucket": "pawq-fc6dc.appspot.com"}
-    )
-    return app
+    firebase = pyrebase.initialize_app(firebaseConfig)
+    storage = firebase.storage()
+    return storage
