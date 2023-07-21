@@ -1,3 +1,7 @@
+from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
+from src.Interaction.Like.Domain.LikeFactory import LikeFactory
+from src.Photo.Domain.PhotoFactory import PhotoFactory
+from src.User.Domain.UserFactory import UserFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
@@ -55,7 +59,25 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
         publication_list = []
         for doc in documents:
             doc["_id"] = str(doc["_id"])
+            user = UserFactory.create(**doc["user"])
+            user._id = str(user._id)
+            photo = PhotoFactory.create(**doc["photo"])
+            photo._id = str(photo._id)
+            likes = []
+            for like in doc["likes"]:
+                like_obj = LikeFactory.create(**like)
+                like_obj._id = str(like._id)
+                likes.append(like_obj)
+            comments = []
+            for comment in doc["comments"]:
+                comment_obj = CommentFactory.create(**comment)
+                comment_obj._id = str(like._id)
+                comments.append(comment_obj)
             publication = AdoptionPublicationFactory.create_publication(**doc)
+            publication.user = user
+            publication.photo = photo
+            publication.likes = likes
+            publication.comments = comments
             publication_list.append(publication)
 
         return publication_list, page_number + 1
