@@ -13,6 +13,7 @@ from bson import ObjectId
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
+import pymongo
 
 load_dotenv()
 mongo_url = os.getenv("MONGO_URL")
@@ -53,7 +54,10 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
 
         skip_count = (page_number - 1) * page_size
         documents = (
-            adoption_publications.find(filters).skip(skip_count).limit(page_size)
+            adoption_publications.find(filters)
+            .sort([("publication_date", -1), ("_id", -1)])
+            .skip(skip_count)
+            .limit(page_size)
         )
 
         publication_list = []
