@@ -1,15 +1,7 @@
 import inject
-from src.Publication.ExperiencePublication.Infrastructure.MongoDBExperiencePublicationRepository import (
-    MongoDBExperiencePublicationRepository,
-)
 from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
 from src.Parish.Domain.ParishRepository import ParishRepository
-
-from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
-    MongoDBAdoptionPublicationRepository,
-)
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-
 from src.Photo.Domain.PhotoRepository import PhotoRepository
 from src.Photo.Infrastructure.FirebasePhotoRepository import FirebasePhotoRepository
 

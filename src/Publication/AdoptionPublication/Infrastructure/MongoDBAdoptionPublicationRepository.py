@@ -16,8 +16,6 @@ mongo_client_singleton = MongoDBConnectionSingleton()
 db = mongo_client_singleton.get_db()
 
 adoption_publications = db["adoption_publications"]
-experience_publications = db["experience_publications"]
-
 
 class MongoDBAdoptionPublicationRepository(PublicationRepository):
     def add_publication(self, publication: AdoptionPublication):

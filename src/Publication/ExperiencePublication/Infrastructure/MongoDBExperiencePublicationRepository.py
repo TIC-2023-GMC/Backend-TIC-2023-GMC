@@ -1,3 +1,4 @@
+from src.Shared.MongoClient import MongoDBConnectionSingleton
 from src.Publication.ExperiencePublication.Domain.ExperiencePublicationFactory import (
     ExperiencePublicationFactory,
 )
@@ -9,25 +10,11 @@ from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.User.Domain.UserFactory import UserFactory
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
 
 
-load_dotenv()
-mongo_url = os.getenv("MONGO_URL")
-mongo_port = os.getenv("MONGO_PORT")
-mongo_user = os.getenv("MONGOUSER")
-mongo_password = os.getenv("MONGOPASSWORD")
-mongo_database = os.getenv("MONGO_INITDB_DATABASE")
 
-# Crea la cadena de conexión utilizando las variables de entorno
-mongo_uri = f"mongodb://{mongo_user}:{mongo_password}@{mongo_url}:{mongo_port}/?authMechanism=DEFAULT"
-
-# Crea el cliente de MongoDB
-client = MongoClient(mongo_uri)
-# Accede a la base de datos deseada
-db = client[mongo_database]
+mongo_client_singleton = MongoDBConnectionSingleton()
+db = mongo_client_singleton.get_db()
 
 experience_publications = db["experience_publications"]
 
