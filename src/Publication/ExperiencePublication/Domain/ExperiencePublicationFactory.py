@@ -1,18 +1,18 @@
 from datetime import date
-from Photo.Domain import Photo
-from Publication.ExperiencePublication.Domain.ExperiencePublication import (
+from src.Photo.Domain import Photo
+from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
     ExperiencePublication,
 )
-from Publication.Domain.PublicationFactory import PublicationFactory
-from User.Domain import User
-from Interaction.Comment.Domain.Comment import Comment
-from Interaction.Like.Domain.Like import Like
+from src.Publication.Domain.PublicationFactory import PublicationFactory
+from src.User.Domain import User
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Like.Domain.Like import Like
 
 
 class ExperiencePublicationFactory(PublicationFactory):
-    def createPublication(
-        self,
-        publication_id: int,
+    @staticmethod
+    def create_publication(
+        _id: int,
         user: User,
         description: str,
         publication_date: date,
@@ -22,7 +22,7 @@ class ExperiencePublicationFactory(PublicationFactory):
         species: str,
     ) -> ExperiencePublication:
         return ExperiencePublication(
-            publication_id=publication_id,
+            _id=_id,
             user=user,
             description=description,
             publication_date=publication_date,
