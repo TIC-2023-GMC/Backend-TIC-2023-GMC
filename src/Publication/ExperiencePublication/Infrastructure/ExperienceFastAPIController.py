@@ -20,10 +20,18 @@ class ExperienceFastAPIController:
     def list_experiences_endpoint(
         self, species: str, date: str, page_number: int, page_size: int
     ):
-        return self.list_experience.execute(species=species, experience_date=date, page_number=page_number, page_size=page_size)
+        return self.list_experience.execute(
+            species=species,
+            experience_date=date,
+            page_number=page_number,
+            page_size=page_size,
+        )
+
+
 # Dependency
 def get_adoption_controller():
     return ExperienceFastAPIController()
+
 
 @router.get("/experiences", status_code=200)
 def list_experiences_endpoint(

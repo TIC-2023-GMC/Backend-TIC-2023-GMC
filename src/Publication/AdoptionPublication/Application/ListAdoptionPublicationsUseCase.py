@@ -1,7 +1,9 @@
 import inject
 from typing import List, Tuple
 from datetime import date
-from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import MongoDBAdoptionPublicationRepository
+from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
+    MongoDBAdoptionPublicationRepository,
+)
 
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,

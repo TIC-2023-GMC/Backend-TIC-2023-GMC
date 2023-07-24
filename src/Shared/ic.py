@@ -6,6 +6,8 @@ from src.Photo.Domain.PhotoRepository import PhotoRepository
 from src.Photo.Infrastructure.FirebasePhotoRepository import FirebasePhotoRepository
 
 PublicationRepoAlias = PublicationRepository
+
+
 def configure_ic() -> None:
     def configure(binder: inject.Binder) -> None:
         binder.bind(

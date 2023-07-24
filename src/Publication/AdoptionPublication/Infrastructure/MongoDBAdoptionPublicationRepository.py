@@ -17,6 +17,7 @@ db = mongo_client_singleton.get_db()
 
 adoption_publications = db["adoption_publications"]
 
+
 class MongoDBAdoptionPublicationRepository(PublicationRepository):
     def add_publication(self, publication: AdoptionPublication):
         publication_dict = publication.dict()

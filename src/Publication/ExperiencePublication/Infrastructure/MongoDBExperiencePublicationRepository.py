@@ -12,7 +12,6 @@ from src.User.Domain.UserFactory import UserFactory
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 
 
-
 mongo_client_singleton = MongoDBConnectionSingleton()
 db = mongo_client_singleton.get_db()
 
@@ -32,12 +31,6 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
             filters["species"] = species
         if date:
             filters["publication_date"] = {"$gte": date}
-        print(
-            species,
-            date,
-            page_number,
-            page_size
-        )
         skip_count = (page_number - 1) * page_size
         documents = (
             experience_publications.find(filters)
