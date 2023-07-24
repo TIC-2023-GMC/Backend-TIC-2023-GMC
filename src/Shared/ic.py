@@ -1,4 +1,6 @@
 import inject
+from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
+from src.Parish.Domain.ParishRepository import ParishRepository
 
 from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
     MongoDBAdoptionPublicationRepository,
@@ -18,6 +20,10 @@ def configure_ic() -> None:
         binder.bind(
             PhotoRepository,
             FirebasePhotoRepository(),
+        )
+        binder.bind(
+            ParishRepository,
+            MongoDBParishRepository(),
         )
 
     inject.configure_once(configure)
