@@ -17,8 +17,6 @@ class MongoDBConnection:
     def __init__(self):
         self.client = MongoClient(mongo_uri)
         self.db = self.client[mongo_database]
-        self.adoption_publications = self.db["adoption_publications"]
-        self.experience_publications = self.db["experience_publications"]
 
     def get_db(self):
         return self.db
@@ -36,8 +34,3 @@ class MongoDBConnectionSingleton:
 
     def get_db(self):
         return self.connection.get_db()
-
-
-# Uso del Singleton para obtener la conexión a la base de datos
-mongo_client_singleton = MongoDBConnectionSingleton()
-db = mongo_client_singleton.get_db()
