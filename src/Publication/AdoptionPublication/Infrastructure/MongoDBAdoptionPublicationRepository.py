@@ -1,3 +1,4 @@
+from src.Shared.MongoClient import MongoDBConnectionSingleton
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
@@ -10,25 +11,10 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory impor
 )
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 from bson import ObjectId
-from pymongo import MongoClient
-import os
-from dotenv import load_dotenv
-import pymongo
 
-load_dotenv()
-mongo_url = os.getenv("MONGO_URL")
-mongo_port = os.getenv("MONGO_PORT")
-mongo_user = os.getenv("MONGOUSER")
-mongo_password = os.getenv("MONGOPASSWORD")
-mongo_database = os.getenv("MONGO_INITDB_DATABASE")
+mongo_client_singleton = MongoDBConnectionSingleton()
+db = mongo_client_singleton.get_db()
 
-# Crea la cadena de conexión utilizando las variables de entorno
-mongo_uri = f"mongodb://{mongo_user}:{mongo_password}@{mongo_url}:{mongo_port}/?authMechanism=DEFAULT"
-
-# Crea el cliente de MongoDB
-client = MongoClient(mongo_uri)
-# Accede a la base de datos deseada
-db = client[mongo_database]
 adoption_publications = db["adoption_publications"]
 experience_publications = db["experience_publications"]
 

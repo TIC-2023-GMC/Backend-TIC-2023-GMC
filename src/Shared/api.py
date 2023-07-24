@@ -6,7 +6,10 @@ from src.Publication.AdoptionPublication.Infrastructure.AdoptionFastAPIControlle
 
 from src.Photo.Infrastructure.PhotoFastAPIController import router as photo_router
 
+from src.Parish.Infrastructure.ParishFastAPIController import router as parish_router
+
 api_router = APIRouter()
 
 api_router.include_router(adoption_router, prefix="/adoptions", tags=["adoptions"])
 api_router.include_router(photo_router, prefix="/photo", tags=["photo"])
+api_router.include_router(parish_router, prefix="/parish", tags=["parish"])
