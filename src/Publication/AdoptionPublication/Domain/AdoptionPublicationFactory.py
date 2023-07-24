@@ -1,4 +1,3 @@
-from datetime import date
 from src.Photo.Domain.Photo import Photo
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
