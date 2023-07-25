@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Query
+from src.Shared.Singleton import singleton
 
 from src.Publication.AdoptionPublication.Application.CreateAdoptionPublicationUseCase import (
     CreateAdoptionPublicationUseCase,
@@ -14,6 +15,7 @@ from typing import List, Tuple, Optional
 router = APIRouter()
 
 
+@singleton
 class AdoptionFastAPIController:
     def __init__(self):
         self.create_adoption = CreateAdoptionPublicationUseCase()
@@ -30,17 +32,16 @@ class AdoptionFastAPIController:
         )
 
 
-# Dependency
 def get_adoption_controller():
     return AdoptionFastAPIController()
 
 
-@router.post("/adoption", status_code=201)
+@router.post("/add", status_code=201)
 def create_adoption_endpoint(new_publication: AdoptionPublication):
     get_adoption_controller().create_adoption_endpoint(new_publication)
 
 
-@router.get("/adoptions", status_code=200)
+@router.get("/list", status_code=200)
 def list_adoptions_endpoint(
     species: Optional[str] = Query(None),
     date: Optional[str] = Query(None),

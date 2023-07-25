@@ -1,4 +1,4 @@
-from src.Shared.MongoClient import MongoDBConnectionSingleton
+from src.Shared.MongoClient import MongoDBConnection
 from src.Publication.ExperiencePublication.Domain.ExperiencePublicationFactory import (
     ExperiencePublicationFactory,
 )
@@ -10,17 +10,17 @@ from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.User.Domain.UserFactory import UserFactory
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-
-
-mongo_client_singleton = MongoDBConnectionSingleton()
-db = mongo_client_singleton.get_db()
-
-experience_publications = db["experience_publications"]
+from bson import ObjectId
 
 
 class MongoDBExperiencePublicationRepository(PublicationRepository):
+    db = MongoDBConnection().get_db()
+    experience_publications = db["experience_publications"]
+
     def add_publication(self, publication: ExperiencePublication):
-        pass
+        publication_dict = publication.dict()
+        publication_dict["_id"] = ObjectId()
+        self.experience_publications.insert_one(publication_dict)
 
     def get_by_id(self, id):
         pass
@@ -33,7 +33,7 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
             filters["publication_date"] = {"$gte": date}
         skip_count = (page_number - 1) * page_size
         documents = (
-            experience_publications.find(filters)
+            self.experience_publications.find(filters)
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)

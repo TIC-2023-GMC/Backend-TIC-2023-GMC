@@ -13,7 +13,7 @@ class Publication(Model, ABC):
     user: User
     description: str
     publication_date: str
-    photo: Optional[Photo]
+    photo: Photo
     likes: List[Like]
     comments: List[Comment]
     species: str

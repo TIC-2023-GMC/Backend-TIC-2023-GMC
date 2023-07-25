@@ -1,15 +1,13 @@
-from src.Shared.MongoClient import MongoDBConnectionSingleton
-
+from src.Shared.MongoClient import MongoDBConnection
 from src.Parish.Domain.ParishRepository import ParishRepository
-
-mongo_client_singleton = MongoDBConnectionSingleton()
-db = mongo_client_singleton.get_db()
 
 
 class MongoDBParishRepository(ParishRepository):
+    db = MongoDBConnection().get_db()
+    parishes_collection = db["parishes"]
+
     def get_all(self):
-        parishes_collection = db["parishes"]
-        parishes_data = parishes_collection.find()
+        parishes_data = self.parishes_collection.find()
         parishes_list = [
             {"label": parish["label"], "value": parish["value"]}
             for parish in parishes_data

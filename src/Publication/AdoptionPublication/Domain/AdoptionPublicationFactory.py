@@ -9,6 +9,7 @@ from src.Interaction.Like.Domain.Like import Like
 
 
 class AdoptionPublicationFactory(PublicationFactory):
+    @staticmethod
     def create_publication(
         _id: str,
         user: User,
