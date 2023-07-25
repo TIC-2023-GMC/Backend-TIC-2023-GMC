@@ -1,4 +1,4 @@
-from src.Shared.MongoClient import MongoDBConnectionSingleton
+from src.Shared.MongoClient import MongoDBConnection
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
@@ -12,20 +12,18 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory impor
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 from bson import ObjectId
 
-mongo_client_singleton = MongoDBConnectionSingleton()
-db = mongo_client_singleton.get_db()
-
-adoption_publications = db["adoption_publications"]
-
 
 class MongoDBAdoptionPublicationRepository(PublicationRepository):
+    db = MongoDBConnection().get_db()
+    adoption_publications = db["adoption_publications"]
+
     def add_publication(self, publication: AdoptionPublication):
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
-        adoption_publications.insert_one(publication_dict)
+        self.adoption_publications.insert_one(publication_dict)
 
     def get_by_id(self, id):
-        document = adoption_publications.find_one({"_id": id})
+        document = self.adoption_publications.find_one({"_id": id})
         return document
 
     def get_all(self, species, date, location, page_number, page_size):
@@ -39,7 +37,7 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
 
         skip_count = (page_number - 1) * page_size
         documents = (
-            adoption_publications.find(filters)
+            self.adoption_publications.find(filters)
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)

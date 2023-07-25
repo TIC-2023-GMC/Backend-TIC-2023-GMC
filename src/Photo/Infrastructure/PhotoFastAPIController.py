@@ -1,10 +1,12 @@
 from fastapi import APIRouter, UploadFile, File
+from src.Shared.Singleton import singleton
 from src.Photo.Domain.Photo import Photo
 from src.Photo.Application.SavePhotoUseCase import SavePhotoUseCase
 
 router = APIRouter()
 
 
+@singleton
 class PhotoFastAPIController:
     def __init__(self):
         self.save_photo = SavePhotoUseCase()
@@ -23,6 +25,6 @@ def get_adoption_controller():
     return PhotoFastAPIController()
 
 
-@router.post("/upload_photo", status_code=201)
+@router.post("/upload", status_code=201)
 def upload_photo(photo: UploadFile = File(...)):
     return get_adoption_controller().save_pub_photo_endpoint(photo)

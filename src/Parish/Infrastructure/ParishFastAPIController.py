@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter
+from src.Shared.Singleton import singleton
 from src.Parish.Domain.Parish import Parish
 from src.Parish.Application.ListParishesUseCase import ListParishesUseCase
 
@@ -7,6 +8,7 @@ from typing import List
 router = APIRouter()
 
 
+@singleton
 class ParishFastAPIController:
     def __init__(self):
         self.list_parishes = ListParishesUseCase()

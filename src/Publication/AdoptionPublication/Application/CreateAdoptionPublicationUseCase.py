@@ -9,9 +9,7 @@ from src.Publication.Domain.PublicationRepository import PublicationRepository
 
 
 class CreateAdoptionPublicationUseCase:
-    @inject.params(
-        publication_repository=MongoDBAdoptionPublicationRepository,
-    )
+    @inject.params(publication_repository=MongoDBAdoptionPublicationRepository)
     def __init__(self, publication_repository: PublicationRepository):
         self.publication_repository = publication_repository
 
