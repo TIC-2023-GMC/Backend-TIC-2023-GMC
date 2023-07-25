@@ -1,45 +1,39 @@
 from src.Shared.MongoClient import MongoDBConnectionSingleton
+from src.Publication.ExperiencePublication.Domain.ExperiencePublicationFactory import (
+    ExperiencePublicationFactory,
+)
+from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
+    ExperiencePublication,
+)
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.User.Domain.UserFactory import UserFactory
-from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
-    AdoptionPublication,
-)
-from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory import (
-    AdoptionPublicationFactory,
-)
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-from bson import ObjectId
+
 
 mongo_client_singleton = MongoDBConnectionSingleton()
 db = mongo_client_singleton.get_db()
 
-adoption_publications = db["adoption_publications"]
+experience_publications = db["experience_publications"]
 
 
-class MongoDBAdoptionPublicationRepository(PublicationRepository):
-    def add_publication(self, publication: AdoptionPublication):
-        publication_dict = publication.dict()
-        publication_dict["_id"] = ObjectId()
-        adoption_publications.insert_one(publication_dict)
+class MongoDBExperiencePublicationRepository(PublicationRepository):
+    def add_publication(self, publication: ExperiencePublication):
+        pass
 
     def get_by_id(self, id):
-        document = adoption_publications.find_one({"_id": id})
-        return document
+        pass
 
-    def get_all(self, species, date, location, page_number, page_size):
+    def get_all(self, species, date, page_number, page_size):
         filters = {}
         if species:
             filters["species"] = species
         if date:
             filters["publication_date"] = {"$gte": date}
-        if location:
-            filters["pet_location"] = location
-
         skip_count = (page_number - 1) * page_size
         documents = (
-            adoption_publications.find(filters)
+            experience_publications.find(filters)
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)
@@ -62,13 +56,12 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
                 comment_obj = CommentFactory.create(**comment)
                 comment_obj._id = str(like._id)
                 comments.append(comment_obj)
-            publication = AdoptionPublicationFactory.create_publication(**doc)
+            publication = ExperiencePublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
             publication.likes = likes
             publication.comments = comments
             publication_list.append(publication)
-
         return publication_list, page_number + 1
 
     def add_like(self, like):
