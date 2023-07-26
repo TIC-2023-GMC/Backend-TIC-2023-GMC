@@ -11,6 +11,8 @@ from src.Publication.ExperiencePublication.Application.ListExperiencePublication
 )
 from typing import List, Tuple, Optional
 
+from datetime import datetime
+
 router = APIRouter()
 
 
@@ -24,7 +26,7 @@ class ExperienceFastAPIController:
         self.create_adoption.execute(publication)
 
     def list_experiences_endpoint(
-        self, species: str, date: str, page_number: int, page_size: int
+        self, species: str, date: datetime, page_number: int, page_size: int
     ):
         return self.list_experience.execute(
             species=species,
@@ -46,7 +48,7 @@ def create_adoption_endpoint(new_publication: ExperiencePublication):
 @router.get("/list", status_code=200)
 def list_experiences_endpoint(
     species: Optional[str] = Query(None),
-    date: Optional[str] = Query(None),
+    date: Optional[datetime] = Query(None),
     page_number: int = Query(...),
     page_size: int = Query(...),
 ) -> Tuple[List[ExperiencePublication], int]:

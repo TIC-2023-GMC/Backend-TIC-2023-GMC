@@ -6,13 +6,14 @@ from src.Interaction.Like.Domain.Like import Like
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
 from src.User.Domain.User import User
+from datetime import datetime
 
 
 class Publication(Model, ABC):
     _id: Optional[str]
     user: User
     description: str
-    publication_date: str
+    publication_date: datetime
     photo: Photo
     likes: List[Like]
     comments: List[Comment]

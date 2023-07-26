@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Query
+from datetime import datetime
 from src.Shared.Singleton import singleton
 
 from src.Publication.AdoptionPublication.Application.CreateAdoptionPublicationUseCase import (
@@ -25,7 +26,12 @@ class AdoptionFastAPIController:
         self.create_adoption.execute(publication)
 
     def list_adoptions_endpoint(
-        self, species: str, date: str, location: str, page_number: int, page_size: int
+        self,
+        species: str,
+        date: datetime,
+        location: str,
+        page_number: int,
+        page_size: int,
     ):
         return self.list_adoptions.execute(
             species, date, location, page_number, page_size
@@ -44,7 +50,7 @@ def create_adoption_endpoint(new_publication: AdoptionPublication):
 @router.get("/list", status_code=200)
 def list_adoptions_endpoint(
     species: Optional[str] = Query(None),
-    date: Optional[str] = Query(None),
+    date: Optional[datetime] = Query(None),
     location: Optional[str] = Query(None),
     page_number: int = Query(...),
     page_size: int = Query(...),

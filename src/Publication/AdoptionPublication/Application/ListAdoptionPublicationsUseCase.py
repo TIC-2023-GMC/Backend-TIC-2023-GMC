@@ -1,6 +1,6 @@
 import inject
 from typing import List, Tuple
-from datetime import date
+from datetime import datetime
 from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
     MongoDBAdoptionPublicationRepository,
 )
@@ -17,7 +17,12 @@ class ListAdoptionPublicationsUseCase:
         self.publication_repository = publication_repository
 
     def execute(
-        self, species: str, date: date, location: str, page_number: int, page_size: int
+        self,
+        species: str,
+        date: datetime,
+        location: str,
+        page_number: int,
+        page_size: int,
     ) -> Tuple[List[AdoptionPublication], int]:
         return self.publication_repository.get_all(
             species=species,
