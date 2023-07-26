@@ -6,6 +6,7 @@ from src.Publication.Domain.PublicationFactory import PublicationFactory
 from src.User.Domain import User
 from src.Interaction.Comment.Domain.Comment import Comment
 from src.Interaction.Like.Domain.Like import Like
+from datetime import datetime
 
 
 class AdoptionPublicationFactory(PublicationFactory):
@@ -14,7 +15,7 @@ class AdoptionPublicationFactory(PublicationFactory):
         _id: str,
         user: User,
         description: str,
-        publication_date: str,
+        publication_date: datetime,
         photo: Photo,
         likes: list[Like],
         comments: list[Comment],

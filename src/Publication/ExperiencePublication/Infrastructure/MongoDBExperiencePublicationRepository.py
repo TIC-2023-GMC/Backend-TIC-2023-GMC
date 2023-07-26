@@ -31,6 +31,7 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
             filters["species"] = species
         if date:
             filters["publication_date"] = {"$gte": date}
+
         skip_count = (page_number - 1) * page_size
         documents = (
             self.experience_publications.find(filters)
@@ -62,6 +63,7 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
             publication.likes = likes
             publication.comments = comments
             publication_list.append(publication)
+
         return publication_list, page_number + 1
 
     def add_like(self, like):

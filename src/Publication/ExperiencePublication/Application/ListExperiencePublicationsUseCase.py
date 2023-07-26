@@ -6,7 +6,7 @@ from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
     ExperiencePublication,
 )
 import inject
-from datetime import date
+from datetime import datetime
 from typing import List, Tuple
 
 
@@ -21,7 +21,7 @@ class ListExperiencePublicationsUseCase:
         self,
         page_number,
         page_size,
-        experience_date: date,
+        experience_date: datetime,
         species: str,
     ) -> Tuple[List[ExperiencePublication], int]:
         return self.publication_repository.get_all(
