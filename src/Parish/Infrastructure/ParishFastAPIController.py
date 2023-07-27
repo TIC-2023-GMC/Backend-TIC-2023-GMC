@@ -23,5 +23,5 @@ def get_adoption_controller():
 
 
 @router.get("/get_all", status_code=200)
-def list_adoptions_endpoint() -> List[Parish]:
+def list_parish_endpoint() -> List[Parish]:
     return get_adoption_controller().list_parishes_endpoint()

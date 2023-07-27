@@ -1,4 +1,9 @@
 from abc import ABC, abstractmethod
+from typing import List
+
+from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
+    AdoptionPublication,
+)
 
 
 class UserRepository(ABC):
@@ -19,13 +24,15 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def add_favorite_pub(self, pub):
+    def add_favorite_pub(self, pub_id):
         pass
 
     @abstractmethod
-    def remove_favorite_pub(self, pub):
+    def remove_favorite_pub(self, pub_id):
         pass
 
     @abstractmethod
-    def list_favorite_publications(self, user):
+    def list_favorite_publications(
+        self, favorite_adoption_publications: List[str]
+    ) -> List[AdoptionPublication]:
         pass
