@@ -25,7 +25,6 @@ class UserFastAPIController:
         return self.user_list_favorites.execute(
             favorite_adoption_publications=favorite_adoption_publications
         )
-        
 
 
 # Dependency
