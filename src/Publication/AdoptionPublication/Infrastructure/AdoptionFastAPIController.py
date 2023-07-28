@@ -22,7 +22,7 @@ class AdoptionFastAPIController:
         self.create_adoption = CreateAdoptionPublicationUseCase()
         self.list_adoptions = ListAdoptionPublicationsUseCase()
 
-    def create_adoption_endpoint(self, publication: AdoptionPublication):
+    def create_adoption_endpoint(self, publication: AdoptionPublication) -> None:
         self.create_adoption.execute(publication)
 
     def list_adoptions_endpoint(
@@ -32,18 +32,18 @@ class AdoptionFastAPIController:
         location: str,
         page_number: int,
         page_size: int,
-    ):
+    ) -> Tuple[List[AdoptionPublication], int]:
         return self.list_adoptions.execute(
             species, date, location, page_number, page_size
         )
 
 
-def get_adoption_controller():
+def get_adoption_controller() -> AdoptionFastAPIController:
     return AdoptionFastAPIController()
 
 
 @router.post("/add", status_code=201)
-def create_adoption_endpoint(new_publication: AdoptionPublication):
+def create_adoption_endpoint(new_publication: AdoptionPublication) -> None:
     get_adoption_controller().create_adoption_endpoint(new_publication)
 
 

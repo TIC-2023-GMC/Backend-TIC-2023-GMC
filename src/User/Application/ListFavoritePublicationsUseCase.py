@@ -1,4 +1,7 @@
 import inject
+from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
+    AdoptionPublication,
+)
 from src.User.Domain.UserRepository import UserRepository
 from typing import List
 
@@ -8,7 +11,9 @@ class ListFavoritePublicationsUseCase:
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
 
-    def execute(self, favorite_adoption_publications: List[str]):
+    def execute(
+        self, favorite_adoption_publications: List[str]
+    ) -> List[AdoptionPublication]:
         return self.user_repository.list_favorite_publications(
             favorite_adoption_publications=favorite_adoption_publications
         )

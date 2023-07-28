@@ -1,4 +1,5 @@
 from bson import ObjectId
+from src.User.Domain.User import User
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
@@ -19,27 +20,27 @@ class MongoDBUserRepository(UserRepository):
     adoption_publications = db["adoption_publications"]
     users = db["users"]
 
-    def add_user(self, user):
+    def add_user(self, user) -> None:
         user_dict = user.dict()
         return self.users.insert_one(user_dict)
 
-    def get_user(self, email, password):
+    def get_user(self, email, password) -> User:
         return self.users.find_one({"email": email, "password": password})
 
-    def get_by_id(self, id):
+    def get_by_id(self, id) -> User:
         return self.users.find_one({"_id": id})
 
-    def update_user(self, updated_user):
+    def update_user(self, updated_user) -> None:
         return self.users.update_one(
             {"_id": updated_user._id}, {"$set": updated_user.dict()}
         )
 
-    def add_favorite_pub(self, pub):
+    def add_favorite_pub(self, pub) -> None:
         return self.users.update_one(
             {"_id": pub.user_id}, {"$push": {"favorite_publications": pub._id}}
         )
 
-    def remove_favorite_pub(self, pub):
+    def remove_favorite_pub(self, pub) -> None:
         return self.users.update_one(
             {"_id": pub.user_id}, {"$pull": {"favorite_publications": pub._id}}
         )

@@ -13,5 +13,5 @@ class CreateExperiencePublicationUseCase:
     def __init__(self, publication_repository: PublicationRepository):
         self.publication_repository = publication_repository
 
-    def execute(self, publication: ExperiencePublication):
+    def execute(self, publication: ExperiencePublication) -> None:
         self.publication_repository.add_publication(publication=publication)

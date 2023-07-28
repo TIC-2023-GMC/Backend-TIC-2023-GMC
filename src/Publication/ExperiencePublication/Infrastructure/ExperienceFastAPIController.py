@@ -22,12 +22,12 @@ class ExperienceFastAPIController:
         self.list_experience = ListExperiencePublicationsUseCase()
         self.create_adoption = CreateExperiencePublicationUseCase()
 
-    def create_experience_endpoint(self, publication: ExperiencePublication):
+    def create_experience_endpoint(self, publication: ExperiencePublication) -> None:
         self.create_adoption.execute(publication)
 
     def list_experiences_endpoint(
         self, species: str, date: datetime, page_number: int, page_size: int
-    ):
+    ) -> Tuple[List[ExperiencePublication], int]:
         return self.list_experience.execute(
             species=species,
             experience_date=date,
@@ -36,12 +36,12 @@ class ExperienceFastAPIController:
         )
 
 
-def get_experience_controller():
+def get_experience_controller() -> ExperienceFastAPIController:
     return ExperienceFastAPIController()
 
 
 @router.post("/add", status_code=201)
-def create_adoption_endpoint(new_publication: ExperiencePublication):
+def create_adoption_endpoint(new_publication: ExperiencePublication) -> None:
     get_experience_controller().create_experience_endpoint(new_publication)
 
 

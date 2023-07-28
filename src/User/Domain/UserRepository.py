@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
+from src.User.Domain.User import User
 
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
@@ -8,27 +9,27 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
 
 class UserRepository(ABC):
     @abstractmethod
-    def add_user(self, user):
+    def add_user(self, user) -> None:
         pass
 
     @abstractmethod
-    def get_user(self, email, password):
+    def get_user(self, email, password) -> User:
         pass
 
     @abstractmethod
-    def update_user(self, updated_user):
+    def update_user(self, updated_user) -> None:
         pass
 
     @abstractmethod
-    def get_by_id(self, id):
+    def get_by_id(self, id) -> User:
         pass
 
     @abstractmethod
-    def add_favorite_pub(self, pub_id):
+    def add_favorite_pub(self, pub_id) -> None:
         pass
 
     @abstractmethod
-    def remove_favorite_pub(self, pub_id):
+    def remove_favorite_pub(self, pub_id) -> None:
         pass
 
     @abstractmethod

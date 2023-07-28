@@ -28,11 +28,11 @@ class UserFastAPIController:
 
 
 # Dependency
-def get_user_controller():
+def get_user_controller() -> UserFastAPIController:
     return UserFastAPIController()
 
 
-@router.post("/list_favorite_adoptions", status_code=201)
+@router.post("/list_favorite_adoptions", status_code=200)
 def list_favorites_endpoint(
     favorite_adoption_publications: List[str],
 ) -> List[AdoptionPublication]:

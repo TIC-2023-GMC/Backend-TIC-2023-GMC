@@ -1,3 +1,5 @@
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Like.Domain.Like import Like
 from src.Shared.MongoClient import MongoDBConnection
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
@@ -11,22 +13,25 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory impor
 )
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 from bson import ObjectId
+from typing import List, Tuple
 
 
 class MongoDBAdoptionPublicationRepository(PublicationRepository):
     db = MongoDBConnection().get_db()
     adoption_publications = db["adoption_publications"]
 
-    def add_publication(self, publication: AdoptionPublication):
+    def add_publication(self, publication: AdoptionPublication) -> None:
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.adoption_publications.insert_one(publication_dict)
 
-    def get_by_id(self, id):
+    def get_by_id(self, id) -> AdoptionPublication:
         document = self.adoption_publications.find_one({"_id": id})
         return document
 
-    def get_all(self, species, date, location, page_number, page_size):
+    def get_all(
+        self, species, date, location, page_number, page_size
+    ) -> Tuple[List[AdoptionPublication], int]:
         filters = {}
         if species:
             filters["species"] = species
@@ -69,22 +74,22 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
 
         return publication_list, page_number + 1
 
-    def add_like(self, like):
+    def add_like(self, like) -> None:
         # Implement the logic for adding a like to a publication in MongoDB
         pass
 
-    def remove_like_by_id(self, like_id):
+    def remove_like_by_id(self, like_id) -> None:
         # Implement the logic for removing a like by ID from MongoDB
         pass
 
-    def get_likes_by_pub_id(self, id):
+    def get_likes_by_pub_id(self, id) -> List[Like]:
         # Implement the logic for getting likes by publication ID from MongoDB
         pass
 
-    def get_comments_by_pub_id(self, id):
+    def get_comments_by_pub_id(self, id) -> List[Comment]:
         # Implement the logic for getting comments by publication ID from MongoDB
         pass
 
-    def add_comment(self, comment):
+    def add_comment(self, comment) -> None:
         # Implement the logic for adding a comment to a publication in MongoDB
         pass
