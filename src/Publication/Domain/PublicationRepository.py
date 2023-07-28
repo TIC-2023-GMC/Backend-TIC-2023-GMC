@@ -21,11 +21,11 @@ class PublicationRepository(ABC):
         pass
 
     @abstractmethod
-    def add_like(self, like: Like):
+    def add_like(self, like: Like) -> None:
         pass
 
     @abstractmethod
-    def remove_like_by_id(self, like_id: str):
+    def remove_like_by_id(self, like_id: str) -> None:
         pass
 
     @abstractmethod
@@ -37,5 +37,5 @@ class PublicationRepository(ABC):
         pass
 
     @abstractmethod
-    def add_comment(self, comment: Comment):
+    def add_comment(self, comment: Comment) -> None:
         pass

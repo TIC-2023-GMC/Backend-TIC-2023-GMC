@@ -5,7 +5,7 @@ from src.Photo.Domain.Photo import Photo
 
 class PhotoRepository(ABC):
     @abstractmethod
-    def get_by_id(self, id: str):
+    def get_by_id(self, id: str) -> Photo:
         pass
 
     @abstractmethod
@@ -13,5 +13,5 @@ class PhotoRepository(ABC):
         pass
 
     @abstractmethod
-    def save_photo_user(self, photo: Photo, user_id: str):
+    def save_photo_user(self, photo: Photo, user_id: str) -> None:
         pass

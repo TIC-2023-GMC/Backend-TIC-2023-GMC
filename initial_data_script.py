@@ -1,3 +1,4 @@
+import datetime
 import os
 from pymongo import MongoClient
 
@@ -51,7 +52,7 @@ adoption_publications_data = [
     {
         "user": user,
         "description": "Hermoso gato de 3 meses busca un hogar",
-        "publication_date": "2023/07/13, 22:49",
+        "publication_date": datetime.datetime.now(),
         "photo": {
             "_id": 1,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
@@ -70,7 +71,7 @@ adoption_publications_data = [
     {
         "user": user,
         "description": "Perrita de 1 año busca un hogar",
-        "publication_date": "2023/07/14, 00:12",
+        "publication_date": datetime.datetime.now(),
         "photo": {
             "_id": 3,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
@@ -93,7 +94,7 @@ experience_publications_data = [
     {
         "user": user,
         "description": "Mi gatito lo conoci en la calle",
-        "publication_date": "2023/07/13, 22:49",
+        "publication_date": datetime.datetime.now(),
         "photo": {
             "_id": 1,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
@@ -105,7 +106,7 @@ experience_publications_data = [
     {
         "user": user,
         "description": "Perrita de 1 año busca un hogar",
-        "publication_date": "2023/07/14, 00:12",
+        "publication_date": datetime.datetime.now(),
         "photo": {
             "_id": 3,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",

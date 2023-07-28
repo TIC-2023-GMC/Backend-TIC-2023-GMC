@@ -1,4 +1,6 @@
 import inject
+from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
+from src.User.Domain.UserRepository import UserRepository
 from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
 from src.Parish.Domain.ParishRepository import ParishRepository
 from src.Publication.Domain.PublicationRepository import PublicationRepository
@@ -17,6 +19,10 @@ def configure_ic() -> None:
         binder.bind(
             ParishRepository,
             MongoDBParishRepository(),
+        )
+        binder.bind(
+            UserRepository,
+            MongoDBUserRepository(),
         )
 
     inject.configure_once(configure)

@@ -630,13 +630,12 @@ files = [
 
 [[package]]
 name = "inject"
-version = "5.0.0"
-description = "Python dependency injection framework."
+version = "4.3.0"
+description = "Python dependency injection framework"
 optional = false
 python-versions = "*"
 files = [
-    {file = "inject-5.0.0-py2.py3-none-any.whl", hash = "sha256:f92188c9ca2f5b161426ad8060f6eb1861054acd507dfac965d8d94a3f026e1f"},
-    {file = "inject-5.0.0.tar.gz", hash = "sha256:017e2e21707c35d0f486db942dcc5500f4fe0e64e80d2af3c689d9d63838a99b"},
+    {file = "Inject-4.3.0.tar.gz", hash = "sha256:21b4f841aa72a032ca2917c331e68d792f2c7b767091f55cefb57a3c11b965b8"},
 ]
 
 [[package]]
@@ -1281,4 +1280,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c22463586ab88309e08966e0ec338c996a13dbf36f6184e69a5b6ab76591cee3"
+content-hash = "4561ca11273b2c6e72a4917b6326996820b9b93c60086dece9c39ab3ad9057af"
