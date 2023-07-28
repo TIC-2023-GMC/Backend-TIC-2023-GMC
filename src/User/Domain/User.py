@@ -1,10 +1,10 @@
-from typing import Optional
+from typing import List, Optional
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
 
 
 class User(Model):
-    _id: Optional[str]
+    _id: str
     first_name: str
     last_name: str
     mobile_phone: str
@@ -19,5 +19,5 @@ class User(Model):
     main_pet_food: str
     pet_expenses: int
     motivation: str
-    favorite_adoption_publications: list
+    favorite_adoption_publications: List
     photo: Photo

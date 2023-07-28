@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
 from datetime import datetime
 from src.Shared.Singleton import singleton
 
@@ -44,7 +44,10 @@ def get_adoption_controller() -> AdoptionFastAPIController:
 
 @router.post("/add", status_code=201)
 def create_adoption_endpoint(new_publication: AdoptionPublication) -> None:
-    get_adoption_controller().create_adoption_endpoint(new_publication)
+    try:
+        get_adoption_controller().create_adoption_endpoint(new_publication)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/list", status_code=200)
