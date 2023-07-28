@@ -14,6 +14,7 @@ from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.User.Domain.UserFactory import UserFactory
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 from bson import ObjectId
+from typing import List, Tuple
 
 
 class MongoDBExperiencePublicationRepository(PublicationRepository):
