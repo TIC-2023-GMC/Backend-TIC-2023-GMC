@@ -11,13 +11,14 @@ from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.User.Domain.UserFactory import UserFactory
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 from bson import ObjectId
+from typing import List, Tuple
 
 
 class MongoDBExperiencePublicationRepository(PublicationRepository):
     db = MongoDBConnection().get_db()
     experience_publications = db["experience_publications"]
 
-    def add_publication(self, publication: ExperiencePublication):
+    def add_publication(self, publication: ExperiencePublication) -> None:
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.experience_publications.insert_one(publication_dict)
@@ -25,7 +26,9 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
     def get_by_id(self, id):
         pass
 
-    def get_all(self, species, date, page_number, page_size):
+    def get_all(
+        self, species, date, page_number, page_size
+    ) -> Tuple[List[ExperiencePublication], int]:
         filters = {}
         if species:
             filters["species"] = species

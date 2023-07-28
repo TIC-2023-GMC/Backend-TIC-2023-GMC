@@ -21,10 +21,10 @@ class PhotoFastAPIController:
 
 
 # Dependency
-def get_adoption_controller():
+def get_adoption_controller() -> PhotoFastAPIController:
     return PhotoFastAPIController()
 
 
 @router.post("/upload", status_code=201)
-def upload_photo(photo: UploadFile = File(...)):
+def upload_photo(photo: UploadFile = File(...)) -> None:
     return get_adoption_controller().save_pub_photo_endpoint(photo)

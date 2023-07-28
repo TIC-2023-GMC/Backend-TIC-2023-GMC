@@ -13,5 +13,5 @@ class CreateAdoptionPublicationUseCase:
     def __init__(self, publication_repository: PublicationRepository):
         self.publication_repository = publication_repository
 
-    def execute(self, publication: AdoptionPublication):
+    def execute(self, publication: AdoptionPublication) -> None:
         self.publication_repository.add_publication(publication=publication)
