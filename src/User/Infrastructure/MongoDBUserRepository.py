@@ -12,7 +12,7 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
 )
 from src.Shared.MongoClient import MongoDBConnection
 from src.User.Domain.UserRepository import UserRepository
-from typing import List
+from typing import List, Tuple
 
 
 class MongoDBUserRepository(UserRepository):
@@ -46,13 +46,22 @@ class MongoDBUserRepository(UserRepository):
         )
 
     def list_favorite_publications(
-        self, favorite_adoption_publications: List[str]
-    ) -> List[AdoptionPublication]:
+        self,
+        favorite_adoption_publications: List[str],
+        page_number: int,
+        page_size: int,
+    ) -> Tuple[List[AdoptionPublication], int]:
+        skip_count = (page_number - 1) * page_size
         favorite_adoption_publications = [
             ObjectId(id) for id in favorite_adoption_publications
         ]
-        documents = self.adoption_publications.find(
-            {"_id": {"$in": favorite_adoption_publications}}
+        documents = (
+            self.adoption_publications.find(
+                {"_id": {"$in": favorite_adoption_publications}}
+            )
+            .sort([("publication_date", -1), ("_id", -1)])
+            .skip(skip_count)
+            .limit(page_size)
         )
         favorites_list = []
         for doc in documents:
@@ -78,4 +87,4 @@ class MongoDBUserRepository(UserRepository):
             publication.comments = comments
             favorites_list.append(publication)
 
-        return favorites_list
+        return favorites_list, page_number + 1

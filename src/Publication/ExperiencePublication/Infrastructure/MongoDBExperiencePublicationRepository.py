@@ -1,3 +1,6 @@
+from typing import List, Tuple
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Like.Domain.Like import Like
 from src.Shared.MongoClient import MongoDBConnection
 from src.Publication.ExperiencePublication.Domain.ExperiencePublicationFactory import (
     ExperiencePublicationFactory,
@@ -17,15 +20,17 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
     db = MongoDBConnection().get_db()
     experience_publications = db["experience_publications"]
 
-    def add_publication(self, publication: ExperiencePublication):
+    def add_publication(self, publication: ExperiencePublication) -> None:
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.experience_publications.insert_one(publication_dict)
 
-    def get_by_id(self, id):
+    def get_by_id(self, id) -> ExperiencePublication:
         pass
 
-    def get_all(self, species, date, page_number, page_size):
+    def get_all(
+        self, species, date, page_number, page_size
+    ) -> Tuple[List[ExperiencePublication], int]:
         filters = {}
         if species:
             filters["species"] = species
@@ -66,22 +71,22 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
 
         return publication_list, page_number + 1
 
-    def add_like(self, like):
+    def add_like(self, like) -> None:
         # Implement the logic for adding a like to a publication in MongoDB
         pass
 
-    def remove_like_by_id(self, like_id):
+    def remove_like_by_id(self, like_id) -> None:
         # Implement the logic for removing a like by ID from MongoDB
         pass
 
-    def get_likes_by_pub_id(self, id):
+    def get_likes_by_pub_id(self, id) -> List[Like]:
         # Implement the logic for getting likes by publication ID from MongoDB
         pass
 
-    def get_comments_by_pub_id(self, id):
+    def get_comments_by_pub_id(self, id) -> List[Comment]:
         # Implement the logic for getting comments by publication ID from MongoDB
         pass
 
-    def add_comment(self, comment):
+    def add_comment(self, comment) -> None:
         # Implement the logic for adding a comment to a publication in MongoDB
         pass

@@ -1,8 +1,5 @@
-from typing import List
+from typing import List, Tuple
 from fastapi import APIRouter, UploadFile, File
-from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory import (
-    AdoptionPublicationFactory,
-)
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
@@ -20,10 +17,15 @@ class UserFastAPIController:
         self.user_list_favorites = ListFavoritePublicationsUseCase()
 
     def list_favorite_publication(
-        self, favorite_adoption_publications: List[str]
-    ) -> List[AdoptionPublication]:
+        self,
+        favorite_adoption_publications: List[str],
+        page_number: int,
+        page_size: int,
+    ) -> Tuple[List[AdoptionPublication], int]:
         return self.user_list_favorites.execute(
-            favorite_adoption_publications=favorite_adoption_publications
+            favorite_adoption_publications=favorite_adoption_publications,
+            page_number=page_number,
+            page_size=page_size,
         )
 
 
@@ -34,8 +36,10 @@ def get_user_controller() -> UserFastAPIController:
 
 @router.post("/list_favorite_adoptions", status_code=200)
 def list_favorites_endpoint(
-    favorite_adoption_publications: List[str],
-) -> List[AdoptionPublication]:
+    favorite_adoption_publications: List[str], page_number: int, page_size: int
+) -> Tuple[List[AdoptionPublication], int]:
     return get_user_controller().list_favorite_publication(
-        favorite_adoption_publications=favorite_adoption_publications
+        favorite_adoption_publications=favorite_adoption_publications,
+        page_number=page_number,
+        page_size=page_size,
     )

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Tuple
 from src.User.Domain.User import User
 
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -34,6 +34,9 @@ class UserRepository(ABC):
 
     @abstractmethod
     def list_favorite_publications(
-        self, favorite_adoption_publications: List[str]
-    ) -> List[AdoptionPublication]:
+        self,
+        favorite_adoption_publications: List[str],
+        page_number: int,
+        page_size: int,
+    ) -> Tuple[List[AdoptionPublication], int]:
         pass
