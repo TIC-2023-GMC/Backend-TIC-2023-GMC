@@ -67,7 +67,7 @@ def add_favorite_adoption_endpoint(pub_id: str, user_id: str) -> None:
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.post("/remove_favorite_adoption", status_code=200)
+@router.delete("/remove_favorite_adoption", status_code=204)
 def remove_favorite_adoption_endpoint(pub_id: str, user_id: str) -> None:
     try:
         get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user_id)
