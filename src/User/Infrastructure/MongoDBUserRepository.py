@@ -35,14 +35,26 @@ class MongoDBUserRepository(UserRepository):
             {"_id": updated_user._id}, {"$set": updated_user.dict()}
         )
 
-    def add_favorite_pub(self, pub) -> None:
+    def add_favorite_pub(self, pub_id: str, user_id: str) -> None:
+        pub_id = ObjectId(pub_id)
+        user_id = ObjectId(user_id)
+        if pub_id in self.users.find_one({"_id": user_id}).get(
+            "favorite_adoption_publications", []
+        ):
+            raise Exception("ya existe la publicación en la lista de favoritos")
         return self.users.update_one(
-            {"_id": pub.user_id}, {"$push": {"favorite_publications": pub._id}}
+            {"_id": user_id}, {"$push": {"favorite_adoption_publications": pub_id}}
         )
 
-    def remove_favorite_pub(self, pub) -> None:
+    def remove_favorite_pub(self, pub_id: str, user_id: str) -> None:
+        pub_id = ObjectId(pub_id)
+        user_id = ObjectId(user_id)
+        if pub_id not in self.users.find_one({"_id": user_id}).get(
+            "favorite_adoption_publications", []
+        ):
+            raise Exception("No se encontro la publicación en la lista de favoritos")
         return self.users.update_one(
-            {"_id": pub.user_id}, {"$pull": {"favorite_publications": pub._id}}
+            {"_id": user_id}, {"$pull": {"favorite_adoption_publications": pub_id}}
         )
 
     def list_favorite_publications(

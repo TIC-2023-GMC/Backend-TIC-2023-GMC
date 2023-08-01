@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, HTTPException, Query
 from src.Shared.Singleton import singleton
 from src.Publication.ExperiencePublication.Application.CreateExperiencePublicationUseCase import (
     CreateExperiencePublicationUseCase,
@@ -41,8 +41,11 @@ def get_experience_controller() -> ExperienceFastAPIController:
 
 
 @router.post("/add", status_code=201)
-def create_adoption_endpoint(new_publication: ExperiencePublication) -> None:
-    get_experience_controller().create_experience_endpoint(new_publication)
+def create_experience_endpoint(new_publication: ExperiencePublication) -> None:
+    try:
+        get_experience_controller().create_experience_endpoint(new_publication)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/list", status_code=200)

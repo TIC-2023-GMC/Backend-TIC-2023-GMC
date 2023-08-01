@@ -1,5 +1,6 @@
 import datetime
 import os
+from bson import ObjectId
 from pymongo import MongoClient
 
 # MongoDB connection details
@@ -21,6 +22,7 @@ db = client[mongodb_database]
 # Insert initial data
 users_collection = db["users"]
 users_data = {
+    "_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
     "first_name": "Gandhy",
     "last_name": "García",
     "mobile_phone": "0983473043",
