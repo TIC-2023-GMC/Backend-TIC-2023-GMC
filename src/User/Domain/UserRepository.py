@@ -25,11 +25,11 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def add_favorite_pub(self, pub_id) -> None:
+    def add_favorite_pub(self, pub_id: str, user_id: str) -> None:
         pass
 
     @abstractmethod
-    def remove_favorite_pub(self, pub_id) -> None:
+    def remove_favorite_pub(self, pub_id: str, user_id: str) -> None:
         pass
 
     @abstractmethod

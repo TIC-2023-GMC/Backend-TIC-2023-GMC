@@ -22,6 +22,7 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
     experience_publications = db["experience_publications"]
 
     def add_publication(self, publication: ExperiencePublication) -> None:
+        publication.user._id = ObjectId(publication.user._id)
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.experience_publications.insert_one(publication_dict)
