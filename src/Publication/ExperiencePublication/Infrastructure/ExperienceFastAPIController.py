@@ -41,7 +41,7 @@ def get_experience_controller() -> ExperienceFastAPIController:
 
 
 @router.post("/add", status_code=201)
-def create_adoption_endpoint(new_publication: ExperiencePublication) -> None:
+def create_experience_endpoint(new_publication: ExperiencePublication) -> None:
     try:
         get_experience_controller().create_experience_endpoint(new_publication)
     except Exception as e:
