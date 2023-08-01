@@ -20,7 +20,7 @@ class MongoDBUserRepository(UserRepository):
     adoption_publications = db["adoption_publications"]
     users = db["users"]
 
-    def add_user(self, user) -> None:
+    def add_user(self, user: User) -> None:
         user_dict = user.dict()
         return self.users.insert_one(user_dict)
 
