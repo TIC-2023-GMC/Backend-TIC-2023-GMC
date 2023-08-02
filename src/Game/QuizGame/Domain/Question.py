@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List
 from src.Game.QuizGame.Domain.Answer import Answer
 
 from src.Shared.Model import Model
@@ -6,4 +6,4 @@ from src.Shared.Model import Model
 
 class Question(Model):
     question_text: str
-    answer: List[Answer]
+    answers: List[Answer]

@@ -39,11 +39,25 @@ class MongoDBQuizGameRepository(QuizGameRepository):
             game["user_id"] = str(game["user_id"])
             game = QuizGameFactory.create_game(**game)
         else:
-            questions = self.questions_quiz.find()
+            subset_size = 3
+
+            """ questions = self.questions_quiz.find()
             game_questions = []
             if questions:
-                game_questions = [Question(**question) for question in questions]
-                random.shuffle(game_questions)
+                for question in questions:
+                    question.pop("_id", None)
+                    game_questions.append(Question(**question))
+                random.shuffle(game_questions) """
+
+            questions = self.questions_quiz.aggregate(
+                [{"$sample": {"size": subset_size}}]
+            )
+            game_questions = []
+            if questions:
+                for question in questions:
+                    question.pop("_id", None)
+                    game_questions.append(Question(**question))
+
             game = QuizGameFactory.create_game(
                 _id=None,
                 game_name="QuizGame",
