@@ -32,7 +32,7 @@ class MongoDBQuizGameRepository(QuizGameRepository):
 
     def get_game(self, user_id: str) -> QuizGame:
         existing_game = self.game_quiz.find_one({"user_id": ObjectId(user_id)})
-        subset_size = 2
+        subset_size = 10
         game_questions = []
         questions = self.questions_quiz.aggregate([{"$sample": {"size": subset_size}}])
         for question in questions:

@@ -236,15 +236,15 @@ questions_data = [
         "question_text": "¿Qué se considera una infracción según el Artículo 120?",
         "answers": [
             {
-                "answer_text": "Un acto que cumple con las disposiciones",
+                "answer_text": "Un acto que cumple con las disposiciones.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Un acto que no afecta a la fauna urbana",
+                "answer_text": "Un acto que no afecta a la fauna urbana.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Un acto u omisión que incumple con las disposiciones y afecta a la fauna urbana",
+                "answer_text": "Un acto u omisión que incumple con las disposiciones y afecta a la fauna urbana.",
                 "is_correct": True,
             },
         ],
@@ -253,15 +253,15 @@ questions_data = [
         "question_text": "¿Cómo se dividen las infracciones en el artículo 120?",
         "answers": [
             {
-                "answer_text": "Leves y graves",
+                "answer_text": "Leves y graves.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Graves y muy graves",
+                "answer_text": "Graves y muy graves.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Leves, graves y muy graves",
+                "answer_text": "Leves, graves y muy graves.",
                 "is_correct": True,
             },
         ],
@@ -270,19 +270,19 @@ questions_data = [
         "question_text": "¿Cuál de las siguientes acciones se considera una infracción leve?",
         "answers": [
             {
-                "answer_text": "No cumplir con el calendario de vacunas y desparasitación",
+                "answer_text": "No cumplir con el calendario de vacunas y desparasitación.",
                 "is_correct": True,
             },
             {
-                "answer_text": "No mantener a los animales dentro de los predios privados, permitiendo que deambulen por  el espacio público sin supervisión",
+                "answer_text": "No mantener a los animales dentro de los predios privados, permitiendo que deambulen por el espacio público sin supervisión.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Perder el carnet de vacunación del animal",
+                "answer_text": "Perder el carnet de vacunación del animal.",
                 "is_correct": False,
             },
             {
-                "answer_text": "No socializar a los animales con otros perros",
+                "answer_text": "No socializar a los animales con otros perros.",
                 "is_correct": False,
             },
         ],
@@ -291,24 +291,290 @@ questions_data = [
         "question_text": "¿Cuál es la sanción para las infracciones leves según el artículo 121?",
         "answers": [
             {
-                "answer_text": "Multa del 30% de una remuneración básica unificada",
+                "answer_text": "Multa del 30% de una remuneración básica unificada.",
                 "is_correct": True,
             },
             {
-                "answer_text": "Servicio comunitario por 48 horas",
+                "answer_text": "Servicio comunitario por 48 horas.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Multa del 10% de una remuneración básica unificada",
+                "answer_text": "Multa del 10% de una remuneración básica unificada.",
                 "is_correct": False,
             },
             {
-                "answer_text": "Suspensión temporal de la tenencia de mascotas",
+                "answer_text": "Suspensión temporal de la tenencia de mascotas.",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Las sanciones que se mencionan en el artículo 121, ¿Tienen tienen perjuicio penal?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "Las sanciones que se mencionan en el artículo 121, ¿Tienen tienen perjuicio Civil?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "¿Cuál de las siguientes acciones se considera una infracción leve?",
+        "answers": [
+            {
+                "answer_text": "Permitir que deambulen por las vías sin collar.",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "No mantener a los animales dentro de los predios privados, permitiendo que deambulen por el espacio público sin la supervisión.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Perder el carnet de vacunación del animal.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Socializar a los animales con otros animales de compañia.",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "¿Cuál de las siguientes acciones se considera una infracción leve?",
+        "answers": [
+            {
+                "answer_text": "Recoger excrementos del animal de compañía en espacios públicos o privados.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No recoger excrementos del animal de compañía en espacios públicos o privados.",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "Baños al animal de compañía por la noche.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Recoger el excremento del animal de compañía.",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Bañar a un animal de compañía en noche, ¿Se considera una infracción?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "Bañar a un animal de compañía en fuentes ornamentales, ¿Se considera una infracción?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Si una persona reincide cometiendo infracciones leves, ¿Pasa a ser una infracción grave?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Si una persona reincide cometiendo infracciones leves, ¿Pasa a ser una infracción muy grave?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "Si una persona reincide cometiendo infracciones leves, ¿Sigue siendo leve?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "¿Cuántas horas de servicio comunitario se debe cumplir por una infracción leve?",
+        "answers": [
+            {
+                "answer_text": "Ninguna, solo pagar la multa.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "10 horas.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "24 horas.",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "48 horas.",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "Si un animal de compañía no cuenta con su calendario de vacunación y desparasitación, su responsable está cometiendo una infracción:",
+        "answers": [
+            {
+                "answer_text": "Leve",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "Grave",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Muy grave",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Si un animal de compañía está deambulando por espacio público sin collar, su responsable está cometiendo una infracción:",
+        "answers": [
+            {
+                "answer_text": "Leve",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "Grave",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Muy grave",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Si una persona no recoge los desechos fisiológicos de su animal de compañía, puede pagar una multa del ____ del salario básico unificado:",
+        "answers": [
+            {
+                "answer_text": "10%",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "20%",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "30%",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "40%",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Incumplir el uso de zonas caninas públicas es considerada una infracción:",
+        "answers": [
+            {
+                "answer_text": "Leve",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "Grave",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "Muy grave",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "¿Prohibir la interacción de un animal de compañía con otros de su especie es una infracción?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": False,
+            },
+        ],
+    },
+    {
+        "question_text": "Las infracciones leves se deben pagar con el 30% del salario básico y con 60 horas de servicio comunitario?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": False,
+            },
+            {
+                "answer_text": "No",
+                "is_correct": True,
+            },
+        ],
+    },
+    {
+        "question_text": "Las infracciones leves se deben pagar con el 30% del salario básico y con 48 horas de servicio comunitario?",
+        "answers": [
+            {
+                "answer_text": "Si",
+                "is_correct": True,
+            },
+            {
+                "answer_text": "No",
                 "is_correct": False,
             },
         ],
     },
 ]
+
 questions_collection.insert_many(questions_data)
 
 
