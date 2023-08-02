@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -15,6 +16,11 @@ from src.User.Application.RemoveFavoritePublicationUseCase import (
 )
 
 router = APIRouter()
+
+
+class FavoriteAdoptionData(BaseModel):
+    pub_id: str
+    user_id: str
 
 
 @singleton
@@ -60,16 +66,20 @@ def list_favorites_endpoint(
 
 
 @router.post("/add_favorite_adoption", status_code=201)
-def add_favorite_adoption_endpoint(pub_id: str, user_id: str) -> None:
+def add_favorite_adoption_endpoint(data: FavoriteAdoptionData) -> None:
     try:
-        get_user_controller().add_favorite_adoption(pub_id=pub_id, user_id=user_id)
+        get_user_controller().add_favorite_adoption(
+            pub_id=data.pub_id, user_id=data.user_id
+        )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.delete("/remove_favorite_adoption", status_code=204)
-def remove_favorite_adoption_endpoint(pub_id: str, user_id: str) -> None:
+def remove_favorite_adoption_endpoint(data: FavoriteAdoptionData) -> None:
     try:
-        get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user_id)
+        get_user_controller().remove_favorite_adoption(
+            pub_id=data.pub_id, user_id=data.user_id
+        )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
