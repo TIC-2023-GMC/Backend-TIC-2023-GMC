@@ -1,5 +1,7 @@
 import random
+from typing import List, Tuple
 from bson import ObjectId
+from src.Game.QuizGame.Domain.UserScore import UserScore
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Game.QuizGame.Domain.QuizGame import QuizGame
 from src.Game.QuizGame.Domain.QuizGameFactory import QuizGameFactory
@@ -13,6 +15,7 @@ class MongoDBQuizGameRepository(QuizGameRepository):
     db = MongoDBConnection().get_db()
     questions_quiz = db["questions_quiz"]
     game_quiz = db["game_quiz"]
+    users = db["users"]
 
     def save_game(self, game: QuizGame) -> bool:
         was_created = False
@@ -58,3 +61,33 @@ class MongoDBQuizGameRepository(QuizGameRepository):
             )
         self.save_game(existing_game)
         return existing_game
+
+    def get_leaderboard_and_score(self, user_id: str) -> Tuple[List[UserScore], int]:
+        player_game = self.game_quiz.find_one({"user_id": ObjectId(user_id)})
+
+        leaderboard_position = self.game_quiz.count_documents(
+            {"game_score": {"$gt": player_game["game_score"]}}
+        )
+
+        leaderboard = (
+            self.game_quiz.find({}, {"user_id": 1, "game_score": 1, "game_time": 1})
+            .sort("game_score", -1)
+            .limit(4)
+        )
+
+        leaderboard_list = []
+
+        for player in leaderboard:
+            user = self.users.find_one({"_id": player["user_id"]})
+            user_score = UserScore(
+                user_first_name=user["first_name"],
+                user_last_name=user["last_name"],
+                user_photo=PhotoFactory.create(
+                    _id=user["photo"]["_id"], img_path=user["photo"]["img_path"]
+                ),
+                game_score=player["game_score"],
+                game_time=player["game_time"],
+            )
+            leaderboard_list.append(user_score)
+
+        return leaderboard_list, leaderboard_position + 1

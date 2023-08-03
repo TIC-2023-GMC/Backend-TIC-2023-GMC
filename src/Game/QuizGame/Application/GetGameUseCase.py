@@ -1,5 +1,3 @@
-from typing import List
-
 import inject
 from src.Game.QuizGame.Domain.QuizGameRepository import QuizGameRepository
 
