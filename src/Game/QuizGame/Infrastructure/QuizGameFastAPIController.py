@@ -44,7 +44,6 @@ def get_game_endpoint(
 @router.put("/quiz_game")
 def save_game_endpoint(game: QuizGame, response: Response):
     was_created = get_game_controller().save_game(game=game)
-    print(was_created)
     if was_created:
         response.status_code = 201
     else:
