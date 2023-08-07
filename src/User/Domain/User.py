@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
 

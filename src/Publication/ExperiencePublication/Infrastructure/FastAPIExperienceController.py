@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 @singleton
-class ExperienceFastAPIController:
+class FastAPIExperienceController:
     def __init__(self):
         self.list_experience = ListExperiencePublicationsUseCase()
         self.create_adoption = CreateExperiencePublicationUseCase()
@@ -36,8 +36,8 @@ class ExperienceFastAPIController:
         )
 
 
-def get_experience_controller() -> ExperienceFastAPIController:
-    return ExperienceFastAPIController()
+def get_experience_controller() -> FastAPIExperienceController:
+    return FastAPIExperienceController()
 
 
 @router.post("/add", status_code=201)

@@ -5,7 +5,7 @@ from src.Game.QuizGame.Application.GetLeaderboardAndScoreUseCase import (
 )
 from src.Game.QuizGame.Application.SaveQuizGameUseCase import SaveQuizGameUseCase
 from src.Game.QuizGame.Domain.QuizGame import QuizGame
-from src.Game.QuizGame.Application.GetGameUseCase import GetQuizGameUseCase
+from src.Game.QuizGame.Application.GetQuizGameUseCase import GetQuizGameUseCase
 from src.Game.QuizGame.Domain.UserScore import UserScore
 from src.Shared.Singleton import singleton
 
@@ -14,7 +14,7 @@ router = APIRouter()
 
 
 @singleton
-class QuizGameFastAPIController:
+class FastAPIQuizGameController:
     def __init__(self):
         self.get_game_use_case = GetQuizGameUseCase()
         self.save_game_use_case = SaveQuizGameUseCase()
@@ -30,8 +30,8 @@ class QuizGameFastAPIController:
         return self.get_leaderboard_and_score_use_case.execute(user_id=user_id)
 
 
-def get_game_controller() -> QuizGameFastAPIController:
-    return QuizGameFastAPIController()
+def get_game_controller() -> FastAPIQuizGameController:
+    return FastAPIQuizGameController()
 
 
 @router.get("/quiz_game", status_code=200)
