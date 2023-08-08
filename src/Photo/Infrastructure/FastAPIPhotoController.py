@@ -16,11 +16,9 @@ class FastAPIPhotoController:
 
     def save_pub_photo_endpoint(self, photo_file: UploadFile) -> Photo:
         photo = self.save_photo.execute_pub(photo_file)
-        photo._id = str(photo._id)  # Convert ObjectId to string
         return photo
 
 
-# Dependency
 def get_adoption_controller() -> FastAPIPhotoController:
     return FastAPIPhotoController()
 

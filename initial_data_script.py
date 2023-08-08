@@ -42,7 +42,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.6435-9/74242360_3195954163812838_4274861617784553472_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFRCjYsTZuQlf2PHyTPJ3HYymegSJbxrSjKZ6BIlvGtKPYIzlm5LEqBr9cR0tDl-FEvtHfkBqZQ6LHCgw-pkTlW&_nc_ohc=dye6H3TWD6QAX-v2xOF&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCF85oDfvg1CEtIJ1We_mJ3gV49fRwyklxfDfl8SouHOA&oe=64D84DE2",
         },
     },
@@ -64,7 +63,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://imagenes.elpais.com/resizer/fdGn2HZ-QXQJW92FNbeWU7Z9Da4=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/TW5CHJTUY5B3DOS35VMOLZUVF4.jpg",
         },
     },
@@ -86,7 +84,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg",
         },
     },
@@ -108,7 +105,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://fotografias.lasexta.com/clipping/cmsimages01/2023/08/02/790629EE-D19C-497E-8ECE-5BB0D4AE1307/imagen-archivo-donald-trump_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply",
         },
     },
@@ -130,7 +126,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://everipedia-storage.s3-accelerate.amazonaws.com/ProfilePics/conor-mason__99848.png",
         },
     },
@@ -152,7 +147,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://akamai.sscdn.co/uploadfile/letras/fotos/3/a/7/5/3a75246b960d609112b5578f5774b3fe.jpg",
         },
     },
@@ -174,7 +168,6 @@ users_data = [
         "motivation": "Love for animals",
         "favorite_adoption_publications": [],
         "photo": {
-            "_id": 2,
             "img_path": "https://m.media-amazon.com/images/M/MV5BMTc4NzMzMTE3NV5BMl5BanBnXkFtZTcwMTQ0NTg2OA@@._V1_.jpg",
         },
     },
@@ -190,7 +183,6 @@ adoption_publications_data = [
         "description": "Hermoso gato de 3 meses busca un hogar",
         "publication_date": datetime.datetime.now(),
         "photo": {
-            "_id": 1,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
@@ -209,7 +201,6 @@ adoption_publications_data = [
         "description": "Perrita de 1 año busca un hogar",
         "publication_date": datetime.datetime.now(),
         "photo": {
-            "_id": 3,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
@@ -234,7 +225,6 @@ experience_publications_data = [
         "description": "Mi gatito lo conoci en la calle",
         "publication_date": datetime.datetime.now(),
         "photo": {
-            "_id": 1,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
@@ -246,7 +236,6 @@ experience_publications_data = [
         "description": "Perrita de 1 año busca un hogar",
         "publication_date": datetime.datetime.now(),
         "photo": {
-            "_id": 3,
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],

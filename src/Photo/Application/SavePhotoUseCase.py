@@ -15,5 +15,5 @@ class SavePhotoUseCase:
 
     def execute_pub(self, img) -> Photo:
         photo_url = self.photo_repository.upload_img(img)
-        photo = PhotoFactory.create(ObjectId(), photo_url)
+        photo = PhotoFactory.create(photo_url)
         return photo
