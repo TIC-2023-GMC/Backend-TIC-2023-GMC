@@ -27,12 +27,17 @@ class MongoDBUserRepository(UserRepository):
     def get_user(self, email, password) -> User:
         return self.users.find_one({"email": email, "password": password})
 
-    def get_by_id(self, id) -> User:
+    def get_by_id(self, id: float) -> User:
         return self.users.find_one({"_id": id})
 
-    def update_user(self, updated_user) -> None:
+    def update_user(self, updated_user: User) -> None:
+        updated_user = updated_user.dict()
+        updated_user["_id"] = ObjectId(updated_user["_id"])
+        attributes_to_remove = ["password", "email", "favorite_adoption_publications"]
+        for attribute in attributes_to_remove:
+            updated_user.pop(attribute, None)
         return self.users.update_one(
-            {"_id": updated_user._id}, {"$set": updated_user.dict()}
+            {"_id": updated_user["_id"]}, {"$set": updated_user}
         )
 
     def add_favorite_pub(self, pub_id: str, user_id: str) -> None:
