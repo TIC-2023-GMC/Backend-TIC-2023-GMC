@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
-
 from src.Shared.Singleton import singleton
 
 load_dotenv()

@@ -81,7 +81,6 @@ class MongoDBUserRepository(UserRepository):
             user = UserFactory.create(**doc["user"])
             user._id = str(user._id)
             photo = PhotoFactory.create(**doc["photo"])
-            photo._id = str(photo._id)
             likes = []
             for like in doc["likes"]:
                 like_obj = LikeFactory.create(**like)

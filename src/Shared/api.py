@@ -1,17 +1,17 @@
 from fastapi import APIRouter
 
-from src.Publication.AdoptionPublication.Infrastructure.AdoptionFastAPIController import (
+from src.Publication.AdoptionPublication.Infrastructure.FastAPIAdoptionController import (
     router as adoption_router,
 )
-from src.Publication.ExperiencePublication.Infrastructure.ExperienceFastAPIController import (
+from src.Publication.ExperiencePublication.Infrastructure.FastAPIExperienceController import (
     router as experience_router,
 )
 
-from src.Photo.Infrastructure.PhotoFastAPIController import router as photo_router
+from src.Photo.Infrastructure.FastAPIPhotoController import router as photo_router
 
-from src.Parish.Infrastructure.ParishFastAPIController import router as parish_router
-from src.User.Infrastructure.UserFastAPIController import router as user_router
-from src.Game.QuizGame.Infrastructure.QuizGameFastAPIController import (
+from src.Parish.Infrastructure.FastAPIParishController import router as parish_router
+from src.User.Infrastructure.FastAPIUserController import router as user_router
+from src.Game.QuizGame.Infrastructure.FastAPIQuizGameController import (
     router as quiz_game_router,
 )
 

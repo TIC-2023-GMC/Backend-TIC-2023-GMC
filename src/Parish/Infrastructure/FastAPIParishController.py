@@ -9,17 +9,16 @@ router = APIRouter()
 
 
 @singleton
-class ParishFastAPIController:
+class FastAPIParishController:
     def __init__(self):
         self.list_parishes = ListParishesUseCase()
 
-    def list_parishes_endpoint(self):
+    def list_parishes_endpoint(self) -> List[Parish]:
         return self.list_parishes.execute()
 
 
-# Dependency
-def get_adoption_controller():
-    return ParishFastAPIController()
+def get_adoption_controller() -> FastAPIParishController:
+    return FastAPIParishController()
 
 
 @router.get("/get_all", status_code=200)

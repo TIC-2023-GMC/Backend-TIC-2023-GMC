@@ -52,7 +52,7 @@ class MongoDBQuizGameRepository(QuizGameRepository):
                 _id=None,
                 game_name="QuizGame",
                 game_description="",
-                game_image=PhotoFactory.create(_id="", img_path=""),
+                game_image=PhotoFactory.create(img_path=""),
                 game_category="",
                 game_score=0,
                 game_questions=game_questions,
@@ -82,9 +82,7 @@ class MongoDBQuizGameRepository(QuizGameRepository):
             user_score = UserScore(
                 user_first_name=user["first_name"],
                 user_last_name=user["last_name"],
-                user_photo=PhotoFactory.create(
-                    _id=user["photo"]["_id"], img_path=user["photo"]["img_path"]
-                ),
+                user_photo=PhotoFactory.create(img_path=user["photo"]["img_path"]),
                 game_score=player["game_score"],
                 game_time=player["game_time"],
             )

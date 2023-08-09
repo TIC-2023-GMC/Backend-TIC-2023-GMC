@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 @singleton
-class AdoptionFastAPIController:
+class FastAPIAdoptionController:
     def __init__(self):
         self.create_adoption = CreateAdoptionPublicationUseCase()
         self.list_adoptions = ListAdoptionPublicationsUseCase()
@@ -38,8 +38,8 @@ class AdoptionFastAPIController:
         )
 
 
-def get_adoption_controller() -> AdoptionFastAPIController:
-    return AdoptionFastAPIController()
+def get_adoption_controller() -> FastAPIAdoptionController:
+    return FastAPIAdoptionController()
 
 
 @router.post("/add", status_code=201)

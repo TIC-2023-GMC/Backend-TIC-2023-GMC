@@ -24,7 +24,7 @@ class FavoriteAdoptionData(BaseModel):
 
 
 @singleton
-class UserFastAPIController:
+class FastAPIUserController:
     def __init__(self):
         self.user_list_favorites = ListFavoritePublicationsUseCase()
         self.user_add_favorite = AddFavoritePublicationUseCase()
@@ -49,9 +49,8 @@ class UserFastAPIController:
         )
 
 
-# Dependency
-def get_user_controller() -> UserFastAPIController:
-    return UserFastAPIController()
+def get_user_controller() -> FastAPIUserController:
+    return FastAPIUserController()
 
 
 @router.post("/list_favorite_adoptions", status_code=200)

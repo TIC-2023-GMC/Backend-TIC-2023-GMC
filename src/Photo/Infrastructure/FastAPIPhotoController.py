@@ -7,7 +7,7 @@ router = APIRouter()
 
 
 @singleton
-class PhotoFastAPIController:
+class FastAPIPhotoController:
     def __init__(self):
         self.save_photo = SavePhotoUseCase()
 
@@ -16,13 +16,11 @@ class PhotoFastAPIController:
 
     def save_pub_photo_endpoint(self, photo_file: UploadFile) -> Photo:
         photo = self.save_photo.execute_pub(photo_file)
-        photo._id = str(photo._id)  # Convert ObjectId to string
         return photo
 
 
-# Dependency
-def get_adoption_controller() -> PhotoFastAPIController:
-    return PhotoFastAPIController()
+def get_adoption_controller() -> FastAPIPhotoController:
+    return FastAPIPhotoController()
 
 
 @router.post("/upload", status_code=201)
