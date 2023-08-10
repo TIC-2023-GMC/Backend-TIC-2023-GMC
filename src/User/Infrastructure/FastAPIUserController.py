@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
+from src.User.Domain.User import User
+from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
@@ -29,12 +31,16 @@ class FastAPIUserController:
         self.user_list_favorites = ListFavoritePublicationsUseCase()
         self.user_add_favorite = AddFavoritePublicationUseCase()
         self.user_remove_favorite = RemoveFavoritePublicationUseCase()
+        self.user_update_profile = UpdateProfileUseCase()
 
     def add_favorite_adoption(self, pub_id: str, user_id: str) -> None:
         self.user_add_favorite.execute(pub_id=pub_id, user_id=user_id)
 
     def remove_favorite_adoption(self, pub_id: str, user_id: str) -> None:
         self.user_remove_favorite.execute(pub_id=pub_id, user_id=user_id)
+
+    def update_user(self, updated_user: User) -> None:
+        self.user_update_profile.execute(updated_user)
 
     def list_favorite_publication(
         self,
@@ -62,6 +68,14 @@ def list_favorites_endpoint(
         page_number=page_number,
         page_size=page_size,
     )
+
+
+@router.put("/update_user", status_code=204)
+def update_user_endpoint(updated_user: User) -> None:
+    try:
+        get_user_controller().update_user(updated_user)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.post("/add_favorite_adoption", status_code=201)
