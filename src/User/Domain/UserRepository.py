@@ -40,3 +40,12 @@ class UserRepository(ABC):
         page_size: int,
     ) -> Tuple[List[AdoptionPublication], int]:
         pass
+
+    @abstractmethod
+    def list_my_publications(
+        self,
+        page_number: int,
+        page_size: int,
+        user_id: str,
+    ) -> Tuple[List[AdoptionPublication], int]:
+        pass
