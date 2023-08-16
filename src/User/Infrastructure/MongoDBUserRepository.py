@@ -107,3 +107,40 @@ class MongoDBUserRepository(UserRepository):
             favorites_list.append(publication)
 
         return favorites_list, page_number + 1
+
+    def list_my_publications(
+        self, page_number: int, page_size: int, user_id: str
+    ) -> Tuple[List[AdoptionPublication], int]:
+        skip_count = (page_number - 1) * page_size
+
+        documents = (
+            self.adoption_publications.find({"user._id": ObjectId(user_id)})
+            .sort([("publication_date", -1), ("_id", -1)])
+            .skip(skip_count)
+            .limit(page_size)
+        )
+
+        publications_list = []
+        for doc in documents:
+            doc["_id"] = str(doc["_id"])
+            user = UserFactory.create(**doc["user"])
+            user._id = str(user._id)
+            photo = PhotoFactory.create(**doc["photo"])
+            likes = []
+            for like in doc["likes"]:
+                like_obj = LikeFactory.create(**like)
+                like_obj._id = str(like._id)
+                likes.append(like_obj)
+            comments = []
+            for comment in doc["comments"]:
+                comment_obj = CommentFactory.create(**comment)
+                comment_obj._id = str(comment_obj._id)
+                comments.append(comment_obj)
+            publication = AdoptionPublicationFactory.create_publication(**doc)
+            publication.user = user
+            publication.photo = photo
+            publication.likes = likes
+            publication.comments = comments
+            publications_list.append(publication)
+
+        return publications_list, page_number + 1

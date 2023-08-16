@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
+from src.User.Application.ListMyPublicationUsecase import ListMyPublicationsUseCase
 from src.User.Application.GetUserById import GetUserByIdUseCase
 from src.User.Domain.User import User
 from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
@@ -33,6 +34,7 @@ class FastAPIUserController:
         self.user_add_favorite = AddFavoritePublicationUseCase()
         self.user_remove_favorite = RemoveFavoritePublicationUseCase()
         self.user_update_profile = UpdateProfileUseCase()
+        self.user_list_my_publications = ListMyPublicationsUseCase()
         self.user_get_by_id = GetUserByIdUseCase()
 
     def add_favorite_adoption(self, pub_id: str, user_id: str) -> None:
@@ -54,6 +56,15 @@ class FastAPIUserController:
             favorite_adoption_publications=favorite_adoption_publications,
             page_number=page_number,
             page_size=page_size,
+        )
+
+    def list_my_publications(
+        self, page_number: int, page_size: int, user_id: str
+    ) -> Tuple[List[AdoptionPublication], int]:
+        return self.user_list_my_publications.execute(
+            page_number=page_number,
+            page_size=page_size,
+            user_id=user_id,
         )
 
     def get_by_id(self, _id: str) -> User:
@@ -106,3 +117,14 @@ def remove_favorite_adoption_endpoint(data: FavoriteAdoptionData) -> None:
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/list_my_publications", status_code=200)
+def list_my_publications_endpoint(
+    page_number: int, page_size: int, user_id: str
+) -> Tuple[List[AdoptionPublication], int]:
+    return get_user_controller().list_my_publications(
+        page_number=page_number,
+        page_size=page_size,
+        user_id=user_id,
+    )
