@@ -27,8 +27,11 @@ class MongoDBUserRepository(UserRepository):
     def get_user(self, email, password) -> User:
         return self.users.find_one({"email": email, "password": password})
 
-    def get_by_id(self, id: float) -> User:
-        return self.users.find_one({"_id": id})
+    def get_by_id(self, _id: str) -> User:
+        doc = self.users.find_one({"_id": ObjectId(_id)})
+        doc["_id"] = str(doc["_id"])
+        user = UserFactory.create(**doc)
+        return user
 
     def update_user(self, updated_user: User) -> None:
         updated_user = updated_user.dict()
