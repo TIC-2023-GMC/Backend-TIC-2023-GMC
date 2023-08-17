@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
 from src.User.Application.ListMyPublicationUsecase import ListMyPublicationsUseCase
+from src.User.Application.GetUserById import GetUserByIdUseCase
 from src.User.Domain.User import User
 from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -34,6 +35,7 @@ class FastAPIUserController:
         self.user_remove_favorite = RemoveFavoritePublicationUseCase()
         self.user_update_profile = UpdateProfileUseCase()
         self.user_list_my_publications = ListMyPublicationsUseCase()
+        self.user_get_by_id = GetUserByIdUseCase()
 
     def add_favorite_adoption(self, pub_id: str, user_id: str) -> None:
         self.user_add_favorite.execute(pub_id=pub_id, user_id=user_id)
@@ -65,9 +67,17 @@ class FastAPIUserController:
             user_id=user_id,
         )
 
+    def get_by_id(self, _id: str) -> User:
+        return self.user_get_by_id.execute(_id=_id)
+
 
 def get_user_controller() -> FastAPIUserController:
     return FastAPIUserController()
+
+
+@router.get("/get_by_id", status_code=200)
+def get_by_id_endpoint(_id: str) -> User:
+    return get_user_controller().get_by_id(_id=_id)
 
 
 @router.post("/list_favorite_adoptions", status_code=200)
