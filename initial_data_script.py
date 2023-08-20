@@ -355,6 +355,33 @@ parishes_data = [
 ]
 parishes_collection.insert_many(parishes_data)
 
+# Games
+games_collection = db["games"]
+games_data = [
+    {
+        "game_name": "Leyes y Sanciones",
+        "game_description": "En este juego podrás aprender sobre las leyes y sanciones que existen en la ciudad de Quito para la protección de los animales.",
+        "game_image": {
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/hangman.png?alt=media&token=829fd1ad-f972-44cd-92e3-bf21b489da2b"
+        },
+    },
+    {
+        "game_name": "Cuidado Responsable",
+        "game_description": "En este juego podrás aprender sobre el cuidado responsable de los animales de compañía.",
+        "game_image": {
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/word_search.png?alt=media&token=5d324775-0f68-4bf6-92dc-bc85d69dbb5c"
+        },
+    },
+    {
+        "game_name": "Quiz",
+        "game_description": "En este juego podrás responder preguntas sobre los animales de compañía.",
+        "game_image": {
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/quiz_game.png?alt=media&token=a586d2af-a788-4740-b56d-c69ee8adf16f"
+        },
+    },
+]
+games_collection.insert_many(games_data)
+
 # Game Quiz
 game_quiz_collection = db["game_quiz"]
 game_quiz_data = [
