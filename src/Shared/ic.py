@@ -1,4 +1,6 @@
 import inject
+from src.Game.Domain.GameRepository import GameRepository
+from src.Game.Infraestructure.MongoDBGameRepository import MongoDBGameRepository
 from src.Game.QuizGame.Infrastructure.MongoDBQuizGameRepository import (
     MongoDBQuizGameRepository,
 )
@@ -29,6 +31,10 @@ def configure_ic() -> None:
         binder.bind(
             QuizGameRepository,
             MongoDBQuizGameRepository(),
+        )
+        binder.bind(
+            GameRepository,
+            MongoDBGameRepository(),
         )
 
     inject.configure_once(configure)
