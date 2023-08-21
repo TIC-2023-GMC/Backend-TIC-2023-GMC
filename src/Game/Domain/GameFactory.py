@@ -7,9 +7,8 @@ class GameFactory(ABC):
     def create_game(
         _id: str,
         game_name: str,
+        game_category: str,
         game_description: str,
         game_image: str,
-        game_category: str,
-        game_score: int,
     ) -> Game:
         pass
