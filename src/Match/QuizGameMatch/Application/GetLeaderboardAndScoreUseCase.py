@@ -1,12 +1,14 @@
 import inject
 from typing import List, Tuple
-from src.Game.QuizGame.Domain.QuizGameRepository import QuizGameRepository
-from src.Game.QuizGame.Domain.UserScore import UserScore
+from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
+    QuizGameMatchRepository,
+)
+from src.Match.QuizGameMatch.Domain.User.UserScore import UserScore
 
 
 class GetLeaderboardAndScoreUseCase:
     @inject.autoparams()
-    def __init__(self, repository: QuizGameRepository):
+    def __init__(self, repository: QuizGameMatchRepository):
         self.repository = repository
 
     def execute(self, user_id: str) -> Tuple[List[UserScore], int]:

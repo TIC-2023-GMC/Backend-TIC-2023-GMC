@@ -7,5 +7,5 @@ class UserScore(Model):
     user_first_name: str
     user_last_name: str
     user_photo: Photo
-    game_score: int
-    game_time: int
+    match_game_score: int
+    match_game_time: int

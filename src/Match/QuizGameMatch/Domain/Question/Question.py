@@ -1,6 +1,5 @@
 from typing import List
-from src.Game.QuizGame.Domain.Answer import Answer
-
+from src.Match.QuizGameMatch.Domain.Answer.Answer import Answer
 from src.Shared.Model import Model
 
 
