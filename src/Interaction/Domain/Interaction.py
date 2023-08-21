@@ -4,4 +4,4 @@ from src.User.Domain.User import User
 
 
 class Interaction(Model, ABC):
-    user: User
+    user_id: str

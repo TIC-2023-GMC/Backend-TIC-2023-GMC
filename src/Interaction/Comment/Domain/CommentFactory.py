@@ -6,10 +6,19 @@ from src.User.Domain.User import User
 
 class CommentFactory(InteractionFactory):
     @staticmethod
-    def create(_id: str, comment_text: str, comment_date: date, user: User) -> Comment:
+    def create(
+        _id: str,
+        user_first_name: str,
+        user_last_name: str,
+        comment_text: str,
+        comment_date: date,
+        user_id: str,
+    ) -> Comment:
         return Comment(
             _id=_id,
+            user_first_name=user_first_name,
+            user_last_name=user_last_name,
             comment_text=comment_text,
             comment_date=comment_date,
-            user=user,
+            user_id=user_id,
         )

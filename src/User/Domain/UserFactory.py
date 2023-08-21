@@ -1,3 +1,4 @@
+from datetime import datetime
 from src.Photo.Domain.Photo import Photo
 from src.User.Domain.User import User
 
@@ -10,6 +11,7 @@ class UserFactory:
         last_name: str,
         mobile_phone: str,
         neighborhood: str,
+        birth_date: datetime,
         email: str,
         password: str,
         num_previous_pets: int,
@@ -29,6 +31,7 @@ class UserFactory:
             last_name=last_name,
             mobile_phone=mobile_phone,
             neighborhood=neighborhood,
+            birth_date=birth_date,
             email=email,
             password=password,
             num_previous_pets=num_previous_pets,

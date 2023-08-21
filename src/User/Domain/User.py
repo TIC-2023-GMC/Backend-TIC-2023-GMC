@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
@@ -9,6 +10,7 @@ class User(Model):
     last_name: str
     mobile_phone: str
     neighborhood: str
+    birth_date: datetime
     email: str
     password: str
     num_previous_pets: int
