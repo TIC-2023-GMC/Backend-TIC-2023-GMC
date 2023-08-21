@@ -118,7 +118,7 @@ users_data = [
         "last_name": "Mason",
         "mobile_phone": "0983473043",
         "neighborhood": "Cumbayá",
-        'birth_date': datetime.datetime.now(datetime.timezone.utc),
+        "birth_date": datetime.datetime.now(datetime.timezone.utc),
         "email": "gandhygarcia@outlook.es",
         "password": "password123",
         "num_previous_pets": 2,
