@@ -1,10 +1,13 @@
 import inject
 from src.Game.Domain.GameRepository import GameRepository
 from src.Game.Infraestructure.MongoDBGameRepository import MongoDBGameRepository
-from src.Game.QuizGame.Infrastructure.MongoDBQuizGameRepository import (
-    MongoDBQuizGameRepository,
+from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
+    QuizGameMatchRepository,
 )
-from src.Game.QuizGame.Domain.QuizGameRepository import QuizGameRepository
+from src.Match.QuizGameMatch.Infrastructure.MongoDBQuizGameMatchRepository import (
+    MongoDBQuizGameMatchRepository,
+)
+
 from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
 from src.User.Domain.UserRepository import UserRepository
 from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
@@ -29,8 +32,8 @@ def configure_ic() -> None:
             MongoDBUserRepository(),
         )
         binder.bind(
-            QuizGameRepository,
-            MongoDBQuizGameRepository(),
+            QuizGameMatchRepository,
+            MongoDBQuizGameMatchRepository(),
         )
         binder.bind(
             GameRepository,

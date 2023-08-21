@@ -361,12 +361,14 @@ games_data = [
     {
         "game_name": "Leyes y Sanciones",
         "game_description": "En este juego podrás aprender sobre las leyes y sanciones que existen en la ciudad de Quito para la protección de los animales.",
+        "game_category": "Trivia",
         "game_image": {
             "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/hangman.png?alt=media&token=829fd1ad-f972-44cd-92e3-bf21b489da2b"
         },
     },
     {
         "game_name": "Cuidado Responsable",
+        "game_category": "Puzzle",
         "game_description": "En este juego podrás aprender sobre el cuidado responsable de los animales de compañía.",
         "game_image": {
             "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/word_search.png?alt=media&token=5d324775-0f68-4bf6-92dc-bc85d69dbb5c"
@@ -375,6 +377,7 @@ games_data = [
     {
         "game_name": "Quiz",
         "game_description": "En este juego podrás responder preguntas sobre los animales de compañía.",
+        "game_category": "Trivia",
         "game_image": {
             "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/quiz_game.png?alt=media&token=a586d2af-a788-4740-b56d-c69ee8adf16f"
         },
@@ -382,18 +385,17 @@ games_data = [
 ]
 games_collection.insert_many(games_data)
 
+# Match
 # Game Quiz
 game_quiz_collection = db["game_quiz"]
 game_quiz_data = [
     {
         "user_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
-        "game_name": "Quiz 1",
-        "game_description": "This is a Test Quiz",
-        "game_image": {"img_path": "string"},
-        "game_category": "string",
-        "game_score": 0,
-        "game_questions": [],
-        "game_time": 0,
+        "match_name": "Quiz Game Match",
+        "match_game_score": 0,
+        "match_game_time": 0,
+        "match_game_onboarding": ".",
+        "match_game_questions": [],
     }
 ]
 game_quiz_collection.insert_many(game_quiz_data)
