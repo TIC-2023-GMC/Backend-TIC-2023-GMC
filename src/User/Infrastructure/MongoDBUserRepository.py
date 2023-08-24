@@ -30,6 +30,9 @@ class MongoDBUserRepository(UserRepository):
     def get_by_id(self, _id: str) -> User:
         doc = self.users.find_one({"_id": ObjectId(_id)})
         doc["_id"] = str(doc["_id"])
+        doc["favorite_adoption_publications"] = [
+            str(id) for id in doc["favorite_adoption_publications"]
+        ]
         user = UserFactory.create(**doc)
         return user
 

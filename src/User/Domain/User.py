@@ -21,5 +21,5 @@ class User(Model):
     main_pet_food: str
     pet_expenses: int
     motivation: str
-    favorite_adoption_publications: List
+    favorite_adoption_publications: List[str]
     photo: Photo
