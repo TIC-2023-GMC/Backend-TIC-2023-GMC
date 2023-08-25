@@ -382,7 +382,7 @@ games_data = [
         },
     },
     {
-        "game_name": "Quiz",
+        "game_name": "Evaluándome",
         "game_description": "En este juego podrás responder preguntas sobre los animales de compañía.",
         "game_category": "Trivia",
         "game_image": {
