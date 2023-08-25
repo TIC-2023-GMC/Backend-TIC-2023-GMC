@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
 from src.User.Application.ListMyPublicationUsecase import ListMyPublicationsUseCase
-from src.User.Application.GetUserById import GetUserByIdUseCase
+from src.User.Application.GetUserByIdUseCase import GetUserByIdUseCase
 from src.User.Domain.User import User
 from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
