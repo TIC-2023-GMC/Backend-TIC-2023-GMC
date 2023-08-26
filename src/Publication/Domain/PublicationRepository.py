@@ -31,4 +31,3 @@ class PublicationRepository(ABC):
     @abstractmethod
     def get_likes_by_pub_id(self, id: str) -> List[Like]:
         pass
-
