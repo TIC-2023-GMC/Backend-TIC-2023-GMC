@@ -1,3 +1,4 @@
+from typing import List
 from src.Photo.Domain.Photo import Photo
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
@@ -18,7 +19,7 @@ class AdoptionPublicationFactory(PublicationFactory):
         publication_date: datetime,
         photo: Photo,
         likes: list[Like],
-        comments: list[Comment],
+        comments: List[str],
         species: str,
         pet_size: str,
         pet_breed: str,

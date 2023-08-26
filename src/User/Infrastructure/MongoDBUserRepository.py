@@ -97,16 +97,13 @@ class MongoDBUserRepository(UserRepository):
                 like_obj = LikeFactory.create(**like)
                 like_obj._id = str(like._id)
                 likes.append(like_obj)
-            comments = []
             for comment in doc["comments"]:
-                comment_obj = CommentFactory.create(**comment)
-                comment_obj._id = str(like._id)
-                comments.append(comment_obj)
+                comment._id = str(comment._id)
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
             publication.likes = likes
-            publication.comments = comments
+            publication.comments = doc["comments"]
             favorites_list.append(publication)
 
         return favorites_list, page_number + 1
@@ -134,16 +131,13 @@ class MongoDBUserRepository(UserRepository):
                 like_obj = LikeFactory.create(**like)
                 like_obj._id = str(like._id)
                 likes.append(like_obj)
-            comments = []
             for comment in doc["comments"]:
-                comment_obj = CommentFactory.create(**comment)
-                comment_obj._id = str(comment_obj._id)
-                comments.append(comment_obj)
+                comment._id = str(comment._id)
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
             publication.likes = likes
-            publication.comments = comments
+            publication.comments = doc["comments"]
             publications_list.append(publication)
 
         return publications_list, page_number + 1
