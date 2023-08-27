@@ -58,13 +58,12 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
                 like_obj = LikeFactory.create(**like)
                 like_obj._id = str(like._id)
                 likes.append(like_obj)
-            for comment in doc["comments"]:
-                comment._id = str(comment._id)
+            object_ids = doc["comments"]
+            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = ExperiencePublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
             publication.likes = likes
-            publication.comments = doc["comments"]
             publication_list.append(publication)
 
         return publication_list, page_number + 1

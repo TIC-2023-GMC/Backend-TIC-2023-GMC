@@ -266,7 +266,12 @@ experience_publications_data = [
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
-        "comments": [],
+        "comments": [
+            ObjectId("64e4010345d83092241d3077"),
+            ObjectId("64e4010345d83092241d3078"),
+            ObjectId("64e4010345d83092241d3079"),
+            ObjectId("64e4010345d83092241d3080"),
+        ],
         "species": "Gato",
     },
     {
