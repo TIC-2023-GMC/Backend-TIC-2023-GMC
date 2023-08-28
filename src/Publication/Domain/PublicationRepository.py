@@ -28,6 +28,15 @@ class PublicationRepository(ABC):
     def remove_like_by_id(self, like_id: str) -> None:
         pass
 
+
     @abstractmethod
     def get_likes_by_pub_id(self, id: str) -> List[Like]:
+        pass
+
+    @abstractmethod
+    def get_comments_by_pub_id(self, id: str) -> List[Comment]:
+        pass
+
+    @abstractmethod
+    def add_comment(self, comment: Comment) -> None:
         pass
