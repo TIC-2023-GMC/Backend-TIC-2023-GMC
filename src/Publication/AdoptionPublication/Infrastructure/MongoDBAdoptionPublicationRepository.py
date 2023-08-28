@@ -60,16 +60,12 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
                 like_obj = LikeFactory.create(**like)
                 like_obj._id = str(like._id)
                 likes.append(like_obj)
-            comments = []
-            for comment in doc["comments"]:
-                comment_obj = CommentFactory.create(**comment)
-                comment_obj._id = str(like._id)
-                comments.append(comment_obj)
+            object_ids = doc["comments"]
+            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
             publication.likes = likes
-            publication.comments = comments
             publication_list.append(publication)
 
         return publication_list, page_number + 1
@@ -84,12 +80,4 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
 
     def get_likes_by_pub_id(self, id) -> List[Like]:
         # Implement the logic for getting likes by publication ID from MongoDB
-        pass
-
-    def get_comments_by_pub_id(self, id) -> List[Comment]:
-        # Implement the logic for getting comments by publication ID from MongoDB
-        pass
-
-    def add_comment(self, comment) -> None:
-        # Implement the logic for adding a comment to a publication in MongoDB
         pass
