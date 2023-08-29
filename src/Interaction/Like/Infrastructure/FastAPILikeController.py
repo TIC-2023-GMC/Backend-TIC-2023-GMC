@@ -18,9 +18,9 @@ class FastAPILikeController:
             pub_id=pub_id, user_id=user_id, is_adoption=is_adoption
         )
 
-    def remove_like_by_id(self, user_id: str, pub_id: str, is_adoption: bool) -> None:
+    def remove_like(self, pub_id: str, user_id: str, is_adoption: bool) -> None:
         self.remove_like_use_case.execute(
-            user_id=user_id, pub_id=pub_id, is_adoption=is_adoption
+            pub_id=pub_id, user_id=user_id, is_adoption=is_adoption
         )
 
 
@@ -41,7 +41,7 @@ def add_like_endpoint(user_id: str, pub_id: str, is_adoption: bool) -> None:
 @router.delete("/remove_like", status_code=200)
 def remove_like_endpoint(user_id: str, pub_id: str, is_adoption: bool) -> None:
     try:
-        like_controller().remove_like_by_id(
+        like_controller().remove_like(
             pub_id=pub_id, user_id=user_id, is_adoption=is_adoption
         )
     except Exception as e:
