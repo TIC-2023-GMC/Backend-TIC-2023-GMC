@@ -20,7 +20,9 @@ from src.Game.Infraestructure.FastAPIGameController import (
 from src.Interaction.Comment.Infrastructure.FastAPICommentController import (
     router as comment_router,
 )
-from src.Interaction.Like.Infrastructure.FastAPILikeController import router as like_router
+from src.Interaction.Like.Infrastructure.FastAPILikeController import (
+    router as like_router,
+)
 
 api_router = APIRouter()
 

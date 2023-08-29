@@ -69,15 +69,3 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
             publication_list.append(publication)
 
         return publication_list, page_number + 1
-
-    def add_like(self, like) -> None:
-        # Implement the logic for adding a like to a publication in MongoDB
-        pass
-
-    def remove_like_by_id(self, like_id) -> None:
-        # Implement the logic for removing a like by ID from MongoDB
-        pass
-
-    def get_likes_by_pub_id(self, id) -> List[Like]:
-        # Implement the logic for getting likes by publication ID from MongoDB
-        pass
