@@ -5,6 +5,10 @@ from src.Interaction.Comment.Infrastructure.MongoDBCommentRepository import (
 from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
 from src.Game.Domain.GameRepository import GameRepository
 from src.Game.Infraestructure.MongoDBGameRepository import MongoDBGameRepository
+from src.Interaction.Like.Domain.LikeRepository import LikeRepository
+from src.Interaction.Like.Infrastructure.MongoDBLikeRepository import (
+    MongoDBLikeRepository,
+)
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,
 )
@@ -44,6 +48,11 @@ def configure_ic() -> None:
         binder.bind(
             CommentRepository,
             MongoDBCommentRepository(),
+        )
+
+        binder.bind(
+            LikeRepository,
+            MongoDBLikeRepository(),
         )
 
     inject.configure_once(configure)

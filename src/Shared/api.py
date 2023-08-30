@@ -20,6 +20,9 @@ from src.Game.Infraestructure.FastAPIGameController import (
 from src.Interaction.Comment.Infrastructure.FastAPICommentController import (
     router as comment_router,
 )
+from src.Interaction.Like.Infrastructure.FastAPILikeController import (
+    router as like_router,
+)
 
 api_router = APIRouter()
 
@@ -33,3 +36,4 @@ api_router.include_router(photo_router, prefix="/photo", tags=["photo"])
 api_router.include_router(parish_router, prefix="/parish", tags=["parish"])
 api_router.include_router(game_router, prefix="/game", tags=["game"])
 api_router.include_router(quiz_game_match_router, prefix="/match", tags=["match"])
+api_router.include_router(like_router, prefix="/like", tags=["like"])

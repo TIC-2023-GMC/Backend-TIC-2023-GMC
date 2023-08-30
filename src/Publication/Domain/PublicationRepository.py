@@ -19,15 +19,3 @@ class PublicationRepository(ABC):
     @abstractmethod
     def get_by_id(self, id: str) -> Publication:
         pass
-
-    @abstractmethod
-    def add_like(self, like: Like) -> None:
-        pass
-
-    @abstractmethod
-    def remove_like_by_id(self, like_id: str) -> None:
-        pass
-
-    @abstractmethod
-    def get_likes_by_pub_id(self, id: str) -> List[Like]:
-        pass
