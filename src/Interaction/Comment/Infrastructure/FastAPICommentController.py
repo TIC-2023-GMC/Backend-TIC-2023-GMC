@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from datetime import datetime
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
 from src.Interaction.Comment.Application.CreateCommentUseCase import (
@@ -20,7 +19,6 @@ class CommentData(BaseModel):
     pub_id: str
     user_id: str
     comment_text: str
-    comment_date: datetime
     is_adoption: bool
 
 
@@ -36,14 +34,12 @@ class FastAPICommentController:
         pub_id: str,
         user_id: str,
         comment_text: str,
-        comment_date: datetime,
         is_adoption: bool,
     ) -> None:
         self.add_comment_use_case.execute(
             pub_id=pub_id,
             user_id=user_id,
             comment_text=comment_text,
-            comment_date=comment_date,
             is_adoption=is_adoption,
         )
 
@@ -74,7 +70,6 @@ def add_comment_endpoint(data: CommentData):
             pub_id=data.pub_id,
             user_id=data.user_id,
             comment_text=data.comment_text,
-            comment_date=data.comment_date,
             is_adoption=data.is_adoption,
         )
     except Exception as e:

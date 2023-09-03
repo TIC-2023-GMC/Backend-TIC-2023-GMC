@@ -19,7 +19,6 @@ class MongoDBCommentRepository(CommentRepository):
         pub_id: str,
         user_id: str,
         comment_text: str,
-        comment_date,
         is_adoption: bool,
     ) -> None:
         user_id = ObjectId(user_id)
@@ -30,6 +29,7 @@ class MongoDBCommentRepository(CommentRepository):
         user_last_name = user["last_name"]
         user_photo = user["photo"]
         _id = None
+        comment_date = datetime.now()
         comment = CommentFactory.create(
             _id,
             user_first_name,

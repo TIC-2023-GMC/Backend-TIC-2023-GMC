@@ -12,7 +12,6 @@ class CommentRepository(ABC):
         pub_id: str,
         user_id: str,
         comment_text: str,
-        comment_date: datetime,
         is_adoption: bool,
     ) -> None:
         pass
