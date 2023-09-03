@@ -5,6 +5,9 @@ from fastapi import APIRouter, HTTPException
 from src.Interaction.Comment.Application.CreateCommentUseCase import (
     CreateCommentUseCase,
 )
+from src.Interaction.Comment.Application.UpdateCommentUseCase import (
+    UpdateCommentUseCase,
+)
 from src.Interaction.Comment.Domain.Comment import Comment
 from src.Interaction.Comment.Application.ListCommentsUseCase import ListCommentsUseCase
 from src.Shared.Singleton import singleton
@@ -26,6 +29,7 @@ class FastAPICommentController:
     def __init__(self):
         self.commert_list = ListCommentsUseCase()
         self.add_comment_use_case = CreateCommentUseCase()
+        self.update_comment_use_case = UpdateCommentUseCase()
 
     def add_comment(
         self,
@@ -42,6 +46,9 @@ class FastAPICommentController:
             comment_date=comment_date,
             is_adoption=is_adoption,
         )
+
+    def update_comment(self, comment_id: str, comment_text: str) -> None:
+        self.update_comment_use_case.execute(comment_id, comment_text)
 
     def list_comments(
         self,
@@ -69,6 +76,17 @@ def add_comment_endpoint(data: CommentData):
             comment_text=data.comment_text,
             comment_date=data.comment_date,
             is_adoption=data.is_adoption,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/update_comment", status_code=200)
+def update_comment_endpoint(comment_id: str, comment_text: str):
+    try:
+        get_comment_controller().update_comment(
+            comment_id=comment_id,
+            comment_text=comment_text,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

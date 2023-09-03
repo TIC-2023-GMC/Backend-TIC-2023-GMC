@@ -1,3 +1,4 @@
+from datetime import datetime
 from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
 from src.Interaction.Comment.Domain.Comment import Comment
 from src.Shared.MongoClient import MongoDBConnection
@@ -54,6 +55,19 @@ class MongoDBCommentRepository(CommentRepository):
                 {"_id": pub_id}, {"$push": {"comments": comment_dict["_id"]}}
             )
         raise Exception("No existe la publicación")
+
+    def update_comment(self, comment_id: str, comment_text: str) -> None:
+        comment_id = ObjectId(comment_id)
+        comment = self.comments.find_one({"_id": comment_id})
+        print(comment)
+        new_date = datetime.now()
+        print(new_date)
+        if not comment:
+            raise Exception("No existe el comentario")
+        return self.comments.update_one(
+            {"_id": comment_id},
+            {"$set": {"comment_text": comment_text, "comment_date": new_date}},
+        )
 
     def get_comments_by_id(
         self, comments_id: List[str], page_number: int, page_size: int

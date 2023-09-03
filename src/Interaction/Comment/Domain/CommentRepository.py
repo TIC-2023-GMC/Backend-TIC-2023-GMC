@@ -22,3 +22,6 @@ class CommentRepository(ABC):
         self, comments_id: List[str], page_number: int, page_size: int
     ) -> Tuple[List[Comment], int]:
         pass
+
+    def update_comment(self, comment_id: str, comment_text: str) -> None:
+        pass
