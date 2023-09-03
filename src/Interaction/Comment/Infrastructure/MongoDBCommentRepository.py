@@ -69,6 +69,25 @@ class MongoDBCommentRepository(CommentRepository):
             {"$set": {"comment_text": comment_text, "comment_date": new_date}},
         )
 
+    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
+        comment_id = ObjectId(comment_id)
+        comment = self.comments.find_one({"_id": comment_id})
+        if not comment:
+            raise Exception("No existe el comentario")
+        pub_id = ObjectId(pub_id)
+        if is_adoption:
+            collection = self.adoption_publications
+            publication = self.adoption_publications.find_one({"_id": pub_id})
+        else:
+            collection = self.experience_publications
+            publication = self.experience_publications.find_one({"_id": pub_id})
+        if publication:
+            comment = self.comments.delete_one({"_id": comment_id})
+            return collection.update_one(
+                {"_id": pub_id}, {"$pull": {"comments": comment_id}}
+            )
+        raise Exception("No existe la publicación")
+
     def get_comments_by_id(
         self, comments_id: List[str], page_number: int, page_size: int
     ) -> Comment:

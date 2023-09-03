@@ -22,5 +22,10 @@ class CommentRepository(ABC):
     ) -> Tuple[List[Comment], int]:
         pass
 
+    @abstractmethod
     def update_comment(self, comment_id: str, comment_text: str) -> None:
+        pass
+
+    @abstractmethod
+    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
         pass
