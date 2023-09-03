@@ -13,12 +13,35 @@ class MongoDBCommentRepository(CommentRepository):
     adoption_publications = db["adoption_publications"]
     experience_publications = db["experience_publications"]
 
-    def add_comment(self, comment: Comment, pub_id: str, is_adoption: bool) -> None:
+    def add_comment(
+        self,
+        pub_id: str,
+        user_id: str,
+        comment_text: str,
+        comment_date,
+        is_adoption: bool,
+    ) -> None:
+        user_id = ObjectId(user_id)
+        user = self.db["users"].find_one({"_id": user_id})
+        if not user:
+            raise Exception("No existe el usuario")
+        user_first_name = user["first_name"]
+        user_last_name = user["last_name"]
+        user_photo = user["photo"]
+        _id = None
+        comment = CommentFactory.create(
+            _id,
+            user_first_name,
+            user_last_name,
+            comment_text,
+            comment_date,
+            user_photo,
+            str(user_id),
+        )
         comment_dict = comment.dict()
         comment_dict["_id"] = ObjectId()
         comment_dict["user_id"] = ObjectId(comment_dict["user_id"])
         self.comments.insert_one(comment_dict)
-
         pub_id = ObjectId(pub_id)
         if is_adoption:
             collection = self.adoption_publications
@@ -26,7 +49,6 @@ class MongoDBCommentRepository(CommentRepository):
         else:
             collection = self.experience_publications
             publication = self.experience_publications.find_one({"_id": pub_id})
-
         if publication:
             return collection.update_one(
                 {"_id": pub_id}, {"$push": {"comments": comment_dict["_id"]}}

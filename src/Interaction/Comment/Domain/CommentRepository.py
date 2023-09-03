@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
 from typing import List, Tuple
 
 from src.Interaction.Comment.Domain.Comment import Comment
@@ -6,7 +7,14 @@ from src.Interaction.Comment.Domain.Comment import Comment
 
 class CommentRepository(ABC):
     @abstractmethod
-    def add_comment(self, comment: Comment, pub_id: str, is_adoption: bool) -> None:
+    def add_comment(
+        self,
+        pub_id: str,
+        user_id: str,
+        comment_text: str,
+        comment_date: datetime,
+        is_adoption: bool,
+    ) -> None:
         pass
 
     @abstractmethod
