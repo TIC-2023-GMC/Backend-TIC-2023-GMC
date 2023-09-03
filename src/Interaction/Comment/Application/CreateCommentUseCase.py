@@ -6,7 +6,7 @@ from src.Interaction.Comment.Infrastructure.MongoDBCommentRepository import (
 
 
 class CreateCommentUseCase:
-    @inject.params(comment_repository=MongoDBCommentRepository)
+    @inject.autoparams()
     def __init__(self, comment_repository: CommentRepository):
         self.comment_repository = comment_repository
 
