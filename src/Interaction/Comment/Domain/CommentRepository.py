@@ -6,7 +6,7 @@ from src.Interaction.Comment.Domain.Comment import Comment
 
 class CommentRepository(ABC):
     @abstractmethod
-    def add_comment(self, comment: Comment, pub_id: str) -> None:
+    def add_comment(self, comment: Comment, pub_id: str, is_adoption: bool) -> None:
         pass
 
     @abstractmethod
