@@ -89,17 +89,26 @@ class MongoDBCommentRepository(CommentRepository):
         raise Exception("No existe la publicación")
 
     def get_comments_by_id(
-        self, comments_id: List[str], page_number: int, page_size: int
+        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
     ) -> Comment:
+        if is_adoption:
+            comments_array = self.adoption_publications.find_one(
+                {"_id": ObjectId(pub_id)}, {"comments": 1, "_id": 0}
+            )["comments"]
+        else:
+            comments_array = self.experience_publications.find_one(
+                {"_id": ObjectId(pub_id)}, {"comments": 1, "_id": 0}
+            )["comments"]
+
         skip_count = (page_number - 1) * page_size
-        comments_id = [ObjectId(id) for id in comments_id]
         documents = (
-            self.comments.find({"_id": {"$in": comments_id}})
+            self.comments.find({"_id": {"$in": comments_array}})
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)
         )
         comments = []
+
         for doc in documents:
             doc["_id"] = str(doc["_id"])
             doc["user_id"] = str(doc["user_id"])

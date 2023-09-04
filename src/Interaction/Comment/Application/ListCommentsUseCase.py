@@ -10,8 +10,11 @@ class ListCommentsUseCase:
         self.comment_repository = comment_repository
 
     def execute(
-        self, comments_id: List[str], page_number: int, page_size: int
+        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
     ) -> Tuple[List[Comment], int]:
         return self.comment_repository.get_comments_by_id(
-            comments_id=comments_id, page_number=page_number, page_size=page_size
+            pub_id=pub_id,
+            page_number=page_number,
+            page_size=page_size,
+            is_adoption=is_adoption,
         )

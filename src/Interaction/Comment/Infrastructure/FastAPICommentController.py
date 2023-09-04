@@ -28,7 +28,7 @@ class CommentData(BaseModel):
 @singleton
 class FastAPICommentController:
     def __init__(self):
-        self.commert_list = ListCommentsUseCase()
+        self.comment_list = ListCommentsUseCase()
         self.add_comment_use_case = CreateCommentUseCase()
         self.update_comment_use_case = UpdateCommentUseCase()
         self.delete_comment_use_case = DeleteCommentUseCase()
@@ -56,15 +56,13 @@ class FastAPICommentController:
         )
 
     def list_comments(
-        self,
-        comments_id: List[str],
-        page_number: int,
-        page_size: int,
+        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
     ) -> Tuple[List[Comment], int]:
-        return self.commert_list.execute(
-            comments_id=comments_id,
+        return self.comment_list.execute(
+            pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
+            is_adoption=is_adoption,
         )
 
 
@@ -108,17 +106,16 @@ def delete_comment_endpoint(pub_id: str, comment_id: str, is_adoption: bool):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/list_comments", status_code=200)
+@router.get("/list_comments", status_code=200)
 def list_comments_endpoint(
-    comments_id: List[str],
-    page_number: int,
-    page_size: int,
+    pub_id: str, page_number: int, page_size: int, is_adoption: bool
 ):
     try:
         return get_comment_controller().list_comments(
-            comments_id=comments_id,
+            pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
+            is_adoption=is_adoption,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

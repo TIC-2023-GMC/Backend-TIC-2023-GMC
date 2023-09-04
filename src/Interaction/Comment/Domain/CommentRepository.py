@@ -18,7 +18,7 @@ class CommentRepository(ABC):
 
     @abstractmethod
     def get_comments_by_id(
-        self, comments_id: List[str], page_number: int, page_size: int
+        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
     ) -> Tuple[List[Comment], int]:
         pass
 
