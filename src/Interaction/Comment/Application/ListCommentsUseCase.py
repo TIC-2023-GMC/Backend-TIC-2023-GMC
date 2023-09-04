@@ -13,5 +13,8 @@ class ListCommentsUseCase:
         self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
     ) -> Tuple[List[Comment], int]:
         return self.comment_repository.get_comments_by_id(
-            pub_id=pub_id, page_number=page_number, page_size=page_size, is_adoption=is_adoption
+            pub_id=pub_id,
+            page_number=page_number,
+            page_size=page_size,
+            is_adoption=is_adoption,
         )
