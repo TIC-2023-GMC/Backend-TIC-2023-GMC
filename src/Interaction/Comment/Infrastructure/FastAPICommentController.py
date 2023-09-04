@@ -60,11 +60,13 @@ class FastAPICommentController:
         pub_id: str,
         page_number: int,
         page_size: int,
+        is_adoption: bool
     ) -> Tuple[List[Comment], int]:
         return self.comment_list.execute(
             pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
+            is_adoption=is_adoption
         )
 
 
@@ -113,12 +115,14 @@ def list_comments_endpoint(
     pub_id: str,
     page_number: int,
     page_size: int,
+    is_adoption: bool
 ):
     try:
         return get_comment_controller().list_comments(
             pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
+            is_adoption=is_adoption
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
