@@ -30,6 +30,9 @@ class MongoDBUserRepository(UserRepository):
     def get_by_id(self, _id: str) -> User:
         doc = self.users.find_one({"_id": ObjectId(_id)})
         doc["_id"] = str(doc["_id"])
+        doc["favorite_adoption_publications"] = [
+            str(id) for id in doc["favorite_adoption_publications"]
+        ]
         user = UserFactory.create(**doc)
         return user
 
@@ -89,21 +92,13 @@ class MongoDBUserRepository(UserRepository):
             user = UserFactory.create(**doc["user"])
             user._id = str(user._id)
             photo = PhotoFactory.create(**doc["photo"])
-            likes = []
-            for like in doc["likes"]:
-                like_obj = LikeFactory.create(**like)
-                like_obj._id = str(like._id)
-                likes.append(like_obj)
-            comments = []
-            for comment in doc["comments"]:
-                comment_obj = CommentFactory.create(**comment)
-                comment_obj._id = str(like._id)
-                comments.append(comment_obj)
+            likes_object_ids = doc["likes"]
+            doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
+            object_ids = doc["comments"]
+            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
-            publication.likes = likes
-            publication.comments = comments
             favorites_list.append(publication)
 
         return favorites_list, page_number + 1
@@ -126,21 +121,13 @@ class MongoDBUserRepository(UserRepository):
             user = UserFactory.create(**doc["user"])
             user._id = str(user._id)
             photo = PhotoFactory.create(**doc["photo"])
-            likes = []
-            for like in doc["likes"]:
-                like_obj = LikeFactory.create(**like)
-                like_obj._id = str(like._id)
-                likes.append(like_obj)
-            comments = []
-            for comment in doc["comments"]:
-                comment_obj = CommentFactory.create(**comment)
-                comment_obj._id = str(comment_obj._id)
-                comments.append(comment_obj)
+            likes_object_ids = doc["likes"]
+            doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
+            object_ids = doc["comments"]
+            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
-            publication.likes = likes
-            publication.comments = comments
             publications_list.append(publication)
 
         return publications_list, page_number + 1

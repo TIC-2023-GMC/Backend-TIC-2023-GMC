@@ -16,5 +16,5 @@ class Publication(Model, ABC):
     publication_date: datetime
     photo: Photo
     likes: List[Like]
-    comments: List[Comment]
+    comments: List[str]
     species: str
