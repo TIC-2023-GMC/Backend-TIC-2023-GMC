@@ -1,9 +1,11 @@
+from typing import List, Tuple
+
 import inject
+
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
 from src.User.Domain.UserRepository import UserRepository
-from typing import List, Tuple
 
 
 class ListFavoritePublicationsUseCase:
@@ -13,12 +15,12 @@ class ListFavoritePublicationsUseCase:
 
     def execute(
         self,
-        favorite_adoption_publications: List[str],
+        user_id: str,
         page_number: int,
         page_size: int,
     ) -> Tuple[List[AdoptionPublication], int]:
         return self.user_repository.list_favorite_publications(
-            favorite_adoption_publications=favorite_adoption_publications,
+            user_id=user_id,
             page_number=page_number,
             page_size=page_size,
         )

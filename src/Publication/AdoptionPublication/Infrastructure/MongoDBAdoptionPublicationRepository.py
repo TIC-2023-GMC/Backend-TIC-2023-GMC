@@ -1,10 +1,12 @@
+from typing import List, Tuple
+
+from bson import ObjectId
+
 from src.Interaction.Comment.Domain.Comment import Comment
-from src.Interaction.Like.Domain.Like import Like
-from src.Shared.MongoClient import MongoDBConnection
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
+from src.Interaction.Like.Domain.Like import Like
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
-from src.User.Domain.UserFactory import UserFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
@@ -12,8 +14,8 @@ from src.Publication.AdoptionPublication.Domain.AdoptionPublicationFactory impor
     AdoptionPublicationFactory,
 )
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-from bson import ObjectId
-from typing import List, Tuple
+from src.Shared.MongoClient import MongoDBConnection
+from src.User.Domain.UserFactory import UserFactory
 
 
 class MongoDBAdoptionPublicationRepository(PublicationRepository):

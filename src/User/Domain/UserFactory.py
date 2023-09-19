@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import List
+
 from src.Photo.Domain.Photo import Photo
 from src.User.Domain.User import User
 
@@ -23,8 +24,8 @@ class UserFactory:
         main_pet_food: str,
         pet_expenses: int,
         motivation: str,
-        favorite_adoption_publications: List[str],
         photo: Photo,
+        favorite_adoption_publications: List[str] = [],
     ) -> User:
         return User(
             _id=_id,
