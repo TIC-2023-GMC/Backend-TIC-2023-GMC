@@ -1,5 +1,6 @@
 from datetime import datetime
-from typing import List
+from typing import List, Optional
+
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
 
@@ -21,5 +22,5 @@ class User(Model):
     main_pet_food: str
     pet_expenses: int
     motivation: str
-    favorite_adoption_publications: List[str]
+    favorite_adoption_publications: Optional[List[str]]
     photo: Photo

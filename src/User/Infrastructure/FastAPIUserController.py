@@ -1,23 +1,25 @@
-from pydantic import BaseModel
 from typing import List, Tuple
+
 from fastapi import APIRouter, HTTPException
-from src.User.Application.ListMyPublicationUsecase import ListMyPublicationsUseCase
-from src.User.Application.GetUserByIdUseCase import GetUserByIdUseCase
-from src.User.Domain.User import User
-from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
+from pydantic import BaseModel
+
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
 )
 from src.Shared.Singleton import singleton
-from src.User.Application.ListFavoritePublicationsUseCase import (
-    ListFavoritePublicationsUseCase,
-)
 from src.User.Application.AddFavoritePublicationUseCase import (
     AddFavoritePublicationUseCase,
 )
+from src.User.Application.GetUserByIdUseCase import GetUserByIdUseCase
+from src.User.Application.ListFavoritePublicationsUseCase import (
+    ListFavoritePublicationsUseCase,
+)
+from src.User.Application.ListMyPublicationUsecase import ListMyPublicationsUseCase
 from src.User.Application.RemoveFavoritePublicationUseCase import (
     RemoveFavoritePublicationUseCase,
 )
+from src.User.Application.UpdateProfileUseCase import UpdateProfileUseCase
+from src.User.Domain.User import User
 
 router = APIRouter()
 
@@ -48,12 +50,12 @@ class FastAPIUserController:
 
     def list_favorite_publication(
         self,
-        favorite_adoption_publications: List[str],
+        user_id: str,
         page_number: int,
         page_size: int,
     ) -> Tuple[List[AdoptionPublication], int]:
         return self.user_list_favorites.execute(
-            favorite_adoption_publications=favorite_adoption_publications,
+            user_id=user_id,
             page_number=page_number,
             page_size=page_size,
         )
@@ -80,12 +82,12 @@ def get_by_id_endpoint(_id: str) -> User:
     return get_user_controller().get_by_id(_id=_id)
 
 
-@router.post("/list_favorite_adoptions", status_code=200)
+@router.get("/list_favorite_adoptions", status_code=200)
 def list_favorites_endpoint(
-    favorite_adoption_publications: List[str], page_number: int, page_size: int
+    user_id: str, page_number: int, page_size: int
 ) -> Tuple[List[AdoptionPublication], int]:
     return get_user_controller().list_favorite_publication(
-        favorite_adoption_publications=favorite_adoption_publications,
+        user_id=user_id,
         page_number=page_number,
         page_size=page_size,
     )

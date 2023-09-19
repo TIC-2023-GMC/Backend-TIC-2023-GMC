@@ -1,5 +1,6 @@
 import datetime
 import os
+
 from bson import ObjectId
 from pymongo import MongoClient
 
@@ -23,6 +24,8 @@ db = client[mongodb_database]
 
 # Users
 users_collection = db["users"]
+user_favorite_publications = db["user_favorite_publications"]
+
 users_data = [
     {
         "_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
@@ -41,7 +44,6 @@ users_data = [
         "main_pet_food": "homemade",
         "pet_expenses": 40.5,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.6435-9/74242360_3195954163812838_4274861617784553472_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFRCjYsTZuQlf2PHyTPJ3HYymegSJbxrSjKZ6BIlvGtKPYIzlm5LEqBr9cR0tDl-FEvtHfkBqZQ6LHCgw-pkTlW&_nc_ohc=dye6H3TWD6QAX-v2xOF&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCF85oDfvg1CEtIJ1We_mJ3gV49fRwyklxfDfl8SouHOA&oe=64D84DE2",
         },
@@ -63,7 +65,6 @@ users_data = [
         "main_pet_food": "homemade",
         "pet_expenses": 405,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://imagenes.elpais.com/resizer/fdGn2HZ-QXQJW92FNbeWU7Z9Da4=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/TW5CHJTUY5B3DOS35VMOLZUVF4.jpg",
         },
@@ -85,7 +86,6 @@ users_data = [
         "main_pet_food": "homemade",
         "pet_expenses": 40.5,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://upload.wikimedia.org/wikipedia/commons/8/8d/President_Barack_Obama.jpg",
         },
@@ -107,7 +107,6 @@ users_data = [
         "main_pet_food": "homemade",
         "pet_expenses": 40.5,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://fotografias.lasexta.com/clipping/cmsimages01/2023/08/02/790629EE-D19C-497E-8ECE-5BB0D4AE1307/imagen-archivo-donald-trump_98.jpg?crop=1920,1080,x0,y0&width=1900&height=1069&optimize=low&format=webply",
         },
@@ -129,7 +128,6 @@ users_data = [
         "main_pet_food": "homemade",
         "pet_expenses": 45,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://everipedia-storage.s3-accelerate.amazonaws.com/ProfilePics/conor-mason__99848.png",
         },
@@ -151,7 +149,6 @@ users_data = [
         "main_pet_food": "Casera",
         "pet_expenses": 20.5,
         "motivation": "Amo a los animales",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://akamai.sscdn.co/uploadfile/letras/fotos/3/a/7/5/3a75246b960d609112b5578f5774b3fe.jpg",
         },
@@ -173,7 +170,6 @@ users_data = [
         "main_pet_food": "Sopas caseras",
         "pet_expenses": 40.5,
         "motivation": "Love for animals",
-        "favorite_adoption_publications": [],
         "photo": {
             "img_path": "https://m.media-amazon.com/images/M/MV5BMTc4NzMzMTE3NV5BMl5BanBnXkFtZTcwMTQ0NTg2OA@@._V1_.jpg",
         },
