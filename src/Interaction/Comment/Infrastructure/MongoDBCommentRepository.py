@@ -10,17 +10,11 @@ from typing import List, Tuple
 
 class MongoDBCommentRepository(CommentRepository):
     db = MongoDBConnection().get_db()
-    comments = db["comments"]
+    comments = db["publication_comments"]
     adoption_publications = db["adoption_publications"]
     experience_publications = db["experience_publications"]
 
-    def add_comment(
-        self,
-        pub_id: str,
-        user_id: str,
-        comment_text: str,
-        is_adoption: bool,
-    ) -> None:
+    def add_comment(self, pub_id: str, user_id: str, comment_text: str) -> None:
         user_id = ObjectId(user_id)
         user = self.db["users"].find_one({"_id": user_id})
         if not user:
@@ -42,19 +36,16 @@ class MongoDBCommentRepository(CommentRepository):
         comment_dict = comment.dict()
         comment_dict["_id"] = ObjectId()
         comment_dict["user_id"] = ObjectId(comment_dict["user_id"])
-        self.comments.insert_one(comment_dict)
+
         pub_id = ObjectId(pub_id)
-        if is_adoption:
-            collection = self.adoption_publications
-            publication = self.adoption_publications.find_one({"_id": pub_id})
-        else:
-            collection = self.experience_publications
-            publication = self.experience_publications.find_one({"_id": pub_id})
-        if publication:
-            return collection.update_one(
-                {"_id": pub_id}, {"$push": {"comments": comment_dict["_id"]}}
+        comments_document = self.comments.find_one({"_id": pub_id})
+
+        if comments_document:
+            return self.comments.update_one(
+                {"_id": pub_id}, {"$push": {"comments": comment_dict}}
             )
-        raise Exception("No existe la publicación")
+        else:
+            return self.comments.insert_one({"_id": pub_id, "comments": [comment_dict]})
 
     def update_comment(self, comment_id: str, comment_text: str) -> None:
         comment_id = ObjectId(comment_id)
@@ -89,29 +80,26 @@ class MongoDBCommentRepository(CommentRepository):
         raise Exception("No existe la publicación")
 
     def get_comments_by_id(
-        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
+        self, pub_id: str, page_number: int, page_size: int
     ) -> Comment:
-        if is_adoption:
-            comments_array = self.adoption_publications.find_one(
-                {"_id": ObjectId(pub_id)}, {"comments": 1, "_id": 0}
-            )["comments"]
+        pub_id = ObjectId(pub_id)
+        document = self.comments.find_one({"_id": pub_id})
+
+        if document:
+            publication_comments = document.get("comments", [])
+            publication_comments.sort(key=lambda x: x["comment_date"], reverse=True)
+            skip_count = (page_number - 1) * page_size
+            start_index = skip_count
+            end_index = skip_count + page_size
+            paginated_comments = publication_comments[start_index:end_index]
+
+            comments = []
+
+            for doc in paginated_comments:
+                doc["_id"] = str(doc["_id"])
+                doc["user_id"] = str(doc["user_id"])
+                comment = CommentFactory.create(**doc)
+                comments.append(comment)
+            return comments, page_number + 1
         else:
-            comments_array = self.experience_publications.find_one(
-                {"_id": ObjectId(pub_id)}, {"comments": 1, "_id": 0}
-            )["comments"]
-
-        skip_count = (page_number - 1) * page_size
-        documents = (
-            self.comments.find({"_id": {"$in": comments_array}})
-            .sort([("publication_date", -1), ("_id", -1)])
-            .skip(skip_count)
-            .limit(page_size)
-        )
-        comments = []
-
-        for doc in documents:
-            doc["_id"] = str(doc["_id"])
-            doc["user_id"] = str(doc["user_id"])
-            comment = CommentFactory.create(**doc)
-            comments.append(comment)
-        return comments, page_number + 1
+            return [], page_number + 1

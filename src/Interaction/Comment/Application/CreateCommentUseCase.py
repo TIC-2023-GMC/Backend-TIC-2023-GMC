@@ -15,11 +15,9 @@ class CreateCommentUseCase:
         pub_id: str,
         user_id: str,
         comment_text: str,
-        is_adoption: bool,
     ) -> None:
         return self.comment_repository.add_comment(
             pub_id=pub_id,
             user_id=user_id,
             comment_text=comment_text,
-            is_adoption=is_adoption,
         )
