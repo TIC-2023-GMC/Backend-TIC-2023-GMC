@@ -283,49 +283,6 @@ organizations_data = [
 organizations_collection.insert_many(organizations_data)
 
 comments_collection = db["publication_comments"]
-""" comments_data = [
-    {
-        "_id": ObjectId("64e4010345d83092241d3077"),
-        "user_id": user1["_id"],
-        "user_first_name": user1["first_name"],
-        "user_last_name": user1["last_name"],
-        "user_photo": user1["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3078"),
-        "user_id": user2["_id"],
-        "user_first_name": user2["first_name"],
-        "user_last_name": user2["last_name"],
-        "user_photo": user2["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3079"),
-        "user_id": user3["_id"],
-        "user_first_name": user3["first_name"],
-        "user_last_name": user3["last_name"],
-        "user_photo": user3["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3080"),
-        "user_id": user4["_id"],
-        "user_first_name": user4["first_name"],
-        "user_last_name": user4["last_name"],
-        "user_photo": user4["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-]
-comments_collection.insert_many(comments_data) """
 
 # Parishes
 parishes_collection = db["parishes"]
