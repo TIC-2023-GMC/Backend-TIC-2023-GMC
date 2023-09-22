@@ -28,7 +28,8 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
         self.experience_publications.insert_one(publication_dict)
 
     def get_by_id(self, id) -> ExperiencePublication:
-        pass
+        document = self.experience_publications.find_one({"_id": ObjectId(id)})
+        return document
 
     def get_all(
         self, species, date, page_number, page_size

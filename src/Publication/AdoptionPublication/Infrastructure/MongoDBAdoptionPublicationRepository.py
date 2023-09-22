@@ -29,7 +29,7 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
         self.adoption_publications.insert_one(publication_dict)
 
     def get_by_id(self, id) -> AdoptionPublication:
-        document = self.adoption_publications.find_one({"_id": id})
+        document = self.adoption_publications.find_one({"_id": ObjectId(id)})
         return document
 
     def get_all(

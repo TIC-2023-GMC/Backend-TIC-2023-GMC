@@ -11,10 +11,10 @@ from typing import List, Tuple
 class MongoDBCommentRepository(CommentRepository):
     db = MongoDBConnection().get_db()
     comments = db["publication_comments"]
-    adoption_publications = db["adoption_publications"]
-    experience_publications = db["experience_publications"]
 
-    def add_comment(self, pub_id: str, user_id: str, comment_text: str) -> None:
+    def add_comment(
+        self, pub_id: str, user_id: str, comment_text: str, comment_date: datetime
+    ) -> None:
         user_id = ObjectId(user_id)
         user = self.db["users"].find_one({"_id": user_id})
         if not user:
@@ -23,7 +23,6 @@ class MongoDBCommentRepository(CommentRepository):
         user_last_name = user["last_name"]
         user_photo = user["photo"]
         _id = None
-        comment_date = datetime.now()
         comment = CommentFactory.create(
             _id,
             user_first_name,
@@ -60,28 +59,23 @@ class MongoDBCommentRepository(CommentRepository):
             {"$set": {"comment_text": comment_text, "comment_date": new_date}},
         )
 
-    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
-        comment_id = ObjectId(comment_id)
-        comment = self.comments.find_one({"_id": comment_id})
-        if not comment:
-            raise Exception("No existe el comentario")
+    def delete_comment(self, pub_id: str, comment_id: str) -> None:
         pub_id = ObjectId(pub_id)
-        if is_adoption:
-            collection = self.adoption_publications
-            publication = self.adoption_publications.find_one({"_id": pub_id})
+        comments_document = self.comments.find_one({"_id": pub_id})
+        if comments_document:
+            if len(comments_document["comments"]) == 0:
+                raise Exception("La publicación no tiene comentarios")
+            else:
+                return self.comments.update_one(
+                    {"_id": pub_id},
+                    {"$pull": {"comments": {"_id": ObjectId(comment_id)}}},
+                )
         else:
-            collection = self.experience_publications
-            publication = self.experience_publications.find_one({"_id": pub_id})
-        if publication:
-            comment = self.comments.delete_one({"_id": comment_id})
-            return collection.update_one(
-                {"_id": pub_id}, {"$pull": {"comments": comment_id}}
-            )
-        raise Exception("No existe la publicación")
+            raise Exception("La publicación no tiene comentarios")
 
     def get_comments_by_id(
         self, pub_id: str, page_number: int, page_size: int
-    ) -> Comment:
+    ) -> Tuple[List[Comment], int]:
         pub_id = ObjectId(pub_id)
         document = self.comments.find_one({"_id": pub_id})
 

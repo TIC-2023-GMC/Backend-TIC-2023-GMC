@@ -12,7 +12,6 @@ class CommentRepository(ABC):
         pub_id: str,
         user_id: str,
         comment_text: str,
-        is_adoption: bool,
     ) -> None:
         pass
 
@@ -27,5 +26,5 @@ class CommentRepository(ABC):
         pass
 
     @abstractmethod
-    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
+    def delete_comment(self, pub_id: str, comment_id: str) -> None:
         pass
