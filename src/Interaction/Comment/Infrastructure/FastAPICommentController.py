@@ -1,3 +1,4 @@
+from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
@@ -22,7 +23,7 @@ class CommentData(BaseModel):
     pub_id: str
     user_id: str
     comment_text: str
-    is_adoption: bool
+    comment_date: datetime
 
 
 @singleton
@@ -38,31 +39,28 @@ class FastAPICommentController:
         pub_id: str,
         user_id: str,
         comment_text: str,
-        is_adoption: bool,
+        comment_date: datetime,
     ) -> None:
         self.add_comment_use_case.execute(
             pub_id=pub_id,
             user_id=user_id,
             comment_text=comment_text,
-            is_adoption=is_adoption,
+            comment_date=comment_date,
         )
 
     def update_comment(self, comment_id: str, comment_text: str) -> None:
         self.update_comment_use_case.execute(comment_id, comment_text)
 
-    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
-        self.delete_comment_use_case.execute(
-            pub_id=pub_id, comment_id=comment_id, is_adoption=is_adoption
-        )
+    def delete_comment(self, pub_id: str, comment_id: str) -> None:
+        self.delete_comment_use_case.execute(pub_id=pub_id, comment_id=comment_id)
 
     def list_comments(
-        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
+        self, pub_id: str, page_number: int, page_size: int
     ) -> Tuple[List[Comment], int]:
         return self.comment_list.execute(
             pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
-            is_adoption=is_adoption,
         )
 
 
@@ -77,7 +75,7 @@ def add_comment_endpoint(data: CommentData):
             pub_id=data.pub_id,
             user_id=data.user_id,
             comment_text=data.comment_text,
-            is_adoption=data.is_adoption,
+            comment_date=data.comment_date,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -95,27 +93,20 @@ def update_comment_endpoint(comment_id: str, comment_text: str):
 
 
 @router.post("/delete_comment", status_code=200)
-def delete_comment_endpoint(pub_id: str, comment_id: str, is_adoption: bool):
+def delete_comment_endpoint(pub_id: str, comment_id: str):
     try:
-        get_comment_controller().delete_comment(
-            pub_id=pub_id,
-            comment_id=comment_id,
-            is_adoption=is_adoption,
-        )
+        get_comment_controller().delete_comment(pub_id=pub_id, comment_id=comment_id)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/list_comments", status_code=200)
-def list_comments_endpoint(
-    pub_id: str, page_number: int, page_size: int, is_adoption: bool
-):
+def list_comments_endpoint(pub_id: str, page_number: int, page_size: int):
     try:
         return get_comment_controller().list_comments(
             pub_id=pub_id,
             page_number=page_number,
             page_size=page_size,
-            is_adoption=is_adoption,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

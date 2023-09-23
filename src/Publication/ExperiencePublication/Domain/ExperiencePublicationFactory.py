@@ -19,7 +19,6 @@ class ExperiencePublicationFactory(PublicationFactory):
         publication_date: datetime,
         photo: Photo,
         likes: list[Like],
-        comments: List[str],
         species: str,
     ) -> ExperiencePublication:
         return ExperiencePublication(
@@ -29,6 +28,5 @@ class ExperiencePublicationFactory(PublicationFactory):
             publication_date=publication_date,
             photo=photo,
             likes=likes,
-            comments=comments,
             species=species,
         )

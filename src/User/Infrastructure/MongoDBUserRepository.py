@@ -113,8 +113,6 @@ class MongoDBUserRepository(UserRepository):
                 doc["likes"] = [
                     LikeFactory.create(str(like)) for like in likes_object_ids
                 ]
-                object_ids = doc["comments"]
-                doc["comments"] = [str(object_id) for object_id in object_ids]
                 publication = AdoptionPublicationFactory.create_publication(**doc)
                 publication.user = user
                 publication.photo = photo
@@ -142,8 +140,6 @@ class MongoDBUserRepository(UserRepository):
             photo = PhotoFactory.create(**doc["photo"])
             likes_object_ids = doc["likes"]
             doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
-            object_ids = doc["comments"]
-            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo

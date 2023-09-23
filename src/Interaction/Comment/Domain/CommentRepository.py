@@ -12,13 +12,12 @@ class CommentRepository(ABC):
         pub_id: str,
         user_id: str,
         comment_text: str,
-        is_adoption: bool,
     ) -> None:
         pass
 
     @abstractmethod
     def get_comments_by_id(
-        self, pub_id: str, page_number: int, page_size: int, is_adoption: bool
+        self, pub_id: str, page_number: int, page_size: int
     ) -> Tuple[List[Comment], int]:
         pass
 
@@ -27,5 +26,5 @@ class CommentRepository(ABC):
         pass
 
     @abstractmethod
-    def delete_comment(self, pub_id: str, comment_id: str, is_adoption: bool) -> None:
+    def delete_comment(self, pub_id: str, comment_id: str) -> None:
         pass

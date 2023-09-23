@@ -194,12 +194,6 @@ adoption_publications_data = [
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
-        "comments": [
-            ObjectId("64e4010345d83092241d3077"),
-            ObjectId("64e4010345d83092241d3078"),
-            ObjectId("64e4010345d83092241d3079"),
-            ObjectId("64e4010345d83092241d3080"),
-        ],
         "species": "Gato",
         "pet_size": "Pequeño",
         "pet_breed": "Montés",
@@ -218,7 +212,6 @@ adoption_publications_data = [
             "img_path": "https://www.tiendanimal.es/articulos/wp-content/uploads/2022/03/Gato-Singapura.jpg",
         },
         "likes": [],
-        "comments": [],
         "species": "Gato",
         "pet_size": "Mediano",
         "pet_breed": "Singapura",
@@ -237,7 +230,6 @@ adoption_publications_data = [
             "img_path": "https://fotografias.lasexta.com/clipping/cmsimages01/2022/08/09/3FFA8546-05CE-4608-9B69-6602D02A4C58/cachorro-pomsky_103.jpg?crop=1183,887,x0,y0&width=1200&height=900&optimize=low&format=webply",
         },
         "likes": [],
-        "comments": [],
         "species": "Perro",
         "pet_size": "Mediano",
         "pet_breed": "Mestizo",
@@ -262,12 +254,6 @@ experience_publications_data = [
             "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.18169-9/536695_10200665558588650_1941658362_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cdbe9c&_nc_eui2=AeH1q50jt5HgoS9npXdWLf1o3gXquT50xBLeBeq5PnTEEljZbDM758A0rOfiYECvjiE8vlhQ-yUUmKdFdDU59f_k&_nc_ohc=oR1QzT31QVUAX8xTWNQ&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCapPgF09isXflAy1ql9TSyfw4rVU30HvueR9hG4xp3jA&oe=64D90FB8",
         },
         "likes": [],
-        "comments": [
-            ObjectId("64e4010345d83092241d3077"),
-            ObjectId("64e4010345d83092241d3078"),
-            ObjectId("64e4010345d83092241d3079"),
-            ObjectId("64e4010345d83092241d3080"),
-        ],
         "species": "Gato",
     },
     {
@@ -279,7 +265,6 @@ experience_publications_data = [
             "img_path": "https://thumbs.dreamstime.com/b/perrita-chihuahua-acostado-sobre-fondo-gris-215147897.jpg",
         },
         "likes": [],
-        "comments": [],
         "species": "Perro",
     },
 ]
@@ -297,50 +282,7 @@ organizations_data = [
 ]
 organizations_collection.insert_many(organizations_data)
 
-comments_collection = db["comments"]
-comments_data = [
-    {
-        "_id": ObjectId("64e4010345d83092241d3077"),
-        "user_id": user1["_id"],
-        "user_first_name": user1["first_name"],
-        "user_last_name": user1["last_name"],
-        "user_photo": user1["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3078"),
-        "user_id": user2["_id"],
-        "user_first_name": user2["first_name"],
-        "user_last_name": user2["last_name"],
-        "user_photo": user2["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3079"),
-        "user_id": user3["_id"],
-        "user_first_name": user3["first_name"],
-        "user_last_name": user3["last_name"],
-        "user_photo": user3["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-    {
-        "_id": ObjectId("64e4010345d83092241d3080"),
-        "user_id": user4["_id"],
-        "user_first_name": user4["first_name"],
-        "user_last_name": user4["last_name"],
-        "user_photo": user4["photo"],
-        "comment_date": datetime.datetime.now(datetime.timezone.utc)
-        + datetime.timedelta(hours=-5),
-        "comment_text": "Que lindo gatito, me gustaría adoptarlo",
-    },
-]
-comments_collection.insert_many(comments_data)
+comments_collection = db["publication_comments"]
 
 # Parishes
 parishes_collection = db["parishes"]

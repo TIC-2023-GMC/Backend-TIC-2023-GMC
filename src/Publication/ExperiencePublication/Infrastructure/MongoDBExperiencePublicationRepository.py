@@ -28,7 +28,8 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
         self.experience_publications.insert_one(publication_dict)
 
     def get_by_id(self, id) -> ExperiencePublication:
-        pass
+        document = self.experience_publications.find_one({"_id": ObjectId(id)})
+        return document
 
     def get_all(
         self, species, date, page_number, page_size
@@ -55,8 +56,6 @@ class MongoDBExperiencePublicationRepository(PublicationRepository):
             photo = PhotoFactory.create(**doc["photo"])
             likes_object_ids = doc["likes"]
             doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
-            object_ids = doc["comments"]
-            doc["comments"] = [str(object_id) for object_id in object_ids]
             publication = ExperiencePublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo
