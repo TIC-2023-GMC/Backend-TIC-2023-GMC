@@ -49,9 +49,7 @@ class MongoDBCommentRepository(CommentRepository):
     def update_comment(self, comment_id: str, comment_text: str) -> None:
         comment_id = ObjectId(comment_id)
         comment = self.comments.find_one({"_id": comment_id})
-        print(comment)
         new_date = datetime.now()
-        print(new_date)
         if not comment:
             raise Exception("No existe el comentario")
         return self.comments.update_one(

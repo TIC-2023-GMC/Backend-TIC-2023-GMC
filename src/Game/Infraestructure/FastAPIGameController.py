@@ -1,5 +1,7 @@
-from fastapi import APIRouter
 from typing import List, Tuple
+
+from fastapi import APIRouter, HTTPException
+
 from src.Game.Application.GetAllGamesUseCase import GetAllGamesUseCase
 from src.Game.Domain.Game import Game
 from src.Shared.Singleton import singleton
@@ -22,4 +24,7 @@ def get_game_controller() -> FastAPIGameController:
 
 @router.get("/get_games", status_code=200)
 def get_all_games_endpoint() -> List[Game]:
-    return get_game_controller().get_games()
+    try:
+        return get_game_controller().get_games()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

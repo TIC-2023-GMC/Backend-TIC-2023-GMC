@@ -58,6 +58,9 @@ def list_adoptions_endpoint(
     page_number: int = Query(...),
     page_size: int = Query(...),
 ) -> Tuple[List[AdoptionPublication], int]:
-    return get_adoption_controller().list_adoptions_endpoint(
-        species, date, location, page_number, page_size
-    )
+    try:
+        return get_adoption_controller().list_adoptions_endpoint(
+            species, date, location, page_number, page_size
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
