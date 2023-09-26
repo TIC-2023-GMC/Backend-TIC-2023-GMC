@@ -21,7 +21,10 @@ from src.Publication.ExperiencePublication.Infrastructure.FastAPIExperienceContr
     router as experience_router,
 )
 from src.User.Domain.User import User
-from src.User.Infrastructure.FastAPIUserController import auth_router, get_current_active_user
+from src.User.Infrastructure.FastAPIUserController import (
+    auth_router,
+    get_current_active_user,
+)
 from src.User.Infrastructure.FastAPIUserController import router as user_router
 
 unprotected_router = APIRouter()
