@@ -1,7 +1,7 @@
 from typing import Annotated, List, Tuple
 
 from fastapi import APIRouter, Depends, HTTPException
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -26,6 +26,7 @@ from src.User.Domain.User import User
 
 router = APIRouter()
 auth_router = APIRouter()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
 
 
 class FavoriteAdoptionData(BaseModel):
@@ -97,6 +98,18 @@ def get_user_controller() -> FastAPIUserController:
     return FastAPIUserController()
 
 
+def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
+    return get_user_controller().get_current_user(token)
+
+
+async def get_current_active_user(
+    current_user: Annotated[User, Depends(get_current_user)]
+):
+    if not current_user:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
+
+
 @auth_router.post("/token", status_code=200, response_model=Token)
 def login_endpoint(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]) -> User:
     try:
@@ -115,12 +128,11 @@ def register_endpoint(user: User) -> None:
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.get("/user_me", status_code=200)
-def read_users_me_endpoint(token):
-    try:
-        return get_user_controller().get_current_user(token)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+@auth_router.get("/user_me", status_code=200)
+def read_users_me_endpoint(
+    current_user: Annotated[User, Depends(get_current_active_user)]
+):
+    return current_user
 
 
 @router.get("/get_by_id", status_code=200)

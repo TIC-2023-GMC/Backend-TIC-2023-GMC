@@ -1,25 +1,11 @@
 import os
 from datetime import datetime, timedelta
-from typing import Annotated
 
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import HTTPException, status
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 
 from src.User.Domain.AuthService import AuthService
-from src.User.Domain.User import User
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
-
-
-async def get_current_active_user(
-    current_user: Annotated[User, Depends(oauth2_scheme)]
-):
-    print(current_user)
-    if not current_user:
-        raise HTTPException(status_code=400, detail="Inactive user")
-    return current_user
 
 
 class JWTAuthService(AuthService):
@@ -41,7 +27,7 @@ class JWTAuthService(AuthService):
         encoded_jwt = jwt.encode(to_encode, self.secret_key, algorithm=self.algorithm)
         return encoded_jwt
 
-    def get_current_user_email(self, token: Annotated[str, Depends(oauth2_scheme)]):
+    def get_current_user_email(self, token: str):
         credentials_exception = HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",

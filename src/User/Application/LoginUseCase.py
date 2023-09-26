@@ -19,7 +19,6 @@ class LoginUseCase:
         if not user:
             raise Exception("Incorrect email or password")
         access_token = self.create_access_token(data={"sub": user.email})
-        print(access_token)
         return {"access_token": access_token, "token_type": "bearer"}
 
     def verify_password(self, plain_password: str, hashed_password: str):
@@ -30,7 +29,6 @@ class LoginUseCase:
 
     def authenticate_user(self, email: str, password: str):
         user: User | None = self.user_repository.get_user(email)
-        print(user)
         if not user:
             return False
         if not self.verify_password(password, user.password):
@@ -42,7 +40,6 @@ class LoginUseCase:
 
     def get_current_user(self, token: str):
         user_email = self.auth_service.get_current_user_email(token)
-        print(user_email)
         user = self.user_repository.get_user(user_email)
         if not user:
             raise Exception("User not found")
