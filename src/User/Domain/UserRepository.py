@@ -13,7 +13,7 @@ class UserRepository(ABC):
         pass
 
     @abstractmethod
-    def get_user(self, email: str, mobile_phone: str) -> User:
+    def get_user(self, email: str, mobile_phone: str = None) -> User:
         pass
 
     @abstractmethod
