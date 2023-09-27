@@ -1,7 +1,8 @@
-from fastapi import APIRouter, UploadFile, File
-from src.Shared.Singleton import singleton
-from src.Photo.Domain.Photo import Photo
+from fastapi import APIRouter, File, HTTPException, UploadFile
+
 from src.Photo.Application.SavePhotoUseCase import SavePhotoUseCase
+from src.Photo.Domain.Photo import Photo
+from src.Shared.Singleton import singleton
 
 router = APIRouter()
 
@@ -25,4 +26,7 @@ def get_adoption_controller() -> FastAPIPhotoController:
 
 @router.post("/upload", status_code=201)
 def upload_photo(photo: UploadFile = File(...)) -> None:
-    return get_adoption_controller().save_pub_photo_endpoint(photo)
+    try:
+        return get_adoption_controller().save_pub_photo_endpoint(photo)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

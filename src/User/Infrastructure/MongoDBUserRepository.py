@@ -2,7 +2,6 @@ from typing import List, Tuple
 
 from bson import ObjectId
 
-from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -25,10 +24,19 @@ class MongoDBUserRepository(UserRepository):
 
     def add_user(self, user: User) -> None:
         user_dict = user.dict()
+        user_dict.pop("favorite_adoption_publications", None)
         return self.users.insert_one(user_dict)
 
-    def get_user(self, email, password) -> User:
-        return self.users.find_one({"email": email, "password": password})
+    def get_user(self, email: str, mobile_phone: str = None) -> User:
+        query = {"$or": [{"email": email}]}
+        if mobile_phone is not None:
+            query["$or"].append({"mobile_phone": mobile_phone})
+        user = self.users.find_one(query)
+        if not user:
+            return None
+        user["_id"] = str(user["_id"])
+        user: User = UserFactory.create(**user)
+        return user
 
     def get_by_id(self, _id: str) -> User:
         doc = self.users.find_one({"_id": ObjectId(_id)})

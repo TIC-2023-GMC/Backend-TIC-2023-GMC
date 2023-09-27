@@ -1,9 +1,10 @@
-from fastapi import APIRouter
-from src.Shared.Singleton import singleton
-from src.Parish.Domain.Parish import Parish
-from src.Parish.Application.ListParishesUseCase import ListParishesUseCase
-
 from typing import List
+
+from fastapi import APIRouter, HTTPException
+
+from src.Parish.Application.ListParishesUseCase import ListParishesUseCase
+from src.Parish.Domain.Parish import Parish
+from src.Shared.Singleton import singleton
 
 router = APIRouter()
 
@@ -23,4 +24,7 @@ def get_adoption_controller() -> FastAPIParishController:
 
 @router.get("/get_all", status_code=200)
 def list_parish_endpoint() -> List[Parish]:
-    return get_adoption_controller().list_parishes_endpoint()
+    try:
+        return get_adoption_controller().list_parishes_endpoint()
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

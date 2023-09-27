@@ -1,17 +1,18 @@
+from datetime import datetime
+from typing import List, Optional, Tuple
+
 from fastapi import APIRouter, HTTPException, Query
-from src.Shared.Singleton import singleton
+
 from src.Publication.ExperiencePublication.Application.CreateExperiencePublicationUseCase import (
     CreateExperiencePublicationUseCase,
-)
-from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
-    ExperiencePublication,
 )
 from src.Publication.ExperiencePublication.Application.ListExperiencePublicationsUseCase import (
     ListExperiencePublicationsUseCase,
 )
-from typing import List, Tuple, Optional
-
-from datetime import datetime
+from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
+    ExperiencePublication,
+)
+from src.Shared.Singleton import singleton
 
 router = APIRouter()
 
@@ -55,6 +56,9 @@ def list_experiences_endpoint(
     page_number: int = Query(...),
     page_size: int = Query(...),
 ) -> Tuple[List[ExperiencePublication], int]:
-    return get_experience_controller().list_experiences_endpoint(
-        species, date, page_number, page_size
-    )
+    try:
+        return get_experience_controller().list_experiences_endpoint(
+            species, date, page_number, page_size
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

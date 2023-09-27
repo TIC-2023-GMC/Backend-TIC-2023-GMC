@@ -1,5 +1,7 @@
-from fastapi import APIRouter, Query, Response
 from typing import List, Tuple
+
+from fastapi import APIRouter, HTTPException, Query, Response
+
 from src.Match.QuizGameMatch.Application.GetLeaderboardAndScoreUseCase import (
     GetLeaderboardAndScoreUseCase,
 )
@@ -12,7 +14,6 @@ from src.Match.QuizGameMatch.Application.SaveQuizGameMatchUseCase import (
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
 from src.Match.QuizGameMatch.Domain.User.UserScore import UserScore
 from src.Shared.Singleton import singleton
-
 
 router = APIRouter()
 
@@ -42,7 +43,10 @@ def get_match_controller() -> FastAPIQuizGameController:
 def get_match_endpoint(
     user_id: str = Query(None),
 ) -> QuizGameMatch:
-    return get_match_controller().get_match(user_id=user_id)
+    try:
+        return get_match_controller().get_match(user_id=user_id)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.put("/quiz_game")
@@ -60,4 +64,7 @@ def save_game_endpoint(match: QuizGameMatch, response: Response):
 def get_leaderboard_endpoint(
     user_id: str = Query(None),
 ) -> Tuple[List[UserScore], int]:
-    return get_match_controller().get_leaderboard_and_score(user_id=user_id)
+    try:
+        return get_match_controller().get_leaderboard_and_score(user_id=user_id)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
