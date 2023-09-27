@@ -123,7 +123,7 @@ def login_endpoint(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]) -
 @auth_router.post("/register", status_code=201)
 def register_endpoint(user: User) -> None:
     try:
-        get_user_controller().register(user=user)
+        return get_user_controller().register(user=user)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

@@ -27,8 +27,9 @@ class MongoDBUserRepository(UserRepository):
         user_dict.pop("favorite_adoption_publications", None)
         return self.users.insert_one(user_dict)
 
-    def get_user(self, email: str) -> User:
-        user = self.users.find_one({"email": email})
+    def get_user(self, email: str, mobile_phone: str) -> User:
+        query = {"$or": [{"email": email}, {"mobile_phone": mobile_phone}]}
+        user = self.users.find_one(query)
         if not user:
             return None
         user["_id"] = str(user["_id"])

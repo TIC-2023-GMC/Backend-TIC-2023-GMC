@@ -9,11 +9,11 @@ from src.User.Domain.User import User
 
 class UserRepository(ABC):
     @abstractmethod
-    def add_user(self, user) -> None:
+    def add_user(self, user: User) -> None:
         pass
 
     @abstractmethod
-    def get_user(self, email, password) -> User:
+    def get_user(self, email: str, mobile_phone:str) -> User:
         pass
 
     @abstractmethod
