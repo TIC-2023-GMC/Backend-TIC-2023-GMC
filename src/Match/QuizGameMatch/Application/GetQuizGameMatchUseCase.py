@@ -1,4 +1,5 @@
 import inject
+
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,

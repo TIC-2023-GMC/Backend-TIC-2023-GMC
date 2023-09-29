@@ -1,4 +1,3 @@
-from typing import Optional
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model
 

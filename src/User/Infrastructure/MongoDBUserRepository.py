@@ -27,7 +27,7 @@ class MongoDBUserRepository(UserRepository):
         user_dict.pop("favorite_adoption_publications", None)
         return self.users.insert_one(user_dict)
 
-    def get_user(self, email: str, mobile_phone: str = None) -> User:
+    def get_user(self, email: str, mobile_phone: str = None) -> User | None:
         query = {"$or": [{"email": email}]}
         if mobile_phone is not None:
             query["$or"].append({"mobile_phone": mobile_phone})
@@ -41,18 +41,6 @@ class MongoDBUserRepository(UserRepository):
     def get_by_id(self, _id: str) -> User:
         doc = self.users.find_one({"_id": ObjectId(_id)})
         doc["_id"] = str(doc["_id"])
-        user_favorites = self.user_favorite_publications.find_one(
-            {"_id": ObjectId(_id)}
-        )
-        if user_favorites:
-            user_favorites["favorite_adoption_publications"] = [
-                str(id) for id in user_favorites["favorite_adoption_publications"]
-            ]
-            doc["favorite_adoption_publications"] = user_favorites[
-                "favorite_adoption_publications"
-            ]
-        else:
-            doc["favorite_adoption_publications"] = []
         user = UserFactory.create(**doc)
         return user
 
@@ -114,13 +102,15 @@ class MongoDBUserRepository(UserRepository):
             favorites_list = []
             for doc in documents:
                 doc["_id"] = str(doc["_id"])
+                doc["user"]["_id"] = str(doc["user"]["_id"])
                 user = UserFactory.create(**doc["user"])
-                user._id = str(user._id)
                 photo = PhotoFactory.create(**doc["photo"])
                 likes_object_ids = doc["likes"]
-                doc["likes"] = [
-                    LikeFactory.create(str(like)) for like in likes_object_ids
-                ]
+                doc["likes"] = (
+                    len(likes_object_ids),
+                    ObjectId(user_id) in likes_object_ids,
+                )
+                doc["is_favorite"] = True
                 publication = AdoptionPublicationFactory.create_publication(**doc)
                 publication.user = user
                 publication.photo = photo
@@ -134,7 +124,7 @@ class MongoDBUserRepository(UserRepository):
         skip_count = (page_number - 1) * page_size
 
         documents = (
-            self.adoption_publications.find({"user._id": ObjectId(user_id)})
+            self.adoption_publications.find({"user_id": ObjectId(user_id)})
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)
@@ -143,11 +133,15 @@ class MongoDBUserRepository(UserRepository):
         publications_list = []
         for doc in documents:
             doc["_id"] = str(doc["_id"])
+            doc["user"]["_id"] = str(doc["user"]["_id"])
             user = UserFactory.create(**doc["user"])
-            user._id = str(user._id)
             photo = PhotoFactory.create(**doc["photo"])
             likes_object_ids = doc["likes"]
-            doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
+            doc["likes"] = (
+                len(likes_object_ids),
+                ObjectId(user_id) in likes_object_ids,
+            )
+            doc["is_favorite"] = False
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo

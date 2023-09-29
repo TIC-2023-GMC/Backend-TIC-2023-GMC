@@ -22,5 +22,8 @@ class User(Model):
     main_pet_food: str
     pet_expenses: int
     motivation: str
-    favorite_adoption_publications: Optional[List[str]]
     photo: Photo
+
+    @property
+    def id(self):
+        return self._id

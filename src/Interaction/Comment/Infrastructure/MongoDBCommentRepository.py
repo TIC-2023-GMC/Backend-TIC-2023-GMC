@@ -6,7 +6,6 @@ from bson import ObjectId
 from src.Interaction.Comment.Domain.Comment import Comment
 from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
 from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
-from src.Publication.Domain.PublicationRepository import PublicationRepository
 from src.Shared.MongoClient import MongoDBConnection
 from src.User.Domain.User import User
 
@@ -31,7 +30,7 @@ class MongoDBCommentRepository(CommentRepository):
             comment_text,
             comment_date,
             user_photo,
-            str(user._id),
+            str(user.id),
         )
         comment_dict = comment.dict()
         comment_dict["_id"] = ObjectId()

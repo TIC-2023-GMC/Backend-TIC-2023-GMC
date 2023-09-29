@@ -1,9 +1,10 @@
 import inject
-from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
-    MongoDBAdoptionPublicationRepository,
-)
+
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
+)
+from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
+    MongoDBAdoptionPublicationRepository,
 )
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 

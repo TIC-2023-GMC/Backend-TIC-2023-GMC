@@ -1,3 +1,4 @@
+import datetime
 from abc import ABC, abstractmethod
 from typing import List, Tuple
 
@@ -11,7 +12,13 @@ class PublicationRepository(ABC):
 
     @abstractmethod
     def get_all(
-        self, species: str, date: str, location: str, page_number: int, page_size: int
+        self,
+        species: str,
+        date: datetime,
+        page_number: int,
+        page_size: int,
+        user_id: str,
+        location: str = None,
     ) -> Tuple[List[Publication], int]:
         pass
 

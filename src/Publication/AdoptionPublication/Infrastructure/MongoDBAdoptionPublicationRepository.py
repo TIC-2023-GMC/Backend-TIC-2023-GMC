@@ -1,8 +1,8 @@
+import datetime
 from typing import List, Tuple
 
 from bson import ObjectId
 
-from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
@@ -20,17 +20,23 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
     adoption_publications = db["adoption_publications"]
 
     def add_publication(self, publication: AdoptionPublication) -> None:
-        publication.user._id = ObjectId(publication.user._id)
+        publication.user.id = ObjectId(publication.user.id)
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.adoption_publications.insert_one(publication_dict)
 
-    def get_by_id(self, id) -> AdoptionPublication:
-        document = self.adoption_publications.find_one({"_id": ObjectId(id)})
+    def get_by_id(self, _id: str) -> AdoptionPublication:
+        document = self.adoption_publications.find_one({"_id": ObjectId(_id)})
         return document
 
     def get_all(
-        self, species, date, location, page_number, page_size
+        self,
+        user_id: str,
+        species: str,
+        date: datetime,
+        location: str,
+        page_number: int,
+        page_size: int,
     ) -> Tuple[List[AdoptionPublication], int]:
         filters = {}
         if species:
@@ -51,11 +57,15 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
         publication_list = []
         for doc in documents:
             doc["_id"] = str(doc["_id"])
+            doc["user"]["_id"] = str(doc["user"]["_id"])
             user = UserFactory.create(**doc["user"])
-            user._id = str(user._id)
             photo = PhotoFactory.create(**doc["photo"])
             likes_object_ids = doc["likes"]
-            doc["likes"] = [LikeFactory.create(str(like)) for like in likes_object_ids]
+            doc["likes"] = (
+                len(likes_object_ids),
+                ObjectId(user_id) in likes_object_ids,
+            )
+            doc["is_favorite"] = False
             publication = AdoptionPublicationFactory.create_publication(**doc)
             publication.user = user
             publication.photo = photo

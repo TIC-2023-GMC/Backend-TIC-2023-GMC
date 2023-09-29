@@ -12,4 +12,4 @@ class AddAdoptionLikeUseCase:
         self.publication_repository = publication_repository
 
     def execute(self, pub_id: str, user_id: str) -> None:
-        self.publication_repository.add_like(pub_id=pub_id, user_id=user_id)
+        return self.publication_repository.add_like(pub_id=pub_id, user_id=user_id)

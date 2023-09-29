@@ -1,6 +1,6 @@
+from src.Photo.Domain.Photo import Photo
 from src.Photo.Domain.PhotoRepository import PhotoRepository
 from src.Photo.Infrastructure.firebase.firebase_config import initialize_firebase
-from src.Photo.Domain.Photo import Photo
 
 
 class FirebasePhotoRepository(PhotoRepository):

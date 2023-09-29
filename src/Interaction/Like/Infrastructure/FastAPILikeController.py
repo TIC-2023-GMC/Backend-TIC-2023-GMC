@@ -60,7 +60,7 @@ def add_like_endpoint(
 ) -> None:
     try:
         like_controller().add_like(
-            pub_id=pub_id, user_id=user._id, is_adoption=is_adoption
+            pub_id=pub_id, user_id=user.id, is_adoption=is_adoption
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -74,7 +74,7 @@ def remove_like_endpoint(
 ) -> None:
     try:
         like_controller().remove_like(
-            pub_id=pub_id, user_id=user._id, is_adoption=is_adoption
+            pub_id=pub_id, user_id=user.id, is_adoption=is_adoption
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

@@ -13,5 +13,5 @@ class PhotoRepository(ABC):
         pass
 
     @abstractmethod
-    def save_photo_user(self, photo: Photo, user_id: str) -> None:
+    def save_photo_user(self, photo: Photo, user_id: str) -> str:
         pass

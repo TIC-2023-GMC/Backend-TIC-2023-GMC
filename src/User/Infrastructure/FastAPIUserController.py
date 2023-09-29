@@ -146,7 +146,7 @@ def list_favorites_endpoint(
 ) -> Tuple[List[AdoptionPublication], int]:
     try:
         return get_user_controller().list_favorite_publication(
-            user_id=user._id,
+            user_id=user.id,
             page_number=page_number,
             page_size=page_size,
         )
@@ -167,7 +167,7 @@ def add_favorite_adoption_endpoint(
     pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
 ) -> None:
     try:
-        get_user_controller().add_favorite_adoption(pub_id=pub_id, user_id=user._id)
+        get_user_controller().add_favorite_adoption(pub_id=pub_id, user_id=user.id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -177,7 +177,7 @@ def remove_favorite_adoption_endpoint(
     pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
 ) -> None:
     try:
-        get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user._id)
+        get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user.id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -191,5 +191,5 @@ def list_my_publications_endpoint(
     return get_user_controller().list_my_publications(
         page_number=page_number,
         page_size=page_size,
-        user_id=user._id,
+        user_id=user.id,
     )

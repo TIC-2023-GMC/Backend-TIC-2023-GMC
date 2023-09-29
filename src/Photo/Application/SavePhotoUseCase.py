@@ -1,5 +1,5 @@
-from bson import ObjectId
 import inject
+
 from src.Photo.Domain.Photo import Photo
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Photo.Domain.PhotoRepository import PhotoRepository
@@ -11,7 +11,7 @@ class SavePhotoUseCase:
         self.photo_repository = photo_repository
 
     def execute_user(self, img, user_id) -> str:
-        return self.photo_repository.save_photo_user(img=img, user_id=user_id)
+        return self.photo_repository.save_photo_user(photo=img, user_id=user_id)
 
     def execute_pub(self, img) -> Photo:
         photo_url = self.photo_repository.upload_img(img)

@@ -1,5 +1,6 @@
 from abc import ABC
 from typing import Optional
+
 from src.Shared.Model import Model
 
 

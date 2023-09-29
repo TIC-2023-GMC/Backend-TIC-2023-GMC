@@ -46,7 +46,7 @@ def get_match_endpoint(
     user: Annotated[User, Depends(get_current_active_user)],
 ) -> QuizGameMatch:
     try:
-        return get_match_controller().get_match(user_id=user._id)
+        return get_match_controller().get_match(user_id=user.id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -67,6 +67,6 @@ def get_leaderboard_endpoint(
     user: Annotated[User, Depends(get_current_active_user)],
 ) -> Tuple[List[UserScore], int]:
     try:
-        return get_match_controller().get_leaderboard_and_score(user_id=user._id)
+        return get_match_controller().get_leaderboard_and_score(user_id=user.id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

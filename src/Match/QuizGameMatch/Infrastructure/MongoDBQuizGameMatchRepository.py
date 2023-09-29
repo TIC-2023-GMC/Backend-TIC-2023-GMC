@@ -1,5 +1,7 @@
 from typing import List, Tuple
+
 from bson import ObjectId
+
 from src.Match.QuizGameMatch.Domain.Question.Question import Question
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
 from src.Match.QuizGameMatch.Domain.QuizGameMatchFactory import QuizGameMatchFactory
@@ -62,11 +64,9 @@ class MongoDBQuizGameMatchRepository(QuizGameMatchRepository):
 
     def get_leaderboard_and_score(self, user_id: str) -> Tuple[List[UserScore], int]:
         player_game = self.game_quiz.find_one({"user_id": ObjectId(user_id)})
-
         leaderboard_position = self.game_quiz.count_documents(
             {"match_game_score": {"$gt": player_game["match_game_score"]}}
         )
-
         leaderboard = (
             self.game_quiz.find(
                 {}, {"user_id": 1, "match_game_score": 1, "match_game_time": 1}

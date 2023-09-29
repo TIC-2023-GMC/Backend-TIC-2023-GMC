@@ -1,8 +1,9 @@
 import inject
 
 from src.Publication.Domain.PublicationRepository import PublicationRepository
-from src.Publication.ExperiencePublication.Infrastructure.MongoDBExperiencePublicationRepository import \
-    MongoDBExperiencePublicationRepository
+from src.Publication.ExperiencePublication.Infrastructure.MongoDBExperiencePublicationRepository import (
+    MongoDBExperiencePublicationRepository,
+)
 
 
 class RemoveExperienceLikeUseCase:
@@ -11,6 +12,4 @@ class RemoveExperienceLikeUseCase:
         self.publication_repository = publication_repository
 
     def execute(self, pub_id: str, user_id: str) -> None:
-        self.publication_repository.remove_like(
-            pub_id=pub_id, user_id=user_id
-        )
+        self.publication_repository.remove_like(pub_id=pub_id, user_id=user_id)
