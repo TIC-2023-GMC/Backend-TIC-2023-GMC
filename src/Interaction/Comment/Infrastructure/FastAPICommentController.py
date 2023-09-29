@@ -1,27 +1,29 @@
 from datetime import datetime
+from typing import Annotated, List, Tuple
+
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
-from typing import List, Tuple
-from fastapi import APIRouter, HTTPException
+
 from src.Interaction.Comment.Application.CreateCommentUseCase import (
     CreateCommentUseCase,
 )
 from src.Interaction.Comment.Application.DeleteCommentUseCase import (
     DeleteCommentUseCase,
 )
+from src.Interaction.Comment.Application.ListCommentsUseCase import ListCommentsUseCase
 from src.Interaction.Comment.Application.UpdateCommentUseCase import (
     UpdateCommentUseCase,
 )
 from src.Interaction.Comment.Domain.Comment import Comment
-from src.Interaction.Comment.Application.ListCommentsUseCase import ListCommentsUseCase
 from src.Shared.Singleton import singleton
-
+from src.User.Domain.User import User
+from src.User.Infrastructure.FastAPIUserController import get_current_active_user
 
 router = APIRouter()
 
 
 class CommentData(BaseModel):
     pub_id: str
-    user_id: str
     comment_text: str
     comment_date: datetime
 
@@ -37,13 +39,13 @@ class FastAPICommentController:
     def add_comment(
         self,
         pub_id: str,
-        user_id: str,
+        user: User,
         comment_text: str,
         comment_date: datetime,
     ) -> None:
         self.add_comment_use_case.execute(
             pub_id=pub_id,
-            user_id=user_id,
+            user=user,
             comment_text=comment_text,
             comment_date=comment_date,
         )
@@ -69,11 +71,13 @@ def get_comment_controller() -> FastAPICommentController:
 
 
 @router.post("/add_comment", status_code=200)
-def add_comment_endpoint(data: CommentData):
+def add_comment_endpoint(
+    data: CommentData, user: Annotated[User, Depends(get_current_active_user)]
+):
     try:
         get_comment_controller().add_comment(
             pub_id=data.pub_id,
-            user_id=data.user_id,
+            user=user,
             comment_text=data.comment_text,
             comment_date=data.comment_date,
         )

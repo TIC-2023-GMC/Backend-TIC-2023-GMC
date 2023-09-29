@@ -29,11 +29,6 @@ auth_router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
 
 
-class FavoriteAdoptionData(BaseModel):
-    pub_id: str
-    user_id: str
-
-
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -145,7 +140,9 @@ def get_by_id_endpoint(_id: str) -> User:
 
 @router.get("/list_favorite_adoptions", status_code=200)
 def list_favorites_endpoint(
-    page_number: int, page_size: int, user: User = Depends(get_current_user)
+    page_number: int,
+    page_size: int,
+    user: Annotated[User, Depends(get_current_active_user)],
 ) -> Tuple[List[AdoptionPublication], int]:
     try:
         return get_user_controller().list_favorite_publication(
@@ -166,31 +163,33 @@ def update_user_endpoint(updated_user: User) -> None:
 
 
 @router.post("/add_favorite_adoption", status_code=201)
-def add_favorite_adoption_endpoint(data: FavoriteAdoptionData) -> None:
+def add_favorite_adoption_endpoint(
+    pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
+) -> None:
     try:
-        get_user_controller().add_favorite_adoption(
-            pub_id=data.pub_id, user_id=data.user_id
-        )
+        get_user_controller().add_favorite_adoption(pub_id=pub_id, user_id=user._id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.delete("/remove_favorite_adoption", status_code=204)
-def remove_favorite_adoption_endpoint(data: FavoriteAdoptionData) -> None:
+def remove_favorite_adoption_endpoint(
+    pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
+) -> None:
     try:
-        get_user_controller().remove_favorite_adoption(
-            pub_id=data.pub_id, user_id=data.user_id
-        )
+        get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user._id)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/list_my_publications", status_code=200)
 def list_my_publications_endpoint(
-    page_number: int, page_size: int, user_id: str
+    page_number: int,
+    page_size: int,
+    user: Annotated[User, Depends(get_current_active_user)],
 ) -> Tuple[List[AdoptionPublication], int]:
     return get_user_controller().list_my_publications(
         page_number=page_number,
         page_size=page_size,
-        user_id=user_id,
+        user_id=user._id,
     )

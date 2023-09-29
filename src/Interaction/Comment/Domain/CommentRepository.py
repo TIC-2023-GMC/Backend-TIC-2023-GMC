@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 from typing import List, Tuple
+from src.User.Domain.User import User
 
 from src.Interaction.Comment.Domain.Comment import Comment
 
@@ -10,7 +11,7 @@ class CommentRepository(ABC):
     def add_comment(
         self,
         pub_id: str,
-        user_id: str,
+        user: User,
         comment_text: str,
     ) -> None:
         pass
