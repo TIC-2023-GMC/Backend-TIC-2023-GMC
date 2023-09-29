@@ -29,6 +29,10 @@ auth_router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/token")
 
 
+class FavoriteRequest(BaseModel):
+    pub_id: str
+
+
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -164,20 +168,24 @@ def update_user_endpoint(updated_user: User) -> None:
 
 @router.post("/add_favorite_adoption", status_code=201)
 def add_favorite_adoption_endpoint(
-    pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
+    favorite: FavoriteRequest, user: Annotated[User, Depends(get_current_active_user)]
 ) -> None:
     try:
-        get_user_controller().add_favorite_adoption(pub_id=pub_id, user_id=user.id)
+        get_user_controller().add_favorite_adoption(
+            pub_id=favorite.pub_id, user_id=user.id
+        )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.delete("/remove_favorite_adoption", status_code=204)
 def remove_favorite_adoption_endpoint(
-    pub_id: str, user: Annotated[User, Depends(get_current_active_user)]
+    favorite: FavoriteRequest, user: Annotated[User, Depends(get_current_active_user)]
 ) -> None:
     try:
-        get_user_controller().remove_favorite_adoption(pub_id=pub_id, user_id=user.id)
+        get_user_controller().remove_favorite_adoption(
+            pub_id=favorite.pub_id, user_id=user.id
+        )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 

@@ -19,5 +19,5 @@ class GetAdoptionByIdUseCase:
         pub_id: str,
     ) -> AdoptionPublication:
         return self.publication_repository.get_by_id(
-            id=pub_id,
+            _id=pub_id,
         )

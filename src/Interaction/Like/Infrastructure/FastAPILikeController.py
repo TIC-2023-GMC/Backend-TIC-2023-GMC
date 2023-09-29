@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
 
 from src.Interaction.Like.Application.AddAdoptionLikeUseCase import (
     AddAdoptionLikeUseCase,
@@ -17,6 +18,11 @@ from src.User.Domain.User import User
 from src.User.Infrastructure.FastAPIUserController import get_current_user
 
 router = APIRouter()
+
+
+class LikeRequest(BaseModel):
+    pub_id: str
+    is_adoption: bool
 
 
 @singleton
@@ -54,13 +60,12 @@ def like_controller() -> FastAPILikeController:
 
 @router.post("/add_like", status_code=200)
 def add_like_endpoint(
-    pub_id: str,
-    is_adoption: bool,
+    like: LikeRequest,
     user: User = Depends(get_current_user),
 ) -> None:
     try:
         like_controller().add_like(
-            pub_id=pub_id, user_id=user.id, is_adoption=is_adoption
+            pub_id=like.pub_id, user_id=user.id, is_adoption=like.is_adoption
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
@@ -68,13 +73,12 @@ def add_like_endpoint(
 
 @router.delete("/remove_like", status_code=200)
 def remove_like_endpoint(
-    pub_id: str,
-    is_adoption: bool,
+    like: LikeRequest,
     user: User = Depends(get_current_user),
 ) -> None:
     try:
         like_controller().remove_like(
-            pub_id=pub_id, user_id=user.id, is_adoption=is_adoption
+            pub_id=like.pub_id, user_id=user.id, is_adoption=like.is_adoption
         )
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
