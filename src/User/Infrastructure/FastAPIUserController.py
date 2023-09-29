@@ -145,11 +145,11 @@ def get_by_id_endpoint(_id: str) -> User:
 
 @router.get("/list_favorite_adoptions", status_code=200)
 def list_favorites_endpoint(
-    user_id: str, page_number: int, page_size: int
+    page_number: int, page_size: int, user: User = Depends(get_current_user)
 ) -> Tuple[List[AdoptionPublication], int]:
     try:
         return get_user_controller().list_favorite_publication(
-            user_id=user_id,
+            user_id=user._id,
             page_number=page_number,
             page_size=page_size,
         )

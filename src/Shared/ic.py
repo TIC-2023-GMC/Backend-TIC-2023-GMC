@@ -6,10 +6,6 @@ from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
 from src.Interaction.Comment.Infrastructure.MongoDBCommentRepository import (
     MongoDBCommentRepository,
 )
-from src.Interaction.Like.Domain.LikeRepository import LikeRepository
-from src.Interaction.Like.Infrastructure.MongoDBLikeRepository import (
-    MongoDBLikeRepository,
-)
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,
 )
@@ -20,10 +16,10 @@ from src.Parish.Domain.ParishRepository import ParishRepository
 from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
 from src.Photo.Domain.PhotoRepository import PhotoRepository
 from src.Photo.Infrastructure.FirebasePhotoRepository import FirebasePhotoRepository
-from src.User.Domain.UserRepository import UserRepository
-from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
 from src.User.Domain.AuthService import AuthService
+from src.User.Domain.UserRepository import UserRepository
 from src.User.Infrastructure.JWTAuthService import JWTAuthService
+from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
 
 
 def configure_ic() -> None:
@@ -51,11 +47,6 @@ def configure_ic() -> None:
         binder.bind(
             CommentRepository,
             MongoDBCommentRepository(),
-        )
-
-        binder.bind(
-            LikeRepository,
-            MongoDBLikeRepository(),
         )
         binder.bind(
             AuthService,

@@ -2,9 +2,6 @@ from typing import List, Tuple
 
 from bson import ObjectId
 
-from src.Interaction.Comment.Domain.Comment import Comment
-from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
-from src.Interaction.Like.Domain.Like import Like
 from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
@@ -65,3 +62,27 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
             publication_list.append(publication)
 
         return publication_list, page_number + 1
+
+    def add_like(self, pub_id: str, user_id: str) -> None:
+        pub_id = ObjectId(pub_id)
+        user_id = ObjectId(user_id)
+        collection = self.adoption_publications
+        publication = self.adoption_publications.find_one({"_id": pub_id})
+        if publication:
+            likes = publication.get("likes", [])
+            if user_id in map(ObjectId, likes):
+                raise Exception("Ya existe el like")
+            return collection.update_one({"_id": pub_id}, {"$push": {"likes": user_id}})
+        raise Exception("No existe la publicación")
+
+    def remove_like(self, pub_id: str, user_id: str) -> None:
+        pub_id = ObjectId(pub_id)
+        user_id = ObjectId(user_id)
+        collection = self.adoption_publications
+        publication = self.adoption_publications.find_one({"_id": pub_id})
+        if publication:
+            likes = publication.get("likes", [])
+            if user_id not in map(ObjectId, likes):
+                raise Exception("El like no existe")
+            return collection.update_one({"_id": pub_id}, {"$pull": {"likes": user_id}})
+        raise Exception("No existe la publicación")
