@@ -1,5 +1,7 @@
-import inject
 from typing import List, Tuple
+
+import inject
+
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,
 )

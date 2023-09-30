@@ -25,7 +25,7 @@ def get_adoption_controller() -> FastAPIPhotoController:
 
 
 @router.post("/upload", status_code=201)
-def upload_photo(photo: UploadFile = File(...)) -> None:
+def upload_photo(photo: UploadFile = File(...)) -> Photo:
     try:
         return get_adoption_controller().save_pub_photo_endpoint(photo)
     except Exception as e:

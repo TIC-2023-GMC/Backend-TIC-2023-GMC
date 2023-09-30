@@ -1,5 +1,7 @@
 from typing import List
+
 import inject
+
 from src.Game.Domain.Game import Game
 from src.Game.Domain.GameRepository import GameRepository
 

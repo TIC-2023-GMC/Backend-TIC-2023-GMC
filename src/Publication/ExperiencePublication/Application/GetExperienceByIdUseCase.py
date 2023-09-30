@@ -1,14 +1,11 @@
 import inject
-from typing import List, Tuple
-
+from src.Publication.Domain.PublicationRepository import PublicationRepository
+from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
+    ExperiencePublication,
+)
 from src.Publication.ExperiencePublication.Infrastructure.MongoDBExperiencePublicationRepository import (
     MongoDBExperiencePublicationRepository,
 )
-
-from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
-    AdoptionPublication,
-)
-from src.Publication.Domain.PublicationRepository import PublicationRepository
 
 
 class GetExperienceByIdUseCase:
@@ -18,8 +15,8 @@ class GetExperienceByIdUseCase:
 
     def execute(
         self,
-        pub_id: int,
-    ) -> Tuple[List[AdoptionPublication], int]:
+        pub_id: str,
+    ) -> ExperiencePublication:
         return self.publication_repository.get_by_id(
             id=pub_id,
         )

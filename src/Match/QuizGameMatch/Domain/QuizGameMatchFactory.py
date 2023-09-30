@@ -1,6 +1,4 @@
 from typing import List
-from src.Game.Domain.Game import Game
-from src.Match.Domain.Match import Match
 from src.Match.Domain.MatchFactory import MatchFactory
 from src.Match.QuizGameMatch.Domain.Question.Question import Question
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
@@ -16,7 +14,7 @@ class QuizGameMatchFactory(MatchFactory):
         match_game_time: int,
         match_game_onboarding: str,
         match_game_questions: List[Question],
-    ) -> Match:
+    ) -> QuizGameMatch:
         return QuizGameMatch(
             _id=_id,
             user_id=user_id,

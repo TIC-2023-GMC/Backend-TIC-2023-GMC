@@ -1,6 +1,6 @@
 import inject
-from src.User.Domain.User import User
 
+from src.User.Domain.User import User
 from src.User.Domain.UserRepository import UserRepository
 
 
@@ -9,5 +9,5 @@ class UpdateProfileUseCase:
     def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
 
-    def execute(self, updatedUser: User) -> None:
-        self.user_repository.update_user(updatedUser)
+    def execute(self, updated_user: User) -> None:
+        self.user_repository.update_user(updated_user)

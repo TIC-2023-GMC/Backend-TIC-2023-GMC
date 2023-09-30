@@ -1,4 +1,5 @@
 import inject
+
 from src.User.Domain.User import User
 from src.User.Domain.UserRepository import UserRepository
 

@@ -1,13 +1,12 @@
-from typing import List
+from datetime import datetime
+
+from src.Interaction.Like.Domain.Like import Like
 from src.Photo.Domain import Photo
+from src.Publication.Domain.PublicationFactory import PublicationFactory
 from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
     ExperiencePublication,
 )
-from src.Publication.Domain.PublicationFactory import PublicationFactory
 from src.User.Domain import User
-from src.Interaction.Comment.Domain.Comment import Comment
-from src.Interaction.Like.Domain.Like import Like
-from datetime import datetime
 
 
 class ExperiencePublicationFactory(PublicationFactory):

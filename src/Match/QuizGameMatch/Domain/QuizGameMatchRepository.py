@@ -7,7 +7,7 @@ from src.Match.QuizGameMatch.Domain.User.UserScore import UserScore
 
 class QuizGameMatchRepository(ABC):
     @abstractmethod
-    def get_match(self) -> QuizGameMatch:
+    def get_match(self, user_id: str) -> QuizGameMatch:
         pass
 
     @abstractmethod

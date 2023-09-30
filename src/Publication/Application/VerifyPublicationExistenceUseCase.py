@@ -1,5 +1,3 @@
-from typing import List, Tuple
-from src.Interaction.Comment.Domain.Comment import Comment
 from src.Publication.AdoptionPublication.Application.GetAdoptionByIdUseCase import (
     GetAdoptionByIdUseCase,
 )
