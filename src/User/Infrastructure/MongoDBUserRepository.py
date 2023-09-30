@@ -122,9 +122,8 @@ class MongoDBUserRepository(UserRepository):
         self, page_number: int, page_size: int, user_id: str
     ) -> Tuple[List[AdoptionPublication], int]:
         skip_count = (page_number - 1) * page_size
-
         documents = (
-            self.adoption_publications.find({"user_id": ObjectId(user_id)})
+            self.adoption_publications.find({"user._id": ObjectId(user_id)})
             .sort([("publication_date", -1), ("_id", -1)])
             .skip(skip_count)
             .limit(page_size)
@@ -146,5 +145,5 @@ class MongoDBUserRepository(UserRepository):
             publication.user = user
             publication.photo = photo
             publications_list.append(publication)
-
+        print(publications_list)
         return publications_list, page_number + 1

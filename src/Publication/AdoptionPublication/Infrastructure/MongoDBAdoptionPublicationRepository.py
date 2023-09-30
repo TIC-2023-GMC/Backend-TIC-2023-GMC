@@ -20,7 +20,7 @@ class MongoDBAdoptionPublicationRepository(PublicationRepository):
     adoption_publications = db["adoption_publications"]
 
     def add_publication(self, publication: AdoptionPublication) -> None:
-        publication.user.id = ObjectId(publication.user.id)
+        publication.user._id = ObjectId(publication.user.id)
         publication_dict = publication.dict()
         publication_dict["_id"] = ObjectId()
         self.adoption_publications.insert_one(publication_dict)

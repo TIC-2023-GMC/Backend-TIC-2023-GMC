@@ -24,6 +24,7 @@ class ListMyPublicationsUseCase:
             page_size=page_size,
             user_id=user_id,
         )
+
         publications = response[0]
         user_favorites = self.user_repository.list_favorite_publications(
             page_number=page_number, page_size=page_size, user_id=user_id
