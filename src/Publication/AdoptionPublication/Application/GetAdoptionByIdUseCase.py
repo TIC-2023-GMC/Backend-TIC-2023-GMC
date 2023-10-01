@@ -1,11 +1,10 @@
 import inject
-from typing import List, Tuple
-from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
-    MongoDBAdoptionPublicationRepository,
-)
 
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
+)
+from src.Publication.AdoptionPublication.Infrastructure.MongoDBAdoptionPublicationRepository import (
+    MongoDBAdoptionPublicationRepository,
 )
 from src.Publication.Domain.PublicationRepository import PublicationRepository
 
@@ -17,8 +16,8 @@ class GetAdoptionByIdUseCase:
 
     def execute(
         self,
-        pub_id: int,
-    ) -> Tuple[List[AdoptionPublication], int]:
+        pub_id: str,
+    ) -> AdoptionPublication:
         return self.publication_repository.get_by_id(
-            id=pub_id,
+            _id=pub_id,
         )

@@ -1,5 +1,6 @@
-from src.Game.Domain.Game import Game
 from typing import List
+
+from src.Game.Domain.Game import Game
 from src.Game.Domain.GameRepository import GameRepository
 from src.Shared.MongoClient import MongoDBConnection
 

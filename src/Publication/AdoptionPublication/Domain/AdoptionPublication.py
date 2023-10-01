@@ -9,3 +9,4 @@ class AdoptionPublication(Publication):
     pet_location: str
     sterilized: bool
     vaccination_card: bool
+    is_favorite: bool

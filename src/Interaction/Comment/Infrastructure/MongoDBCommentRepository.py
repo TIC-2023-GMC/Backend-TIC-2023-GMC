@@ -1,11 +1,13 @@
 from datetime import datetime
-from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
-from src.Interaction.Comment.Domain.Comment import Comment
-from src.Shared.MongoClient import MongoDBConnection
-from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
-from src.Publication.Domain.PublicationRepository import PublicationRepository
-from bson import ObjectId
 from typing import List, Tuple
+
+from bson import ObjectId
+
+from src.Interaction.Comment.Domain.Comment import Comment
+from src.Interaction.Comment.Domain.CommentFactory import CommentFactory
+from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
+from src.Shared.MongoClient import MongoDBConnection
+from src.User.Domain.User import User
 
 
 class MongoDBCommentRepository(CommentRepository):
@@ -13,15 +15,13 @@ class MongoDBCommentRepository(CommentRepository):
     comments = db["publication_comments"]
 
     def add_comment(
-        self, pub_id: str, user_id: str, comment_text: str, comment_date: datetime
+        self, pub_id: str, user: User, comment_text: str, comment_date: datetime
     ) -> None:
-        user_id = ObjectId(user_id)
-        user = self.db["users"].find_one({"_id": user_id})
         if not user:
             raise Exception("No existe el usuario")
-        user_first_name = user["first_name"]
-        user_last_name = user["last_name"]
-        user_photo = user["photo"]
+        user_first_name = user.first_name
+        user_last_name = user.last_name
+        user_photo = user.photo
         _id = None
         comment = CommentFactory.create(
             _id,
@@ -30,7 +30,7 @@ class MongoDBCommentRepository(CommentRepository):
             comment_text,
             comment_date,
             user_photo,
-            str(user_id),
+            str(user.id),
         )
         comment_dict = comment.dict()
         comment_dict["_id"] = ObjectId()

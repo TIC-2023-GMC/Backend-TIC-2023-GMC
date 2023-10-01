@@ -1,8 +1,8 @@
 from datetime import date
-from src.Photo.Domain.Photo import Photo
+
 from src.Interaction.Comment.Domain.Comment import Comment
 from src.Interaction.Domain.InteractionFactory import InteractionFactory
-from src.User.Domain.User import User
+from src.Photo.Domain.Photo import Photo
 
 
 class CommentFactory(InteractionFactory):

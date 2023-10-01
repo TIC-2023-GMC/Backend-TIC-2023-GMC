@@ -1,5 +1,3 @@
-from typing import Annotated
-
 from fastapi import APIRouter, Depends
 
 from src.Game.Infraestructure.FastAPIGameController import router as game_router
@@ -20,7 +18,6 @@ from src.Publication.AdoptionPublication.Infrastructure.FastAPIAdoptionControlle
 from src.Publication.ExperiencePublication.Infrastructure.FastAPIExperienceController import (
     router as experience_router,
 )
-from src.User.Domain.User import User
 from src.User.Infrastructure.FastAPIUserController import (
     auth_router,
     get_current_active_user,

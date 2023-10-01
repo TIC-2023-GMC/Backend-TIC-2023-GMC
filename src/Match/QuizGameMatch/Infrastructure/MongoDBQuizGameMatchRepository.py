@@ -1,5 +1,5 @@
-import random
 from typing import List, Tuple
+
 from bson import ObjectId
 from src.Match.Domain.Match import Match
 from src.Match.QuizGameMatch.Domain.Question.Question import Question
@@ -63,7 +63,6 @@ class MongoDBQuizGameMatchRepository(QuizGameMatchRepository):
 
     def get_leaderboard_and_score(self, user_id: str) -> Tuple[List[Match], int]:
         player_game = self.game_quiz.find_one({"user_id": ObjectId(user_id)})
-
         leaderboard_position = self.game_quiz.count_documents(
             {"match_game_score": {"$gt": player_game["match_game_score"]}}
         )

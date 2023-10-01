@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
 from typing import List
+
 from src.Game.Domain.Game import Game
 
 

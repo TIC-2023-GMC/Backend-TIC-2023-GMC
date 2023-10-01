@@ -1,6 +1,7 @@
+from typing import List
+
 import inject
-from typing import List, Tuple
-from datetime import date
+
 from src.Parish.Domain.Parish import Parish
 from src.Parish.Domain.ParishRepository import ParishRepository
 

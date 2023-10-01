@@ -1,10 +1,7 @@
-from datetime import timedelta
-
 import inject
 
 from src.User.Domain.AuthService import AuthService
 from src.User.Domain.User import User
-from src.User.Domain.UserFactory import UserFactory
 from src.User.Domain.UserRepository import UserRepository
 
 

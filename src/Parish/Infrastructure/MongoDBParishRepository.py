@@ -1,5 +1,5 @@
-from src.Shared.MongoClient import MongoDBConnection
 from src.Parish.Domain.ParishRepository import ParishRepository
+from src.Shared.MongoClient import MongoDBConnection
 
 
 class MongoDBParishRepository(ParishRepository):

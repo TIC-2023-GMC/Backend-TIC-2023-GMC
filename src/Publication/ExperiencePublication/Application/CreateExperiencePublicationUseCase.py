@@ -1,8 +1,9 @@
 import inject
+
+from src.Publication.Domain.PublicationRepository import PublicationRepository
 from src.Publication.ExperiencePublication.Domain.ExperiencePublication import (
     ExperiencePublication,
 )
-from src.Publication.Domain.PublicationRepository import PublicationRepository
 from src.Publication.ExperiencePublication.Infrastructure.MongoDBExperiencePublicationRepository import (
     MongoDBExperiencePublicationRepository,
 )

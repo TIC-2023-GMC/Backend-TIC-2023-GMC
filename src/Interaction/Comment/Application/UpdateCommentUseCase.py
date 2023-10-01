@@ -1,8 +1,6 @@
 import inject
+
 from src.Interaction.Comment.Domain.CommentRepository import CommentRepository
-from src.Interaction.Comment.Infrastructure.MongoDBCommentRepository import (
-    MongoDBCommentRepository,
-)
 
 
 class UpdateCommentUseCase:

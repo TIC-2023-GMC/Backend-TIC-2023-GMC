@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABC
+
 from src.Game.Domain.Game import Game
 
 
