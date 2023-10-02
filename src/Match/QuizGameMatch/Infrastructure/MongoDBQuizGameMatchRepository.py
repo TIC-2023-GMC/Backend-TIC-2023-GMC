@@ -1,15 +1,13 @@
 from typing import List, Tuple
 
 from bson import ObjectId
-
+from src.Match.Domain.Match import Match
 from src.Match.QuizGameMatch.Domain.Question.Question import Question
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
 from src.Match.QuizGameMatch.Domain.QuizGameMatchFactory import QuizGameMatchFactory
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,
 )
-from src.Match.QuizGameMatch.Domain.User.UserScore import UserScore
-from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Shared.MongoClient import MongoDBConnection
 
 
@@ -17,7 +15,6 @@ class MongoDBQuizGameMatchRepository(QuizGameMatchRepository):
     db = MongoDBConnection().get_db()
     questions_quiz = db["questions_quiz"]
     game_quiz = db["game_quiz"]
-    users = db["users"]
 
     def save_match(self, match: QuizGameMatch) -> bool:
         was_created = False
@@ -62,30 +59,27 @@ class MongoDBQuizGameMatchRepository(QuizGameMatchRepository):
         self.save_match(existing_game)
         return existing_game
 
-    def get_leaderboard_and_score(self, user_id: str) -> Tuple[List[UserScore], int]:
+    def get_leaderboard_and_score(self, user_id: str) -> Tuple[List[Match], int]:
         player_game = self.game_quiz.find_one({"user_id": ObjectId(user_id)})
         leaderboard_position = self.game_quiz.count_documents(
             {"match_game_score": {"$gt": player_game["match_game_score"]}}
         )
-        leaderboard = (
-            self.game_quiz.find(
-                {}, {"user_id": 1, "match_game_score": 1, "match_game_time": 1}
-            )
-            .sort("match_game_score", -1)
-            .limit(4)
-        )
+
+        leaderboard = self.game_quiz.find().sort("match_game_score", -1).limit(4)
 
         leaderboard_list = []
 
         for player in leaderboard:
-            user = self.users.find_one({"_id": player["user_id"]})
-            user_score = UserScore(
-                user_first_name=user["first_name"],
-                user_last_name=user["last_name"],
-                user_photo=PhotoFactory.create(img_path=user["photo"]["img_path"]),
+            player["_id"] = str(player["_id"])
+            player["user_id"] = str(player["user_id"])
+            score_info = Match(
+                _id=player["_id"],
+                user_id=player["user_id"],
+                match_name=player["match_name"],
                 match_game_score=player["match_game_score"],
                 match_game_time=player["match_game_time"],
+                match_game_onboarding=player["match_game_onboarding"],
             )
-            leaderboard_list.append(user_score)
+            leaderboard_list.append(score_info)
 
         return leaderboard_list, leaderboard_position + 1
