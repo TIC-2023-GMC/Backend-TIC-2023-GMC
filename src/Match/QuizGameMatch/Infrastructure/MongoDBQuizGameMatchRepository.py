@@ -8,8 +8,6 @@ from src.Match.QuizGameMatch.Domain.QuizGameMatchFactory import QuizGameMatchFac
 from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
     QuizGameMatchRepository,
 )
-from src.Match.QuizGameMatch.Domain.User.UserScore import UserScore
-from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Shared.MongoClient import MongoDBConnection
 
 
