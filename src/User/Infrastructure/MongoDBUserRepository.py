@@ -42,16 +42,6 @@ class MongoDBUserRepository(UserRepository):
         return user
 
     def update_user(self, updated_user: User) -> None:
-        query = {
-            "$or": [
-                {"email": updated_user.email},
-                {"mobile_phone": updated_user.mobile_phone},
-            ]
-        }
-        existent_user = self.users.find_one(query)
-        if existent_user and str(existent_user["_id"]) != updated_user._id:
-            raise Exception("Ya existe un usuario con ese email o celular")
-
         updated_user = updated_user.dict()
         updated_user["_id"] = ObjectId(updated_user["_id"])
         attributes_to_remove = ["password", "email", "favorite_adoption_publications"]
