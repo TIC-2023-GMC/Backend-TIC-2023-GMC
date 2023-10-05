@@ -43,7 +43,17 @@ class MongoDBUserRepository(UserRepository):
 
     def update_user(self, updated_user: User) -> None:
         updated_user = updated_user.dict()
+        updated_user.pop("favorite_adoption_publications", None)
         updated_user["_id"] = ObjectId(updated_user["_id"])
+
+        user_documents = self.adoption_publications.find(
+            {"user._id": updated_user["_id"]}
+        )
+
+        for doc in user_documents:
+            doc["user"] = updated_user
+            self.adoption_publications.update_one({"_id": doc["_id"]}, {"$set": doc})
+
         attributes_to_remove = ["password", "email", "favorite_adoption_publications"]
         for attribute in attributes_to_remove:
             updated_user.pop(attribute, None)
