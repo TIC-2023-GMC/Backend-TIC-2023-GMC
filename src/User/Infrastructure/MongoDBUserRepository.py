@@ -16,6 +16,7 @@ from src.User.Domain.UserRepository import UserRepository
 class MongoDBUserRepository(UserRepository):
     db = MongoDBConnection().get_db()
     adoption_publications = db["adoption_publications"]
+    experience_publications = db["experience_publications"]
     users = db["users"]
     user_favorite_publications = db["user_favorite_publications"]
 
@@ -46,13 +47,13 @@ class MongoDBUserRepository(UserRepository):
         updated_user.pop("favorite_adoption_publications", None)
         updated_user["_id"] = ObjectId(updated_user["_id"])
 
-        user_documents = self.adoption_publications.find(
-            {"user._id": updated_user["_id"]}
+        self.adoption_publications.update_many(
+            {"user._id": updated_user["_id"]}, {"$set": {"user": updated_user}}
         )
 
-        for doc in user_documents:
-            doc["user"] = updated_user
-            self.adoption_publications.update_one({"_id": doc["_id"]}, {"$set": doc})
+        self.experience_publications.update_many(
+            {"user._id": updated_user["_id"]}, {"$set": {"user": updated_user}}
+        )
 
         attributes_to_remove = ["password", "email", "favorite_adoption_publications"]
         for attribute in attributes_to_remove:
