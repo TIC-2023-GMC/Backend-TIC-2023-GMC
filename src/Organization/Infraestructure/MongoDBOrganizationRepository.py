@@ -10,7 +10,7 @@ class MongoDBOrganizationRepository(OrganizationRepository):
     db = MongoDBConnection().get_db()
     organization_collection = db["organizations"]
 
-    def get_organizations(
+    def get_all(
         self, page_number: int, page_size: int
     ) -> Tuple[List[Organization], int]:
         skip_count = (page_number - 1) * page_size

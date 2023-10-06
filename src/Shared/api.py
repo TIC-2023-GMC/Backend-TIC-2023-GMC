@@ -23,7 +23,7 @@ from src.User.Infrastructure.FastAPIUserController import (
     get_current_active_user,
 )
 from src.User.Infrastructure.FastAPIUserController import router as user_router
-from src.Organization.Infraestructure.FastAPIOrgazanizationController import (
+from src.Organization.Infraestructure.FastAPIOrganizationController import (
     router as organization_router,
 )
 

@@ -1,6 +1,6 @@
 from typing import List, Tuple
 from fastapi import APIRouter, HTTPException
-from src.Organization.Application.GetOrganizationUseCase import GetOrganizationUseCase
+from src.Organization.Application.GetOrganizationUseCase import ListOrganizationsUseCase
 from src.Organization.Domain.Organization import Organization
 
 from src.Shared.Singleton import singleton
@@ -12,12 +12,12 @@ router = APIRouter()
 @singleton
 class FastAPIOrganizationController:
     def __init__(self):
-        self.get_organization_use_case = GetOrganizationUseCase()
+        self.list_organizations = ListOrganizationsUseCase()
 
     def get_organizations_endpoint(
         self, page_number: int, page_size: int
     ) -> Tuple[List[Organization], int]:
-        return self.get_organization_use_case.execute(
+        return self.list_organizations.execute(
             page_numer=page_number, page_size=page_size
         )
 
