@@ -274,11 +274,96 @@ experience_publications_collection.insert_many(experience_publications_data)
 organizations_collection = db["organizations"]
 organizations_data = [
     {
-        "name": "Unidad de Bienestar Animal",
-        "address": "Quito",
-        "website": "www.facebook.com",
+        "organization_name": "PAE: Protección Animal Ecuador",
+        "organization_description": "La PAE es una organización sin fines de lucro que se dedica a promover el bienestar y la protección de los animales en Ecuador.",
+        "organization_photo": {
+            "img_path": "https://pae.ec/wp-content/uploads/2021/11/logotipo.png"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/pae.ec/",
+            "instagram": "https://www.instagram.com/paeecuador/",
+            "twitter": "https://twitter.com/PAEecuador",
+            "website": "https://pae.ec/",
+        },
     },
-    {"name": "PARE", "address": "Tumbaco", "website": "www.youtube.com"},
+    {
+        "organization_name": "UBA: Unidad de Bienestar Animal",
+        "organization_description": "La misión de UBA es gestionar la fauna urbana en Quito, priorizando el bienestar animal.",
+        "organization_photo": {
+            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/346650844_1321331818820153_5742948192253736333_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=nJLpDiWJfXgAX9AKOQk&_nc_ht=scontent.fuio35-1.fna&oh=00_AfB_K0jsq2DbYFunGfeqydNX-jnqIg4DNYSwWt7dpfLgQw&oe=6523E82B"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/UBAdeQuito",
+            "instagram": "https://www.instagram.com/uba_quito/",
+            "twitter": "https://twitter.com/UBA_Quito",
+            "website": "",
+        },
+    },
+    {
+        "organization_name": "Fundación Segunda Oportunidad",
+        "organization_description": "Segunda Oportunidad es un colectivo de cuidadanos voluntarios que se dedican al cuidado de gatos en Quito.",
+        "organization_photo": {
+            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/326548865_1216758802381822_4422846810562884066_n.png?_nc_cat=100&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=-lR0WdbmpA8AX-PGPer&_nc_ht=scontent.fuio35-1.fna&oh=00_AfCXQXzUqngQWjeRrX8WR769Ivs5jpPfrkuYJJ-qxJ5lkQ&oe=6524849F"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/fundacionsegop",
+            "instagram": "https://www.instagram.com/fundacionsegop/",
+            "twitter": "",
+            "website": "https://segundaoportunidad.ec/",
+        },
+    },
+    {
+        "organization_name": "Fundación Lucky Bienestar Animal",
+        "organization_description": "Fundación que se encarga de preservar el bienestar de nuestros animales que en su mayoría son rescatados a los cuales damos acogida.",
+        "organization_photo": {
+            "img_path": "https://www.fundacionlucky.org/images/lucky.png"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/luckybienestaranimal",
+            "instagram": "https://www.instagram.com/luckybienestaranimal/",
+            "twitter": "",
+            "website": "https://www.fundacionlucky.org/lucky",
+        },
+    },
+    {
+        "organization_name": "ADVA: Asociación para la Defensa de la Vida Animal",
+        "organization_description": "Organización enfocada en la rescate y rehabilitación de animales en crisis a través de hogares temporales y un santuario de vida.",
+        "organization_photo": {
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/huellitas_de_amor.png?alt=media&token=3f3a3b1a-5b0a-4b9a-8b0a-9b0a0e2b0b0a"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/ADVAdefensavidaanimal/",
+            "instagram": "https://www.instagram.com/advadefensavidaanimal/",
+            "twitter": "https://twitter.com/GuerrerosADVA",
+            "website": "https://www.advaec.org/",
+        },
+    },
+    {
+        "organization_name": "RUNA: Ecuador",
+        "organization_description": "Agrupación de rescate animal cuyo objetivo es dar voz a los angelitos callejeros y cambiar su vida",
+        "organization_photo": {
+            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/326328261_1202079764031779_771119207773087668_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=52f669&_nc_ohc=m_lwB6_DD-sAX9kAt6t&_nc_ht=scontent.fuio35-1.fna&oh=00_AfBOZQPw318JSwh2HWpkZxQtH60nKsqxim3Egk4vCmjdwg&oe=6523F279"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/ECRUNA/",
+            "instagram": "https://www.instagram.com/runa_ecuador/",
+            "twitter": "",
+            "website": "",
+        },
+    },
+    {
+        "organization_name": "Fundación Camino a Casa",
+        "organization_description": "Fundación que tiene como objetivo rescatar perros y gatos en condiciones de vulnerabilidad, darles la mejor atención veterinaria, y encontrar su camino a casa.",
+        "organization_photo": {
+            "img_path": "https://fundacioncaminoacasa.com/wp-content/themes/yootheme/cache/49/logo_camino-492c4d4a.webp"
+        },
+        "external_links": {
+            "facebook": "https://www.facebook.com/fundcaminoacasaecuador",
+            "instagram": "https://www.instagram.com/caminoacasaec/",
+            "twitter": "",
+            "website": "https://fundacioncaminoacasa.com/",
+        },
+    },
 ]
 organizations_collection.insert_many(organizations_data)
 
