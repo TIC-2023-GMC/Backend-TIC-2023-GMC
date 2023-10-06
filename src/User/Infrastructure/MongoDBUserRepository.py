@@ -1,8 +1,5 @@
 from typing import List, Tuple
-
 from bson import ObjectId
-
-from src.Interaction.Like.Domain.LikeFactory import LikeFactory
 from src.Photo.Domain.PhotoFactory import PhotoFactory
 from src.Publication.AdoptionPublication.Domain.AdoptionPublication import (
     AdoptionPublication,
@@ -19,6 +16,7 @@ from src.User.Domain.UserRepository import UserRepository
 class MongoDBUserRepository(UserRepository):
     db = MongoDBConnection().get_db()
     adoption_publications = db["adoption_publications"]
+    experience_publications = db["experience_publications"]
     users = db["users"]
     user_favorite_publications = db["user_favorite_publications"]
 
@@ -46,7 +44,17 @@ class MongoDBUserRepository(UserRepository):
 
     def update_user(self, updated_user: User) -> None:
         updated_user = updated_user.dict()
+        updated_user.pop("favorite_adoption_publications", None)
         updated_user["_id"] = ObjectId(updated_user["_id"])
+
+        self.adoption_publications.update_many(
+            {"user._id": updated_user["_id"]}, {"$set": {"user": updated_user}}
+        )
+
+        self.experience_publications.update_many(
+            {"user._id": updated_user["_id"]}, {"$set": {"user": updated_user}}
+        )
+
         attributes_to_remove = ["password", "email", "favorite_adoption_publications"]
         for attribute in attributes_to_remove:
             updated_user.pop(attribute, None)
