@@ -21,7 +21,9 @@ from src.User.Domain.UserRepository import UserRepository
 from src.User.Infrastructure.JWTAuthService import JWTAuthService
 from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
 from src.Organization.Domain.OrganizationRepository import OrganizationRepository
-from src.Organization.Infraestructure.MongoDBOrganizationRepository import MongoDBOrganizationRepository
+from src.Organization.Infraestructure.MongoDBOrganizationRepository import (
+    MongoDBOrganizationRepository,
+)
 
 
 def configure_ic() -> None:

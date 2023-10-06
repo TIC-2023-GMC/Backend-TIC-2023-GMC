@@ -1,4 +1,3 @@
-
 from src.Organization.Domain.SocialMedia import SocialMedia
 from src.Photo.Domain.Photo import Photo
 from src.Shared.Model import Model

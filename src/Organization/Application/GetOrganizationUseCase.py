@@ -9,5 +9,7 @@ class GetOrganizationUseCase:
     def __init__(self, repository: OrganizationRepository):
         self.repository = repository
 
-    def execute(self, page_numer, page_size)->Tuple[List[Organization], int]:
-        return self.repository.get_organizations(page_number=page_numer, page_size=page_size)
+    def execute(self, page_numer, page_size) -> Tuple[List[Organization], int]:
+        return self.repository.get_organizations(
+            page_number=page_numer, page_size=page_size
+        )
