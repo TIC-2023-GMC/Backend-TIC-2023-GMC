@@ -20,6 +20,10 @@ from src.User.Domain.AuthService import AuthService
 from src.User.Domain.UserRepository import UserRepository
 from src.User.Infrastructure.JWTAuthService import JWTAuthService
 from src.User.Infrastructure.MongoDBUserRepository import MongoDBUserRepository
+from src.Organization.Domain.OrganizationRepository import OrganizationRepository
+from src.Organization.Infraestructure.MongoDBOrganizationRepository import (
+    MongoDBOrganizationRepository,
+)
 
 
 def configure_ic() -> None:
@@ -51,6 +55,10 @@ def configure_ic() -> None:
         binder.bind(
             AuthService,
             JWTAuthService(),
+        )
+        binder.bind(
+            OrganizationRepository,
+            MongoDBOrganizationRepository(),
         )
 
     inject.configure_once(configure)
