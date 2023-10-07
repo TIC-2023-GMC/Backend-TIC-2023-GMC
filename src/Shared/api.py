@@ -29,6 +29,9 @@ from src.Organization.Infraestructure.FastAPIOrganizationController import (
 
 unprotected_router = APIRouter()
 unprotected_router.include_router(auth_router, prefix="/user", tags=["user"])
+unprotected_router.include_router(parish_router, prefix="/parish", tags=["parish"])
+unprotected_router.include_router(photo_router, prefix="/photo", tags=["photo"])
+
 
 protected_router = APIRouter(dependencies=[Depends(get_current_active_user)])
 
@@ -40,8 +43,6 @@ protected_router.include_router(
 )
 protected_router.include_router(comment_router, prefix="/comments", tags=["comment"])
 protected_router.include_router(user_router, prefix="/user", tags=["user"])
-protected_router.include_router(photo_router, prefix="/photo", tags=["photo"])
-protected_router.include_router(parish_router, prefix="/parish", tags=["parish"])
 protected_router.include_router(game_router, prefix="/game", tags=["game"])
 protected_router.include_router(quiz_game_match_router, prefix="/match", tags=["match"])
 protected_router.include_router(like_router, prefix="/like", tags=["like"])
