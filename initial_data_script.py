@@ -833,6 +833,73 @@ questions_data = [
 
 questions_collection.insert_many(questions_data)
 
+# Wordle Match
+wordle_match_collection = db["wordle_match"]
+wordle_match_data = [
+    {
+        "user_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
+        "match_name": "Wordle Match",
+        "match_game_score": 0,
+        "match_game_time": 0,
+        "match_game_onboarding": ".",
+    }
+]
+wordle_match_collection.insert_many(wordle_match_data)
+# Words
+wordle_words_collection = db["words_wordle"]
+wordle_words_data = [
+    {
+        "wordle_game_clue": "Pregunta 1",
+        "wordle_game_description": "Descripción de la pregunta 1",
+        "wordle_game_words": ["Palabra1", "Palabra2", "Palabra3"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 2",
+        "wordle_game_description": "Descripción de la pregunta 2",
+        "wordle_game_words": ["Palabra4", "Palabra5", "Palabra6"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 3",
+        "wordle_game_description": "Descripción de la pregunta 3",
+        "wordle_game_words": ["Palabra7", "Palabra8", "Palabra9"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 4",
+        "wordle_game_description": "Descripción de la pregunta 4",
+        "wordle_game_words": ["Palabra10", "Palabra11", "Palabra12"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 5",
+        "wordle_game_description": "Descripción de la pregunta 5",
+        "wordle_game_words": ["Palabra13", "Palabra14", "Palabra15"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 6",
+        "wordle_game_description": "Descripción de la pregunta 6",
+        "wordle_game_words": ["Palabra16", "Palabra17", "Palabra18"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 7",
+        "wordle_game_description": "Descripción de la pregunta 7",
+        "wordle_game_words": ["Palabra19", "Palabra20", "Palabra21"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 8",
+        "wordle_game_description": "Descripción de la pregunta 8",
+        "wordle_game_words": ["Palabra22", "Palabra23", "Palabra24"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 9",
+        "wordle_game_description": "Descripción de la pregunta 9",
+        "wordle_game_words": ["Palabra25", "Palabra26", "Palabra27"],
+    },
+    {
+        "wordle_game_clue": "Pregunta 10",
+        "wordle_game_description": "Descripción de la pregunta 10",
+        "wordle_game_words": ["Palabra28", "Palabra29", "Palabra30"],
+    },
+]
+wordle_words_collection.insert_many(wordle_words_data)
 
 # Close the MongoDB connection
 client.close()

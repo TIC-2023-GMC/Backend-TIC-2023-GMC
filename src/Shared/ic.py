@@ -24,7 +24,10 @@ from src.Organization.Domain.OrganizationRepository import OrganizationRepositor
 from src.Organization.Infraestructure.MongoDBOrganizationRepository import (
     MongoDBOrganizationRepository,
 )
-
+from src.Match.WordleGameMatch.Domain.WordleMatchRepository import WordleMatchRepository
+from src.Match.WordleGameMatch.Infrastructure.MongoDBWordleRepository import (
+    MongoDBWordleMatchRepository,
+)
 
 def configure_ic() -> None:
     def configure(binder: inject.Binder) -> None:
@@ -60,5 +63,8 @@ def configure_ic() -> None:
             OrganizationRepository,
             MongoDBOrganizationRepository(),
         )
-
+        binder.bind(
+            WordleMatchRepository,
+            MongoDBWordleMatchRepository(),
+        )
     inject.configure_once(configure)
