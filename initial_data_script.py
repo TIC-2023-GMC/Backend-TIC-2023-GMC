@@ -834,5 +834,58 @@ questions_data = [
 questions_collection.insert_many(questions_data)
 
 
+# Game WordSearch
+game_word_search_collection = db["game_word_search"]
+game_word_search_data = [
+    {
+        "user_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
+        "match_name": "Word Search Game Match",
+        "match_game_onboarding": "N/A",
+    }
+]
+
+# Topics
+topics_collection = db["topics_word_search"]
+topics_data = [
+    {
+        "info": "Para asegurarte de que tu mascota esté sana y feliz, es necesario cuidarla adecuadamente. Una de las cosas esenciales que debes hacer es vacunarla. Las vacunas son muy importantes para tu amigo peludo, ya que evitan que se enferme gravemente o incluso muera por enfermedades. Las vacunas ayudan a fortalecer el sistema de defensa de tu mascota, manteniéndola protegida.",
+        "statements": [
+            {"clue": "Protege a tu mascota de enfermedades", "answer": "Vacuna"},
+            {"clue": "Consecuencia de no vacunar a tu mascota", "answer": "Muerte"},
+            {"clue": "Puede ocasionar la muerte de tu mascota", "answer": "Enfermedad"},
+            {
+                "clue": "Obligación y responsabilidad del dueño garantizarla",
+                "answer": "Salud",
+            },
+            {
+                "clue": "Beneficio que recibe una mascota tras la vacuna ante las enfermedades",
+                "answer": "Inmunidad",
+            },
+        ],
+    },
+    {
+        "info": "No desparasitar a un animal de compañía puede ser perjudicial incluso para otras especies. Existen huevos de parásitos que están presentes en las heces de los animales de compañía y si estos son ingeridos por personas u otras especies pueden causar problemas graves como quistes en el hígado.",
+        "statements": [
+            {
+                "clue": "Protege la salud de una mascota eliminado o impidiendo parásitos",
+                "answer": "Desparasitar",
+            },
+            {
+                "clue": "Cuando se ingieren sus huevos puede provocar quistes en hígado",
+                "answer": "Parásitos",
+            },
+            {
+                "clue": "Puede no presentar síntomas en una mascota",
+                "answer": "Lombrices",
+            },
+            {
+                "clue": "Están presentes en las heces de una mascota infectada",
+                "answer": "Larvas",
+            },
+        ],
+    },
+]
+
+
 # Close the MongoDB connection
 client.close()
