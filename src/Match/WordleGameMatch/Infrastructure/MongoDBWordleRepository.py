@@ -15,7 +15,6 @@ class MongoDBWordleMatchRepository(WordleMatchRepository):
         pipeline = [{"$sample": {"size": 1}}]
         wordle_words_data = list(self.words_wordle.aggregate(pipeline))[0]
         if existing_match:
-            print("ya existe")
             existing_match["_id"] = str(existing_match["_id"])
             existing_match["user_id"] = str(existing_match["user_id"])
             existing_match["wordle_game_clue"] = wordle_words_data["wordle_game_clue"]
@@ -25,7 +24,6 @@ class MongoDBWordleMatchRepository(WordleMatchRepository):
             existing_match["wordle_game_words"] = wordle_words_data["wordle_game_words"]
             existing_match = WordleMatchFactory.create_game(**existing_match)
         else:
-            print("no existe")
             existing_match = WordleMatchFactory.create_game(
                 _id=None,
                 user_id=user_id,
