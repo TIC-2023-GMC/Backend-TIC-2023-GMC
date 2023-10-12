@@ -1,5 +1,3 @@
-from typing import List
-
 from src.Match.Domain.Match import Match
 from src.Match.WordSearchGameMatch.Domain.Topic.Topic import Topic
 

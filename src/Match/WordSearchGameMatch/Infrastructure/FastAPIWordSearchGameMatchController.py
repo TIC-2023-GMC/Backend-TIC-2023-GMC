@@ -1,6 +1,5 @@
-from typing import Annotated, List, Tuple
-
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, HTTPException
+from typing import Annotated
 
 from src.Match.WordSearchGameMatch.Application.GetQuizGameMatchUseCase import (
     WordSearchGameMatchUseCase,
@@ -26,7 +25,7 @@ def get_match_controller() -> FastAPIWordSearchGameController:
     return FastAPIWordSearchGameController()
 
 
-@router.get("/quiz_game", status_code=200)
+@router.get("/get_match", status_code=200)
 def get_match_endpoint(
     user: Annotated[User, Depends(get_current_active_user)],
 ) -> WordSearchGameMatch:

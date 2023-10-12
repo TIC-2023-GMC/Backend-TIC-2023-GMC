@@ -844,10 +844,13 @@ game_word_search_data = [
     }
 ]
 
+game_word_search_collection.insert_one(game_word_search_data[0])
+
 # Topics
 topics_collection = db["topics_word_search"]
 topics_data = [
     {
+        "title": "Vacunación",
         "info": "Para asegurarte de que tu mascota esté sana y feliz, es necesario cuidarla adecuadamente. Una de las cosas esenciales que debes hacer es vacunarla. Las vacunas son muy importantes para tu amigo peludo, ya que evitan que se enferme gravemente o incluso muera por enfermedades. Las vacunas ayudan a fortalecer el sistema de defensa de tu mascota, manteniéndola protegida.",
         "statements": [
             {"clue": "Protege a tu mascota de enfermedades", "answer": "Vacuna"},
@@ -864,6 +867,7 @@ topics_data = [
         ],
     },
     {
+        "title": "Desparasitación",
         "info": "No desparasitar a un animal de compañía puede ser perjudicial incluso para otras especies. Existen huevos de parásitos que están presentes en las heces de los animales de compañía y si estos son ingeridos por personas u otras especies pueden causar problemas graves como quistes en el hígado.",
         "statements": [
             {
@@ -886,6 +890,7 @@ topics_data = [
     },
 ]
 
+topics_collection.insert_many(topics_data)
 
 # Close the MongoDB connection
 client.close()

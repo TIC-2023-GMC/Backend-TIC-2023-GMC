@@ -1,4 +1,3 @@
-from typing import List
 from src.Match.Domain.MatchFactory import MatchFactory
 from src.Match.WordSearchGameMatch.Domain.Topic.Topic import Topic
 from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatch import WordSearchGameMatch
@@ -17,8 +16,8 @@ class WordSearchGameMatchFactory(MatchFactory):
             _id=_id,
             user_id=user_id,
             match_name=match_name,
-            match_game_score=None,
-            match_game_time=None,
+            match_game_score=0,
+            match_game_time=0,
             match_game_onboarding=match_game_onboarding,
-            topic=match_game_topic,
+            match_game_topic=match_game_topic,
         )

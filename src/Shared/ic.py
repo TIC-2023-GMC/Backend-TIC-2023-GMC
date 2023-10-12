@@ -12,6 +12,12 @@ from src.Match.QuizGameMatch.Domain.QuizGameMatchRepository import (
 from src.Match.QuizGameMatch.Infrastructure.MongoDBQuizGameMatchRepository import (
     MongoDBQuizGameMatchRepository,
 )
+from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatchRepository import (
+    WordSearchGameMatchRepository,
+)
+from src.Match.WordSearchGameMatch.Infrastructure.MongoDBWordSearchGameMatchRepository import (
+    MongoDBWordSearchGameMatchRepository,
+)
 from src.Parish.Domain.ParishRepository import ParishRepository
 from src.Parish.Infrastructure.MongoDBParishRepository import MongoDBParishRepository
 from src.Photo.Domain.PhotoRepository import PhotoRepository
@@ -59,6 +65,10 @@ def configure_ic() -> None:
         binder.bind(
             OrganizationRepository,
             MongoDBOrganizationRepository(),
+        )
+        binder.bind(
+            WordSearchGameMatchRepository,
+            MongoDBWordSearchGameMatchRepository(),
         )
 
     inject.configure_once(configure)
