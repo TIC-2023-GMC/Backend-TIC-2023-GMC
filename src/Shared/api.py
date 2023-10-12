@@ -27,6 +27,11 @@ from src.Organization.Infraestructure.FastAPIOrganizationController import (
     router as organization_router,
 )
 
+# agregamos los router para wordle
+from src.Match.WordleGameMatch.Infrastructure.FastAPIWordleMatchController import (
+    router as wordle_router,
+)
+
 unprotected_router = APIRouter()
 unprotected_router.include_router(auth_router, prefix="/user", tags=["user"])
 unprotected_router.include_router(parish_router, prefix="/parish", tags=["parish"])
@@ -49,6 +54,7 @@ protected_router.include_router(like_router, prefix="/like", tags=["like"])
 protected_router.include_router(
     organization_router, prefix="/organization", tags=["organization"]
 )
+protected_router.include_router(wordle_router, prefix="/wordle", tags=["wordle"])
 
 api_router = APIRouter()
 api_router.include_router(unprotected_router)
