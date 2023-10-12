@@ -448,7 +448,7 @@ games_data = [
         "game_description": "En este juego podrás aprender sobre las leyes y sanciones que existen en la ciudad de Quito para la protección de los animales.",
         "game_category": "Trivia",
         "game_image": {
-            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/hangman.png?alt=media&token=829fd1ad-f972-44cd-92e3-bf21b489da2b"
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/Wordle-Icon.jpg?alt=media&token=c6ec60f7-abf4-424e-9660-be01598c46b5"
         },
     },
     {

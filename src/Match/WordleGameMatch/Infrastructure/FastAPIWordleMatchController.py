@@ -1,5 +1,7 @@
 from typing import Annotated
+
 from fastapi import APIRouter, Depends, HTTPException, Response
+
 from src.Match.WordleGameMatch.Application.GetWordleMatchUseCase import (
     GetWordleMatchUseCase,
 )
@@ -7,11 +9,9 @@ from src.Match.WordleGameMatch.Application.SaveWordleMatchUseCase import (
     SaveWordleMatchUseCase,
 )
 from src.Match.WordleGameMatch.Domain.WordleMatch import WordleMatch
-
 from src.Shared.Singleton import singleton
 from src.User.Domain.User import User
 from src.User.Infrastructure.FastAPIUserController import get_current_active_user
-
 
 router = APIRouter()
 
@@ -46,9 +46,12 @@ def get_wordle_match(
 
 @router.put("/put_wordle_match")
 def save_wordle_match(match: WordleMatch, response: Response):
-    was_created = get_wordle_match_controller().save_wordle_match(match=match)
-    if was_created:
-        response.status_code = 201
-    else:
-        response.status_code = 200
-    return {}
+    try:
+        was_created = get_wordle_match_controller().save_wordle_match(match=match)
+        if was_created:
+            response.status_code = 201
+        else:
+            response.status_code = 200
+        return {}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
