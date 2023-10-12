@@ -31,7 +31,7 @@ class MongoDBWordleMatchRepository(WordleMatchRepository):
                 match_name="Wordle Game Match",
                 match_game_score=0,
                 match_game_time=0,
-                match_game_onboarding="Adivina una palabra secreta. Tienes solo cinco intentos para adivinarla. Cada vez que haces una suposición, recibirás pistas: letras en su lugar correcto se mostrarán en amarillo y letras correctas en lugares incorrectos se mostrarán en verde. ¡Demuestra tus habilidades de deducción!",
+                match_game_onboarding="Adivina una palabra secreta. Tienes solo cinco intentos para adivinarla. Cada vez que haces una suposición, recibirás pistas: letras en su lugar correcto se mostrarán en verde y letras correctas en lugares incorrectos se mostrarán en amarillo. ¡Demuestra tus habilidades de deducción!",
                 wordle_game_clue=wordle_words_data["wordle_game_clue"],
                 wordle_game_description=wordle_words_data["wordle_game_description"],
                 wordle_game_words=wordle_words_data["wordle_game_words"],

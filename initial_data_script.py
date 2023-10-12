@@ -841,7 +841,7 @@ wordle_match_data = [
         "match_name": "Wordle Match",
         "match_game_score": 0,
         "match_game_time": 0,
-        "match_game_onboarding": ".",
+        "match_game_onboarding": "Adivina una palabra secreta. Tienes solo cinco intentos para adivinarla. Cada vez que haces una suposición, recibirás pistas: letras en su lugar correcto se mostrarán en verde y letras correctas en lugares incorrectos se mostrarán en amarillo. ¡Demuestra tus habilidades de deducción!",
     }
 ]
 wordle_match_collection.insert_many(wordle_match_data)
