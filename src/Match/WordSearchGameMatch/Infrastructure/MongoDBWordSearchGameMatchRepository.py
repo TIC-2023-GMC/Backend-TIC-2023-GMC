@@ -1,4 +1,5 @@
 from bson import ObjectId
+
 from src.Match.WordSearchGameMatch.Domain.Statement.Statement import Statement
 from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatch import WordSearchGameMatch
 from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatchFactory import (
@@ -63,8 +64,6 @@ class MongoDBWordSearchGameMatchRepository(WordSearchGameMatchRepository):
             existing_game["_id"] = str(existing_game["_id"])
             existing_game["user_id"] = str(existing_game["user_id"])
             existing_game["match_game_topic"] = topic
-            """ existing_game["match_game_score"] = 0
-            existing_game["match_game_time"] = 0 """
             existing_game = WordSearchGameMatchFactory.create_game(**existing_game)
         else:
             existing_game = WordSearchGameMatchFactory.create_game(
