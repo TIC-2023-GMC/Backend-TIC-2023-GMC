@@ -849,54 +849,34 @@ wordle_match_collection.insert_many(wordle_match_data)
 wordle_words_collection = db["words_wordle"]
 wordle_words_data = [
     {
-        "wordle_game_clue": "Pregunta 1",
-        "wordle_game_description": "Descripción de la pregunta 1",
-        "wordle_game_words": ["Palabra1", "Palabra2", "Palabra3"],
+        "wordle_game_clue": "Ley de Tenencia Responsable de Mascotas",
+        "wordle_game_description": " Esta ley establece las responsabilidades de los propietarios de mascotas en Quito, incluyendo la obligación de proporcionarles cuidado adecuado, alimentación, atención veterinaria y evitar su abandono.",
+        "wordle_game_words": ["Responsabilidad", "Obligacion", "Abandono"],
     },
     {
-        "wordle_game_clue": "Pregunta 2",
-        "wordle_game_description": "Descripción de la pregunta 2",
-        "wordle_game_words": ["Palabra4", "Palabra5", "Palabra6"],
+        "wordle_game_clue": "Registro de Mascotas",
+        "wordle_game_description": "Los propietarios de mascotas en Quito deben registrar a sus animales en el sistema municipal, lo que les permite acceder a servicios de atención veterinaria y ayuda en caso de pérdida o robo.",
+        "wordle_game_words": ["Registro", "Mascota", "Registrar"],
     },
     {
-        "wordle_game_clue": "Pregunta 3",
-        "wordle_game_description": "Descripción de la pregunta 3",
-        "wordle_game_words": ["Palabra7", "Palabra8", "Palabra9"],
+        "wordle_game_clue": "Vacunación y Esterilización",
+        "wordle_game_description": "La ley exige que los perros y gatos en Quito sean vacunados y esterilizados, a menos que se obtenga un permiso especial para la cría de animales.",
+        "wordle_game_words": ["Vacula", "Esterilizado", "Perro", "Gato"],
     },
     {
-        "wordle_game_clue": "Pregunta 4",
-        "wordle_game_description": "Descripción de la pregunta 4",
-        "wordle_game_words": ["Palabra10", "Palabra11", "Palabra12"],
+        "wordle_game_clue": "Prohibición de Razas Peligrosas",
+        "wordle_game_description": "Algunas ciudades en Ecuador, incluyendo Quito, han implementado prohibiciones o restricciones en la tenencia de razas de perros consideradas peligrosas, como los pitbulls.",
+        "wordle_game_words": ["Raza", "Quito", "Peligro"],
     },
     {
-        "wordle_game_clue": "Pregunta 5",
-        "wordle_game_description": "Descripción de la pregunta 5",
-        "wordle_game_words": ["Palabra13", "Palabra14", "Palabra15"],
+        "wordle_game_clue": "Sanciones por Incumplimiento",
+        "wordle_game_description": "Los propietarios de mascotas que no cumplan con las leyes de tenencia responsable en Quito pueden enfrentar multas y sanciones, incluyendo la confiscación de sus animales.",
+        "wordle_game_words": ["Sancion", "Multa", "Salario"],
     },
     {
-        "wordle_game_clue": "Pregunta 6",
-        "wordle_game_description": "Descripción de la pregunta 6",
-        "wordle_game_words": ["Palabra16", "Palabra17", "Palabra18"],
-    },
-    {
-        "wordle_game_clue": "Pregunta 7",
-        "wordle_game_description": "Descripción de la pregunta 7",
-        "wordle_game_words": ["Palabra19", "Palabra20", "Palabra21"],
-    },
-    {
-        "wordle_game_clue": "Pregunta 8",
-        "wordle_game_description": "Descripción de la pregunta 8",
-        "wordle_game_words": ["Palabra22", "Palabra23", "Palabra24"],
-    },
-    {
-        "wordle_game_clue": "Pregunta 9",
-        "wordle_game_description": "Descripción de la pregunta 9",
-        "wordle_game_words": ["Palabra25", "Palabra26", "Palabra27"],
-    },
-    {
-        "wordle_game_clue": "Pregunta 10",
-        "wordle_game_description": "Descripción de la pregunta 10",
-        "wordle_game_words": ["Palabra28", "Palabra29", "Palabra30"],
+        "wordle_game_clue": "Educación y Concientización",
+        "wordle_game_description": "El gobierno de Quito ha implementado programas de educación y concientización sobre la tenencia responsable de mascotas, con el objetivo de promover el bienestar animal y reducir el abandono de animales.",
+        "wordle_game_words": ["Educar", "Abandono", "Reducir"],
     },
 ]
 wordle_words_collection.insert_many(wordle_words_data)
