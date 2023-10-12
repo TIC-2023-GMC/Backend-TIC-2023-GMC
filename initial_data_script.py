@@ -448,7 +448,7 @@ games_data = [
         "game_description": "En este juego podrás aprender sobre las leyes y sanciones que existen en la ciudad de Quito para la protección de los animales.",
         "game_category": "Trivia",
         "game_image": {
-            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/hangman.png?alt=media&token=829fd1ad-f972-44cd-92e3-bf21b489da2b"
+            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/Wordle-Icon.jpg?alt=media&token=c6ec60f7-abf4-424e-9660-be01598c46b5"
         },
     },
     {
@@ -833,6 +833,53 @@ questions_data = [
 
 questions_collection.insert_many(questions_data)
 
+# Wordle Match
+wordle_match_collection = db["wordle_match"]
+wordle_match_data = [
+    {
+        "user_id": ObjectId("64c1b0ef0fd89c04b7114eb7"),
+        "match_name": "Wordle Match",
+        "match_game_score": 0,
+        "match_game_time": 0,
+        "match_game_onboarding": "Adivina una palabra secreta. Tienes solo cinco intentos para adivinarla. Cada vez que haces una suposición, recibirás pistas: letras en su lugar correcto se mostrarán en verde y letras correctas en lugares incorrectos se mostrarán en amarillo. ¡Demuestra tus habilidades de deducción!",
+    }
+]
+wordle_match_collection.insert_many(wordle_match_data)
+# Words
+wordle_words_collection = db["words_wordle"]
+wordle_words_data = [
+    {
+        "wordle_game_clue": "Ley de Tenencia Responsable de Mascotas",
+        "wordle_game_description": " Esta ley establece las responsabilidades de los propietarios de mascotas en Quito, incluyendo la obligación de proporcionarles cuidado adecuado, alimentación, atención veterinaria y evitar su abandono.",
+        "wordle_game_words": ["Responsabilidad", "Obligacion", "Abandono"],
+    },
+    {
+        "wordle_game_clue": "Registro de Mascotas",
+        "wordle_game_description": "Los propietarios de mascotas en Quito deben registrar a sus animales en el sistema municipal, lo que les permite acceder a servicios de atención veterinaria y ayuda en caso de pérdida o robo.",
+        "wordle_game_words": ["Registro", "Mascota", "Registrar"],
+    },
+    {
+        "wordle_game_clue": "Vacunación y Esterilización",
+        "wordle_game_description": "La ley exige que los perros y gatos en Quito sean vacunados y esterilizados, a menos que se obtenga un permiso especial para la cría de animales.",
+        "wordle_game_words": ["Vacula", "Esterilizado", "Perro", "Gato"],
+    },
+    {
+        "wordle_game_clue": "Prohibición de Razas Peligrosas",
+        "wordle_game_description": "Algunas ciudades en Ecuador, incluyendo Quito, han implementado prohibiciones o restricciones en la tenencia de razas de perros consideradas peligrosas, como los pitbulls.",
+        "wordle_game_words": ["Raza", "Quito", "Peligro"],
+    },
+    {
+        "wordle_game_clue": "Sanciones por Incumplimiento",
+        "wordle_game_description": "Los propietarios de mascotas que no cumplan con las leyes de tenencia responsable en Quito pueden enfrentar multas y sanciones, incluyendo la confiscación de sus animales.",
+        "wordle_game_words": ["Sancion", "Multa", "Salario"],
+    },
+    {
+        "wordle_game_clue": "Educación y Concientización",
+        "wordle_game_description": "El gobierno de Quito ha implementado programas de educación y concientización sobre la tenencia responsable de mascotas, con el objetivo de promover el bienestar animal y reducir el abandono de animales.",
+        "wordle_game_words": ["Educar", "Abandono", "Reducir"],
+    },
+]
+wordle_words_collection.insert_many(wordle_words_data)
 
 # Game WordSearch
 game_word_search_collection = db["game_word_search"]

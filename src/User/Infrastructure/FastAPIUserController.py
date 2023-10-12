@@ -131,7 +131,10 @@ def register_endpoint(user: User) -> None:
 def read_users_me_endpoint(
     current_user: Annotated[User, Depends(get_current_active_user)]
 ):
-    return current_user
+    try:
+        return current_user
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 @router.get("/get_by_id", status_code=200)
