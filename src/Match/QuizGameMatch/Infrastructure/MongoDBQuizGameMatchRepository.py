@@ -1,6 +1,7 @@
 from typing import List, Tuple
 
 from bson import ObjectId
+
 from src.Match.Domain.Match import Match
 from src.Match.QuizGameMatch.Domain.Question.Question import Question
 from src.Match.QuizGameMatch.Domain.QuizGameMatch import QuizGameMatch
@@ -53,7 +54,7 @@ class MongoDBQuizGameMatchRepository(QuizGameMatchRepository):
                 match_name="Quiz Game Match",
                 match_game_score=0,
                 match_game_time=0,
-                match_game_onboarding="N/A",
+                match_game_onboarding="Adivina una palabra secreta. Tienes solo cinco intentos para adivinarla. Cada vez que haces una suposición, recibirás pistas: letras en su lugar correcto se mostrarán en amarillo y letras correctas en lugares incorrectos se mostrarán en verde. ¡Demuestra tus habilidades de deducción!",
                 match_game_questions=match_game_questions,
             )
         self.save_match(existing_game)
