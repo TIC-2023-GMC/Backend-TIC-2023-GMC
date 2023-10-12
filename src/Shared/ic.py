@@ -29,6 +29,7 @@ from src.Match.WordleGameMatch.Infrastructure.MongoDBWordleRepository import (
     MongoDBWordleMatchRepository,
 )
 
+
 def configure_ic() -> None:
     def configure(binder: inject.Binder) -> None:
         binder.bind(
@@ -67,4 +68,5 @@ def configure_ic() -> None:
             WordleMatchRepository,
             MongoDBWordleMatchRepository(),
         )
+
     inject.configure_once(configure)

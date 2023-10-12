@@ -8,7 +8,6 @@ class GetWordleMatchUseCase:
     @inject.autoparams()
     def __init__(self, repository: WordleMatchRepository):
         self.repository = repository
-    
-    def execute(self, user_id: str)-> WordleMatch:
+
+    def execute(self, user_id: str) -> WordleMatch:
         return self.repository.get_match(user_id=user_id)
-    
