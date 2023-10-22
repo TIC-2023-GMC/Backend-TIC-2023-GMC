@@ -16,7 +16,7 @@ class RegisterUserUseCase:
             user.email, user.mobile_phone
         )
         if existing_user:
-            raise Exception("El usuario ya existe")
+            raise Exception("El correo o número de celular ya está registrado")
         user.password = self.get_password_hash(user.password)
         self.user_repository.add_user(user)
         access_token = self.create_access_token({"sub": user.email})
