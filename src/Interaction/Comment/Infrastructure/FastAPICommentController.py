@@ -96,7 +96,7 @@ def update_comment_endpoint(comment_id: str, comment_text: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/delete_comment", status_code=200)
+@router.delete("/delete_comment", status_code=200)
 def delete_comment_endpoint(pub_id: str, comment_id: str):
     try:
         get_comment_controller().delete_comment(pub_id=pub_id, comment_id=comment_id)
