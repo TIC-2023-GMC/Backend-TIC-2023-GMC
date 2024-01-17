@@ -1126,7 +1126,10 @@ topics_data = [
         "statements": [
             {"clue": "Considerado como animal de compañía", "answer": "Gatos"},
             {"clue": "Considerado como animal de compañía", "answer": "Perros"},
-            {"clue": "Animal de compañía debe socializar con otros: ", "answer": "Animales"},
+            {
+                "clue": "Animal de compañía debe socializar con otros: ",
+                "answer": "Animales",
+            },
             {"clue": "Responsabilidad de un tutor", "answer": "Educar"},
         ],
     },
@@ -1154,7 +1157,10 @@ topics_data = [
         "title": "Alojamiento Adecuado para Animales",
         "info": "Proporcionar a los animales un alojamiento adecuado, manteniéndolos en buenas condiciones físicas, psíquicas y fisiológicas, de acuerdo a las necesidades de su especie.",
         "statements": [
-            {"clue": "un buen ____ es necesario para un animal de compañía", "answer": "Alojamiento"},
+            {
+                "clue": "un buen ____ es necesario para un animal de compañía",
+                "answer": "Alojamiento",
+            },
             {"clue": "Necesidades Específicas y fisiológicas ___", "answer": "Fisicas"},
             {"clue": "Salud Mental", "answer": "Psíquicas"},
             {"clue": "Bienestar Fisiológico", "answer": "Animales"},
@@ -1165,7 +1171,10 @@ topics_data = [
         "info": "Someter a los animales, de manera oportuna, a los tratamientos veterinarios preventivos y curativos que pudieran precisar a fin de evitar daño, dolor o sufrimiento innecesario.",
         "statements": [
             {"clue": "Prevención", "answer": "Tratamientos"},
-            {"clue": "Un animal de compañía debe recibir tramientos _____", "answer": "Veterinarios"},
+            {
+                "clue": "Un animal de compañía debe recibir tramientos _____",
+                "answer": "Veterinarios",
+            },
             {"clue": "Cuidado prventivos y _____", "answer": "curativos"},
             {"clue": "Evitar Sufrimiento y _____", "answer": "Daño"},
         ],
@@ -1180,7 +1189,6 @@ topics_data = [
             {"clue": "Integridad _____ se evita el peligro", "answer": "Fisica "},
         ],
     },
-
 ]
 
 topics_collection.insert_many(topics_data)
