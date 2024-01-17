@@ -17,10 +17,12 @@ services:
 
   backend:
     build:
-      context: . # Set to project root directory
-      dockerfile: docker-backend/Dockerfile
+      context: ./docker-backend
+      dockerfile: Dockerfile
     container_name: pawq-backend
     ports:
       - "8000:8000"
     volumes:
-      - ./:/app
+      - .:/app
+
+
