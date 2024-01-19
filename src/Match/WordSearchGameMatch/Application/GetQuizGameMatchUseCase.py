@@ -6,7 +6,7 @@ from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatchRepository import (
 )
 
 
-class WordSearchGameMatchUseCase:
+class GetWordSearchGameMatchUseCase:
     @inject.autoparams()
     def __init__(self, repository: WordSearchGameMatchRepository):
         self.repository = repository

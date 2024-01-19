@@ -878,6 +878,191 @@ wordle_words_data = [
         "wordle_game_description": "El gobierno de Quito ha implementado programas de educación y concientización sobre la tenencia responsable de mascotas, con el objetivo de promover el bienestar animal y reducir el abandono de animales.",
         "wordle_game_words": ["Educar", "Abandono", "Reducir"],
     },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Control de Fauna Urbana",
+        "wordle_game_description": "Identificación de animales con microchip ISO 11784/11785 o aprobado por la Secretaría de Salud Metropolitana. Debe ser realizado por veterinario acreditado y registrado en el Registro Metropolitano de Fauna Urbana (REMETFU).",
+        "wordle_game_words": ["Microchip", "Veterinario", "Registro"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Responsabilidad por Daños",
+        "wordle_game_description": "Normativa sobre la responsabilidad por daños del animal, salvo circunstancias como provocación, defensa, actuación en propiedad privada y agresión en las primeras ocho semanas de maternidad, sujeto a criterio técnico del ente de Salud Metropolitano.",
+        "wordle_game_words": ["Normativa", "Defensa", "Maternidad"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Cuidado y Reconocimiento",
+        "wordle_game_description": "Responsabilidad de cubrir gastos justificados por rescate, atención veterinaria, alimentación y cuidado al reconocer a organizaciones protectoras, individuos o al Centro de Atención Veterinaria, Rescate y Acogida Temporal (CAVRAT).",
+        "wordle_game_words": ["Gastos", "Reconocimiento", "Cuidado"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Transitar Seguro con Animales",
+        "wordle_game_description": "Uso de collar, arnés, traílla u otros según el protocolo del ente rector de salud de Quito para seguridad propia y de terceros al transitar con animales.",
+        "wordle_game_words": ["Collar", "Protocolo", "Seguridad"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Higiene Responsable",
+        "wordle_game_description": "Obligación de recoger los desechos de los animales bajo tu cuidado, tanto en lugares públicos como privados, como parte de una práctica de higiene responsable.",
+        "wordle_game_words": ["Recoger", "Desechos", "Higiene"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Hallazgo de Animales Extraviados",
+        "wordle_game_description": "La persona que encuentre a un animal extraviado deberá reportar su hallazgo en la Unidad de Bienestar Animal, a través de los mecanismos que el Ente Rector Metropolitano de Salud desarrolle en el protocolo debidamente aprobado.",
+        "wordle_game_words": ["Hallazgo", "Reportar", "Protocolo"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Informe de Animales Extraviados",
+        "wordle_game_description": "La persona que encuentre un animal extraviado debe informarlo a la Unidad de Bienestar Animal según el protocolo aprobado por el Ente Rector de Salud Metropolitano.",
+        "wordle_game_words": ["Informe", "Animales", "Protocolo"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Mantenimiento en Predios Privados",
+        "wordle_game_description": "Mantener a los animales en predios privados, evitando su deambulación en el espacio público sin supervisión del responsable de su tenencia, de acuerdo con el Artículo 3235.",
+        "wordle_game_words": ["Mantener", "Predios", "Supervisión"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Tenencia en el Hogar",
+        "wordle_game_description": "Respetar la tenencia responsable de animales en su lugar de habitación, ya sea propio o alquilado, en viviendas individuales o complejos habitacionales en propiedad horizontal, según el bienestar animal.",
+        "wordle_game_words": ["Respetar", "Tenencia", "Hogar"],
+    },
+    {
+        "wordle_game_clue": "Responsabilidades Art. 3235: Condiciones Inaceptables",
+        "wordle_game_description": "Mantener animales, en habitáculos aislados o sin el espacio necesario para su tamaño y normal desenvolvimiento o expuestos a inclemencias del clima e insalubridad.",
+        "wordle_game_words": ["Mantener", "Condiciones", "Aceptable"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Maltrato Animal",
+        "wordle_game_description": "Provocar en los animales daño o sufrimiento en cualquiera de sus formas.",
+        "wordle_game_words": ["Maltrato", "Animales", "Daño"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Abandono Animal",
+        "wordle_game_description": "Abandonar animales en lugares públicos o privados, en áreas urbanas o rurales.",
+        "wordle_game_words": ["Abandono", "Animales", "Lugares"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Deambulación sin Supervisión",
+        "wordle_game_description": "Permitir que los animales deambulen en el espacio público sin la debida supervisión.",
+        "wordle_game_words": ["Deambulación", "Supervisión", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Espacios Anti-higiénicos",
+        "wordle_game_description": "Mantener animales en espacios anti-higiénicos.",
+        "wordle_game_words": ["Mantener", "Animales", "Higiénicos"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Ataduras y Privación",
+        "wordle_game_description": "Encadenar animales o atarlos como método habitual de mantenimiento en cautiverio, o privarlos de su movilidad natural.",
+        "wordle_game_words": ["Ataduras", "Privación", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Mutilaciones Innecesarias",
+        "wordle_game_description": "Evitar mutilaciones innecesarias o estéticas en animales, salvo por tratamiento veterinario necesario o esterilización.",
+        "wordle_game_words": ["Evitar", "Mutilaciones", "Veterinario"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Privación Alimentaria",
+        "wordle_game_description": "Evitar privar a los animales de la alimentación esencial para su desarrollo o proporcionarles alimentos que puedan causarles daño o sufrimiento.",
+        "wordle_game_words": ["Privar", "Alimentación", "Sufrimiento"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Sustancias Venenosas",
+        "wordle_game_description": "Administrar a los animales cualquier sustancia venenosa o tóxica, o provocar deliberadamente que el animal la ingiera.",
+        "wordle_game_words": ["Administrar", "Sustancias", "toxica"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Trabajo y Salud Animal",
+        "wordle_game_description": "Obligar a animales a trabajar o producir mientras estén desnutridos, embarazadas, heridos o enfermos, evitando la sobreexplotación que amenace su salud física o psicológica, incluso si están saludables.",
+        "wordle_game_words": ["Obligar", "Trabajo", "Salud"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Peleas de Animales",
+        "wordle_game_description": "Criar, reproducir, entrenar o utilizar animales para peleas, así como también, asistir, fomentar u organizar dichas peleas entre animales, entre animales y personas.",
+        "wordle_game_words": ["Peleas", "Animales", "fomentar"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Criaderos Responsables",
+        "wordle_game_description": "Evitar reproducción anual en criaderos sin considerar características anatómicas, genéticas y psíquicas, que puedan afectar salud y bienestar de madre y crías. Abstenerse de practicar endogamia y criar razas braquicéfalas.",
+        "wordle_game_words": ["Criaderos", "Reproducción", "Bienestar"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Donación Inapropiada",
+        "wordle_game_description": "Donar animales en calidad de premio, reclamo publicitario, recompensa, regalo de compensación.",
+        "wordle_game_words": ["Regalo", "Animales", "Premio"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Venta de Animales",
+        "wordle_game_description": "Vender animales de compañía, excepto en los casos permitidos en la normativa metropolitana vigente.",
+        "wordle_game_words": ["Vender", "Animales", "Compañía"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Adopción Responsable",
+        "wordle_game_description": "Dar en adopción o entregar animales de forma gratuita u onerosa a menores de edad o a personas que requieran tutoría.",
+        "wordle_game_words": ["Edad", "Entregar", "Menor"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Comercio Indigno",
+        "wordle_game_description": "Utilizar animales de compañía para fines comerciales que atenten contra el bienestar animal.",
+        "wordle_game_words": ["Comercio", "Animales", "Bienestar"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Uso Dañino",
+        "wordle_game_description": "Utilizar animales de compañía para dañar o causar muerte a otros animales.",
+        "wordle_game_words": ["Utilizar", "Dañar", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Dejar en Vehículos",
+        "wordle_game_description": "Dejar animales dentro de vehículos estacionados sin un tenedor responsable y bajo condiciones que atenten contra su bienestar o vida.",
+        "wordle_game_words": ["Dejar", "Vehículos", "Bienestar"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Adiestramiento Público",
+        "wordle_game_description": "Adiestrar animales de compañía en el espacio público.",
+        "wordle_game_words": ["Adiestrar", "Animales", "Público"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Baño en Fuentes",
+        "wordle_game_description": "Bañar animales de compañía en fuentes ornamentales.",
+        "wordle_game_words": ["Bañar", "Animales", "Fuentes"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Comercio Ambulatorio",
+        "wordle_game_description": "Realizar comercio o ventas ambulatorias de animales vivos en el espacio público, tanto de forma habitual como ocasional.",
+        "wordle_game_words": ["Comercio", "Ambulatorio", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Abuso Sexual Animal",
+        "wordle_game_description": "Utilizar animales para zoofilia, pornografía o cualquier actividad sexual.",
+        "wordle_game_words": ["Abuso", "Sexual", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Métodos de Caza",
+        "wordle_game_description": "Usar métodos de caza o de control de depredadores naturales incluyendo los animales asilvestrados, que pudieran ocasionar daños a otros animales o a los seres humanos.",
+        "wordle_game_words": ["Métodos", "Caza", "Daños"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Métodos Perjudiciales",
+        "wordle_game_description": "Evitar la comercialización o recomendación de métodos que causen daño físico o emocional a animales, como collares de ahogo, pinchos o descargas eléctricas, para su manejo, entrenamiento o adiestramiento.",
+        "wordle_game_words": ["Evitar", "Métodos", "Daño"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Animales Genéticamente Modificados",
+        "wordle_game_description": "Crear o comercializar variedades nuevas de animales genéticamente modificados a través de selección artificial o ingeniería genética.",
+        "wordle_game_words": ["Crear", "Genética", "Animales"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Consumo de Animales de Compañía",
+        "wordle_game_description": "Criar, comprar, mantener, capturar animales de compañía para consumo humano.",
+        "wordle_game_words": ["Consumo", "Animales", "Compañía"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Uso Criminal de Animales",
+        "wordle_game_description": "Utilizar animales para el cometimiento de un delito o delitos.",
+        "wordle_game_words": ["Utilizar", "Animales", "Delito"],
+    },
+    {
+        "wordle_game_clue": "Prohibiciones Art. 3236: Obstrucción a Inspectores",
+        "wordle_game_description": "Impedir la labor de los inspectores de la Dirección de Fauna Urbana o de la autoridad de control.",
+        "wordle_game_words": ["Impedir", "Inspectores", "Obstrucción"],
+    },
 ]
 wordle_words_collection.insert_many(wordle_words_data)
 
@@ -933,6 +1118,75 @@ topics_data = [
                 "clue": "Están presentes en las heces de una mascota infectada",
                 "answer": "Larvas",
             },
+        ],
+    },
+    {
+        "title": "Integración Comunitaria de Animales",
+        "info": "Educar, socializar e integrar animales con la comunidad humana y animal, enfocándose en el bienestar, especialmente con perros y gatos.",
+        "statements": [
+            {"clue": "Considerado como animal de compañía", "answer": "Gatos"},
+            {"clue": "Considerado como animal de compañía", "answer": "Perros"},
+            {
+                "clue": "Animal de compañía debe socializar con otros: ",
+                "answer": "Animales",
+            },
+            {"clue": "Responsabilidad de un tutor", "answer": "Educar"},
+        ],
+    },
+    {
+        "title": "Riesgos de los Collares de Ahogo en Perros",
+        "info": "Los collares de ahogo o castigo son perjudiciales para los perros.",
+        "statements": [
+            {"clue": "Evitan el Estrés", "answer": "Paseo"},
+            {"clue": "Prohibido en Adiestramiento (Collar de)", "answer": "Ahogo"},
+            {"clue": "Causa Ahogo", "answer": "Collar"},
+            {"clue": "Collar de ", "answer": "Castigo"},
+            {"clue": "Limitaciones Sociales", "answer": "perjudica"},
+        ],
+    },
+    {
+        "title": "Bienestar Animal y Cuidado Responsable",
+        "info": "Tener un número de animales que puedan mantener de acuerdo al bienestar animal.",
+        "statements": [
+            {"clue": "Cuidado Responsable", "answer": "Animales"},
+            {"clue": "Bienestar", "answer": "Mantener"},
+            {"clue": "Número Adecuado", "answer": "Animales"},
+        ],
+    },
+    {
+        "title": "Alojamiento Adecuado para Animales",
+        "info": "Proporcionar a los animales un alojamiento adecuado, manteniéndolos en buenas condiciones físicas, psíquicas y fisiológicas, de acuerdo a las necesidades de su especie.",
+        "statements": [
+            {
+                "clue": "un buen ____ es necesario para un animal de compañía",
+                "answer": "Alojamiento",
+            },
+            {"clue": "Necesidades Específicas y fisiológicas ___", "answer": "Fisicas"},
+            {"clue": "Salud Mental", "answer": "Psíquicas"},
+            {"clue": "Bienestar Fisiológico", "answer": "Animales"},
+        ],
+    },
+    {
+        "title": "Tratamientos Veterinarios para el Bienestar Animal",
+        "info": "Someter a los animales, de manera oportuna, a los tratamientos veterinarios preventivos y curativos que pudieran precisar a fin de evitar daño, dolor o sufrimiento innecesario.",
+        "statements": [
+            {"clue": "Prevención", "answer": "Tratamientos"},
+            {
+                "clue": "Un animal de compañía debe recibir tramientos _____",
+                "answer": "Veterinarios",
+            },
+            {"clue": "Cuidado prventivos y _____", "answer": "curativos"},
+            {"clue": "Evitar Sufrimiento y _____", "answer": "Daño"},
+        ],
+    },
+    {
+        "title": "Socialización Segura de Animales",
+        "info": "Socializar a los animales, bajo condiciones que no pongan en peligro la integridad física de las personas, otros animales o el propio animal, haciéndoles interactuar con la comunidad a fin de adaptarlos a una convivencia sana.",
+        "statements": [
+            {"clue": "Integración Comunitaria", "answer": "Socializar"},
+            {"clue": "Se tiene que garantizar una convivencia ____", "answer": "Sana"},
+            {"clue": "Interacción Segura", "answer": "Animales"},
+            {"clue": "Integridad _____ se evita el peligro", "answer": "Fisica "},
         ],
     },
 ]

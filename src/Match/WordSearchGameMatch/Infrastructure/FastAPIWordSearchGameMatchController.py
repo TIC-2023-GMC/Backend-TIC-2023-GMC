@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from typing import Annotated
 
 from src.Match.WordSearchGameMatch.Application.GetQuizGameMatchUseCase import (
-    WordSearchGameMatchUseCase,
+    GetWordSearchGameMatchUseCase,
 )
 from src.Match.WordSearchGameMatch.Domain.WordSearchGameMatch import WordSearchGameMatch
 from src.Shared.Singleton import singleton
@@ -15,7 +15,7 @@ router = APIRouter()
 @singleton
 class FastAPIWordSearchGameController:
     def __init__(self):
-        self.get_match_use_case = WordSearchGameMatchUseCase()
+        self.get_match_use_case = GetWordSearchGameMatchUseCase()
 
     def get_match(self, user_id: str) -> WordSearchGameMatch:
         return self.get_match_use_case.execute(user_id=user_id)
