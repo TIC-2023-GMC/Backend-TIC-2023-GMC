@@ -9,6 +9,7 @@ Be sure to install first:
 
 * Python 3.11.^ - [Python 3.11 Download Page](https://www.python.org/downloads/release/python-3110/)
 * Poetry - [Poetry Download Page](https://pypi.org/project/poetry/)
+* Docker - [Docker Desktop Download Page](https://www.docker.com/products/docker-desktop/)
 
 ## Set up the project
 
@@ -88,6 +89,35 @@ If you want to check all your files you can run:
 ```
 $ poetry run black .
 ```
+
+## Run the containers 
+
+We use Docker for containerizing both the application's backend and the mongo database. This provides us with an isolated and consistent environment for easing development and deployment processes.
+
+The containers are already set up, so you just have to follow the next steps to successfully run the docker containers (Docker should already be installed).
+
+First, you need to check that the environment variable MONGO_URL is set to "mongo":
+
+```
+MONGO_URL=mongo
+```
+
+Next, you have to build the image for each container ("pawq-mongo" and "pawq-backend"):
+
+```
+$ docker build [container-name] --no-cache 
+```
+
+NOTE: We use the "--no-cache" flag to update a previous image (if there was one).
+
+Finally, you can run the containers with:
+
+```
+$ docker-compose up -d
+```
+
+If you have the Docker Desktop version you can verify if the services are up.
+
 
 ## Contribution guidelines
 When you work on your code, you should checkout to "develop" branch:
