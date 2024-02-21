@@ -85,25 +85,6 @@ def add_comment_endpoint(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/update_comment", status_code=200)
-def update_comment_endpoint(comment_id: str, comment_text: str):
-    try:
-        get_comment_controller().update_comment(
-            comment_id=comment_id,
-            comment_text=comment_text,
-        )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.delete("/delete_comment", status_code=200)
-def delete_comment_endpoint(pub_id: str, comment_id: str):
-    try:
-        get_comment_controller().delete_comment(pub_id=pub_id, comment_id=comment_id)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
 @router.get("/list_comments", status_code=200)
 def list_comments_endpoint(pub_id: str, page_number: int, page_size: int):
     try:
