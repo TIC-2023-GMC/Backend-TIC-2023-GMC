@@ -45,7 +45,7 @@ users_data = [
         "pet_expenses": 40.5,
         "motivation": "Love for animals",
         "photo": {
-            "img_path": "https://scontent.fgye1-1.fna.fbcdn.net/v/t1.6435-9/74242360_3195954163812838_4274861617784553472_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFRCjYsTZuQlf2PHyTPJ3HYymegSJbxrSjKZ6BIlvGtKPYIzlm5LEqBr9cR0tDl-FEvtHfkBqZQ6LHCgw-pkTlW&_nc_ohc=dye6H3TWD6QAX-v2xOF&_nc_ht=scontent.fgye1-1.fna&oh=00_AfCF85oDfvg1CEtIJ1We_mJ3gV49fRwyklxfDfl8SouHOA&oe=64D84DE2",
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t1.6435-9/74242360_3195954163812838_4274861617784553472_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=be3454&_nc_eui2=AeFRCjYsTZuQlf2PHyTPJ3HYymegSJbxrSjKZ6BIlvGtKPYIzlm5LEqBr9cR0tDl-FEvtHfkBqZQ6LHCgw-pkTlW&_nc_ohc=IUwBkSxyKJgAX-QxqMl&_nc_ht=scontent.fuio1-2.fna&oh=00_AfC249cOU7QpV1vy0a_7aAPvLy89Kb5jtOTYH6QbP4JgHA&oe=65FCC2A2",
         },
     },
     {
@@ -290,7 +290,7 @@ organizations_data = [
         "organization_name": "UBA: Unidad de Bienestar Animal",
         "organization_description": "La misión de UBA es gestionar la fauna urbana en Quito, priorizando el bienestar animal.",
         "organization_photo": {
-            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/346650844_1321331818820153_5742948192253736333_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=nJLpDiWJfXgAX9AKOQk&_nc_ht=scontent.fuio35-1.fna&oh=00_AfB_K0jsq2DbYFunGfeqydNX-jnqIg4DNYSwWt7dpfLgQw&oe=6523E82B"
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t39.30808-6/346650844_1321331818820153_5742948192253736333_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEozzn-cky8Ab1RnXtpawv7l_NEYBt6OXCX80RgG3o5cPPl32QdU3isRIx0YReYaVSw7wXrGrhbjMe-MR8CLVCp&_nc_ohc=-3P2aOUlhMMAX9sX3HA&_nc_ht=scontent.fuio1-2.fna&oh=00_AfAOouRsEJ3Q3umIiqLAgl4urPu8dgb18C3ds7B222cD6g&oe=65D9D72B"
         },
         "external_links": {
             "facebook": "https://www.facebook.com/UBAdeQuito",
@@ -303,7 +303,7 @@ organizations_data = [
         "organization_name": "Fundación Segunda Oportunidad",
         "organization_description": "Segunda Oportunidad es un colectivo de cuidadanos voluntarios que se dedican al cuidado de gatos en Quito.",
         "organization_photo": {
-            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/326548865_1216758802381822_4422846810562884066_n.png?_nc_cat=100&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=-lR0WdbmpA8AX-PGPer&_nc_ht=scontent.fuio35-1.fna&oh=00_AfCXQXzUqngQWjeRrX8WR769Ivs5jpPfrkuYJJ-qxJ5lkQ&oe=6524849F"
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t39.30808-6/428633472_808482404651946_5375917950397203194_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeFOtI3zT9quzSACtKUYnM_0Y14hTbRua0BjXiFNtG5rQMiKnmG_BdT5K5kmXblECyfvt9e-xLPgRQnS00XfItlK&_nc_ohc=1GYS6KJscsgAX_7ujTD&_nc_ht=scontent.fuio1-2.fna&oh=00_AfB7RQBMVQlsKHpd6-M063EyjIWx7cNWrst3hNDsaV5MKg&oe=65D946D4"
         },
         "external_links": {
             "facebook": "https://www.facebook.com/fundacionsegop",
@@ -329,7 +329,7 @@ organizations_data = [
         "organization_name": "ADVA: Asociación para la Defensa de la Vida Animal",
         "organization_description": "Organización enfocada en la rescate y rehabilitación de animales en crisis a través de hogares temporales y un santuario de vida.",
         "organization_photo": {
-            "img_path": "https://firebasestorage.googleapis.com/v0/b/pawq-fc6dc.appspot.com/o/huellitas_de_amor.png?alt=media&token=3f3a3b1a-5b0a-4b9a-8b0a-9b0a0e2b0b0a"
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t39.30808-6/347830539_949330179640552_6347205065279162843_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGRWR0w-FXpOtxW6L7Kqkijz9m_7OjvB3LP2b_s6O8HcpOu9Bx9iISU7-HmGZ9Ipz9Celw8IysrQZdLOTmClEBQ&_nc_ohc=16BVleTU1J0AX8EsSyP&_nc_ht=scontent.fuio1-2.fna&oh=00_AfCuP_1OeCdwF0NOx4o6vw1WBK5DaJkI0ViPHRT-Bpw2aA&oe=65D9B3F7"
         },
         "external_links": {
             "facebook": "https://www.facebook.com/ADVAdefensavidaanimal/",
@@ -342,7 +342,7 @@ organizations_data = [
         "organization_name": "RUNA: Ecuador",
         "organization_description": "Agrupación de rescate animal cuyo objetivo es dar voz a los angelitos callejeros y cambiar su vida",
         "organization_photo": {
-            "img_path": "https://scontent.fuio35-1.fna.fbcdn.net/v/t39.30808-6/326328261_1202079764031779_771119207773087668_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=52f669&_nc_ohc=m_lwB6_DD-sAX9kAt6t&_nc_ht=scontent.fuio35-1.fna&oh=00_AfBOZQPw318JSwh2HWpkZxQtH60nKsqxim3Egk4vCmjdwg&oe=6523F279"
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t39.30808-6/326499321_567134311964376_5615763639756416955_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeGtbdSQl8f2CUZAMRk_8mpKIxqgo9kJQpkjGqCj2QlCmb6m7onNyu7TGbxrCH57cvDYxbC7yUeBuMvLz85F3l8n&_nc_ohc=WNbXdy8MILgAX-BwzPW&_nc_oc=AQmkMdiA_jmKayZ68uF-Mq38GC3n-rals00pIdGQvTPg24pXgwnTgdQkfyoCqkG1Mjg&_nc_ht=scontent.fuio1-2.fna&oh=00_AfDyL48jUnXiDlF3O2Ji7FiXzS4GRsBOfUIA5kd-5UD0iQ&oe=65DB318C"
         },
         "external_links": {
             "facebook": "https://www.facebook.com/ECRUNA/",
@@ -355,7 +355,7 @@ organizations_data = [
         "organization_name": "Fundación Camino a Casa",
         "organization_description": "Fundación que tiene como objetivo rescatar perros y gatos en condiciones de vulnerabilidad, darles la mejor atención veterinaria, y encontrar su camino a casa.",
         "organization_photo": {
-            "img_path": "https://fundacioncaminoacasa.com/wp-content/themes/yootheme/cache/49/logo_camino-492c4d4a.webp"
+            "img_path": "https://scontent.fuio1-2.fna.fbcdn.net/v/t39.30808-6/326801858_545953947568494_7757838309611030519_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEP2vkqB3Ux7v9i-ftn6y3eQXq2HbXFAzhBerYdtcUDOJD3d02a3rYCRxb18BaXp6vdW1SCqhd1zwHgQO21DrO9&_nc_ohc=nyurKbklR1kAX8yrU4U&_nc_ht=scontent.fuio1-2.fna&oh=00_AfBqST_nL0s35d3WYvs1Fj54o9jCh33oNi3I17pAt1fnDw&oe=65DAAC19"
         },
         "external_links": {
             "facebook": "https://www.facebook.com/fundcaminoacasaecuador",
