@@ -1,15 +1,17 @@
-class PhotoRepository:
-    def __init__(self):
+from abc import ABC, abstractmethod
+
+from src.Photo.Domain.Photo import Photo
+
+
+class PhotoRepository(ABC):
+    @abstractmethod
+    def get_by_id(self, id: str) -> Photo:
         pass
 
-    def get_by_id(self, id):
+    @abstractmethod
+    def upload_img(self, img) -> str:
         pass
 
-    def upload_img(self, img):
-        pass
-
-    def save_photo_user(self, photo, user_id):
-        pass
-
-    def save_photo_pub(self, photo, pub_id):
+    @abstractmethod
+    def save_photo_user(self, photo: Photo, user_id: str) -> str:
         pass

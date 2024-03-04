@@ -1,4 +1,4 @@
-from Publication.Publication import Publication
+from src.Publication.Domain.Publication import Publication
 
 
 class ExperiencePublication(Publication):

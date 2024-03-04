@@ -1,4 +1,4 @@
-name: Deployment to development Server
+name: Deployment to development Server (Railway)
 
 on:
   push:
@@ -9,18 +9,24 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
+
       - name: Install Poetry
         run: pip install poetry
+
       - name: Install dependencies
         run: poetry install
-      - name: Configure development server
-        uses: bankfliptech/deploy-to-render@v1
-        with:
-          serviceId: ${{ secrets.RENDER_SERVICE_ID }}
-          apiKey: ${{ secrets.RENDER_API_KEY }}
-          deployHookURL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        
+      - name: Install Railway
+        run: npm i -g @railway/cli
+
+      - name: Deploy to Railway
+        run: railway up --service Backend-TIC-2023-GMC
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

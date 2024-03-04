@@ -1,4 +1,5 @@
-class Photo:
-    def __init__(self):
-        self.photo_id = None
-        self.img_path = None
+from src.Shared.Model import Model
+
+
+class Photo(Model):
+    img_path: str

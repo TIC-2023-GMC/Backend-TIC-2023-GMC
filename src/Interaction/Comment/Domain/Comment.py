@@ -1,8 +1,13 @@
-from Interaction import Interaction
+from datetime import datetime
+
+from src.Interaction.Domain.Interaction import Interaction
+from src.Photo.Domain.Photo import Photo
 
 
 class Comment(Interaction):
-    def __init__(self):
-        self.comment_id = None
-        self.comment_text = None
-        self.comment_date = None
+    _id: str
+    user_first_name: str
+    user_last_name: str
+    user_photo: Photo
+    comment_text: str
+    comment_date: datetime
